@@ -10,6 +10,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # --- ADD THIS PERMISSIONS BLOCK ---
+    permissions:
+      contents: write
+    # ---------------------------------
 
     steps:
     - name: Checkout repository
@@ -27,14 +31,12 @@ jobs:
       id: generate_html
       run: python .github/scripts/generate_redirects.py
 
-    # --- ENHANCED DEBUGGING STEP ---
     - name: Debug generated files and output
       run: |
         echo "--- Debugging 'generate_html' step outputs ---"
         echo "Generated files output: ${{ steps.generate_html.outputs.generated_files }}"
 
         echo "--- Listing contents of the target directory ---"
-        # Use quotes around the path to handle spaces correctly in the shell
         ls -la "Workshops/Advanced Machine Learning - Extend Operational Insights/" || echo "Target directory not found or empty."
         echo "--- Listing contents of Workshops/ (for general overview) ---"
         ls -la Workshops/
@@ -45,6 +47,5 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "feat: Auto-generate redirect HTMLs based on redirects.json"
-        # Use the output from the Python script to specify which files to commit
         file_pattern: ${{ steps.generate_html.outputs.generated_files }}
         branch: main # or your default branch, e.g., 'master'
