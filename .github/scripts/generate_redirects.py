@@ -27,7 +27,8 @@ except FileNotFoundError:
     print(f"Error: Template file not found at {template_file_path}", file=sys.stderr)
     sys.exit(1)
 
-generated_files = []
+# generated_files list is no longer needed for the output, but can be kept for internal logging if desired
+# generated_files = []
 for entry in redirects_config:
     title = entry['title']
     target_url = entry['current_target_file']
@@ -40,24 +41,21 @@ for entry in redirects_config:
     with open(full_redirect_html_path, 'w') as f:
         f.write(rendered_html)
     print(f'Generated: {full_redirect_html_path}')
-    generated_files.append(relative_redirect_html_path)
+    # generated_files.append(relative_redirect_html_path) # No longer needed for output
 
-# --- CRITICAL CHANGE FOR GITHUB_OUTPUT AND file_pattern ---
-github_output_path = os.getenv('GITHUB_OUTPUT')
-if github_output_path:
-    # Format generated_files as a comma-separated string, quoting paths with spaces
-    # This is more robust for the 'file_pattern' input of git-auto-commit-action
-    formatted_files_for_output = []
-    for f_path in generated_files:
-        if ' ' in f_path:
-            # Use single quotes for paths with spaces
-            formatted_files_for_output.append(f"'{f_path}'")
-        else:
-            formatted_files_for_output.append(f_path)
-
-    output_string = ",".join(formatted_files_for_output)
-
-    with open(github_output_path, 'a') as f:
-        f.write(f"generated_files={output_string}\n")
-else:
-    print("Warning: GITHUB_OUTPUT environment variable not found. Output will not be set.", file=sys.stderr)
+# --- REMOVE THIS SECTION ---
+# The following code that writes to GITHUB_OUTPUT is no longer needed
+# because git-auto-commit-action will now use file_pattern: '.'
+# github_output_path = os.getenv('GITHUB_OUTPUT')
+# if github_output_path:
+#     formatted_files_for_output = []
+#     for f_path in generated_files:
+#         if ' ' in f_path:
+#             formatted_files_for_output.append(f"'{f_path}'")
+#         else:
+#             formatted_files_for_output.append(f_path)
+#     output_string = ",".join(formatted_files_for_output)
+#     with open(github_output_path, 'a') as f:
+#         f.write(f"generated_files={output_string}\n")
+# else:
+#     print("Warning: GITHUB_OUTPUT environment variable not found. Output will not be set.", file=sys.stderr)
