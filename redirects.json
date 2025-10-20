@@ -14,13 +14,13 @@
   {
     "id": "aitk-dsdl-attendee",
     "title": "AITK and DSDL Operationalization and Use Case - Attendee",
-    "redirect_html_path": "Workshops/AITK%20and%20DSDL%20Operationalization%20and%20Use%20Case/AITK-DSDL-Attendee.html",
+    "redirect_html_path": "Workshops/AITK and DSDL Operationalization and Use Case/AITK-DSDL-Attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/AITK%20and%20DSDL%20Operationalization%20and%20Use%20Case/AITK%20and%20DSDL%20Operationalization%20and%20Use%20Case%20Workshop%20-%20Attendee%20-%20Aug%202024.pdf"
   },
   {
     "id": "aitk-dsdl-lab-guide",
     "title": "AITK and DSDL Operationalization and Use Case - Lab Guide",
-    "redirect_html_path": "Workshops/AITK%20and%20DSDL%20Operationalization%20and%20Use%20Case/AITK-DSDL-LabGuide.html",
+    "redirect_html_path": "Workshops/AITK and DSDL Operationalization and Use Case/AITK-DSDL-LabGuide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/AITK%20and%20DSDL%20Operationalization%20and%20Use%20Case/AITK%20and%20DSDL%20Operationalization%20and%20Use%20Case%20Workshop%20-%20Lab%20Guide%20-%20Aug%202024.pdf"
   }
 ]
