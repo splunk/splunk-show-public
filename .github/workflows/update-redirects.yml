@@ -1,0 +1,69 @@
+name: Update Redirect HTMLs
+
+on:
+  push:
+    branches:
+      - main # or your default branch, e.g., 'master'
+    paths:
+      - 'redirects.json' # Trigger when the config file changes
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Install Jinja2 (for templating)
+      run: pip install Jinja2
+
+    - name: Generate redirect HTML files
+      id: generate_html
+      run: |
+        python -c "
+import json
+from jinja2 import Template
+import os
+
+config_file = 'redirects.json'
+template_file = '_redirect_templates/redirect_template.html'
+
+with open(config_file, 'r') as f:
+    redirects_config = json.load(f)
+
+with open(template_file, 'r') as f:
+    template_content = f.read()
+template = Template(template_content)
+
+generated_files = []
+for entry in redirects_config:
+    title = entry['title']
+    target_url = entry['current_target_file']
+    redirect_html_path = entry['redirect_html_path']
+
+    # Ensure the directory exists
+    os.makedirs(os.path.dirname(redirect_html_path), exist_ok=True)
+
+    rendered_html = template.render(title=title, target_url=target_url)
+    with open(redirect_html_path, 'w') as f:
+        f.write(rendered_html)
+    print(f'Generated: {redirect_html_path}')
+    generated_files.append(redirect_html_path)
+
+# Output the list of generated files for the next step
+print(f'::set-output name=generated_files::{json.dumps(generated_files)}')
+        "
+
+    - name: Commit and push changes
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "feat: Auto-generate redirect HTMLs based on redirects.json"
+        # Only commit the files that were actually generated/modified
+        file_pattern: ${{ steps.generate_html.outputs.generated_files }}
+        branch: main # or your default branch
