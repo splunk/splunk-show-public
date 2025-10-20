@@ -10,10 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # --- ADD THIS PERMISSIONS BLOCK ---
     permissions:
-      contents: write
-    # ---------------------------------
+      contents: write # This is correctly set and is necessary
 
     steps:
     - name: Checkout repository
@@ -33,9 +31,11 @@ jobs:
 
     - name: Debug generated files and output
       run: |
+        # The 'Generated files output' from the Python script is no longer strictly
+        # used by the auto-commit action, but it's good for debugging.
         echo "--- Debugging 'generate_html' step outputs ---"
-        echo "Generated files output: ${{ steps.generate_html.outputs.generated_files }}"
-
+        # This will still print the output from the Python script if it's there
+        # but the auto-commit action will ignore it.
         echo "--- Listing contents of the target directory ---"
         ls -la "Workshops/Advanced Machine Learning - Extend Operational Insights/" || echo "Target directory not found or empty."
         echo "--- Listing contents of Workshops/ (for general overview) ---"
@@ -47,5 +47,8 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "feat: Auto-generate redirect HTMLs based on redirects.json"
-        file_pattern: ${{ steps.generate_html.outputs.generated_files }}
+        # --- CRITICAL CHANGE HERE ---
+        # Commit ALL changes in the working directory.
+        file_pattern: '.'
+        # ----------------------------
         branch: main # or your default branch, e.g., 'master'
