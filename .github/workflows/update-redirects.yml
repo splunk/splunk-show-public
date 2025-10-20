@@ -25,13 +25,25 @@ jobs:
 
     - name: Generate redirect HTML files
       id: generate_html
-      # Now we just execute the Python script directly
       run: python .github/scripts/generate_redirects.py
+
+    # --- ENHANCED DEBUGGING STEP ---
+    - name: Debug generated files and output
+      run: |
+        echo "--- Debugging 'generate_html' step outputs ---"
+        echo "Generated files output: ${{ steps.generate_html.outputs.generated_files }}"
+        echo "--- Listing contents of Workshops directory ---"
+        # List all files, including hidden ones, with details in the Workshops directory
+        # This will confirm if the file physically exists where expected
+        ls -la Workshops/ || echo "Workshops directory not found or empty."
+        echo "--- Listing contents of the root directory ---"
+        ls -la # Check the root of the repository as well
 
     - name: Commit and push changes
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "feat: Auto-generate redirect HTMLs based on redirects.json"
         # Use the output from the Python script to specify which files to commit
+        # This is the most precise way if the output is correct
         file_pattern: ${{ steps.generate_html.outputs.generated_files }}
         branch: main # or your default branch, e.g., 'master'
