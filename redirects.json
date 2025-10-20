@@ -1,0 +1,15 @@
+[
+  {
+    "id": "advanced-ml-attendee",
+    "title": "Advanced Machine Learning - Attendee",
+    "redirect_html_path": "Workshops/AdvancedML-Attendee.html",
+    "current_target_pdf": "https://splunk.github.io/splunk-show-public/Workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights%20-%20Attendee%20-%20Oct%202023.pdf"
+  }
+  // You can add more redirect entries here
+  // {
+  //   "id": "another-file",
+  //   "title": "Another Important Document",
+  //   "redirect_html_path": "Documents/AnotherDoc.html",
+  //   "current_target_pdf": "https://splunk.github.io/splunk-show-public/Documents/Another%20Document%20V2.pdf"
+  // }
+]
