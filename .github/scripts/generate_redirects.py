@@ -45,7 +45,12 @@ for entry in redirects_config:
     print(f'Generated: {full_redirect_html_path}')
     generated_files.append(relative_redirect_html_path) # Store relative path for git-auto-commit
 
-# Output the list of generated files for the next step (git-auto-commit-action)
-# This is crucial for the file_pattern to work correctly.
-# The `::set-output` command must be on a single line.
-print(f'::set-output name=generated_files::{json.dumps(generated_files)}')
+# --- NEW WAY TO SET OUTPUT ---
+# Write the output to the file specified by $GITHUB_OUTPUT
+# This replaces the deprecated '::set-output' command.
+github_output_path = os.getenv('GITHUB_OUTPUT')
+if github_output_path:
+    with open(github_output_path, 'a') as f:
+        f.write(f"generated_files={json.dumps(generated_files)}\n")
+else:
+    print("Warning: GITHUB_OUTPUT environment variable not found. Output will not be set.", file=sys.stderr)
