@@ -26,8 +26,7 @@ jobs:
     - name: Generate redirect HTML files
       id: generate_html
       run: |
-        python -c "
-import json
+        python -c "import json
 from jinja2 import Template
 import os
 
@@ -41,30 +40,21 @@ with open(template_file, 'r') as f:
     template_content = f.read()
 template = Template(template_content)
 
-generated_files = []
 for entry in redirects_config:
     title = entry['title']
-    # IMPORTANT: Ensure this key matches what's in your redirects.json
     target_url = entry['current_target_file']
     redirect_html_path = entry['redirect_html_path']
 
-    # Ensure the directory exists before writing the file
     os.makedirs(os.path.dirname(redirect_html_path), exist_ok=True)
 
     rendered_html = template.render(title=title, target_url=target_url)
     with open(redirect_html_path, 'w') as f:
         f.write(rendered_html)
-    print(f'Generated: {redirect_html_path}')
-    generated_files.append(redirect_html_path)
-
-# Output the list of generated files for the next step (git-auto-commit-action)
-print(f'::set-output name=generated_files::{json.dumps(generated_files)}')
-"
+    print(f'Generated: {redirect_html_path}')"
 
     - name: Commit and push changes
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "feat: Auto-generate redirect HTMLs based on redirects.json"
-        # Only commit the files that were actually generated/modified
-        file_pattern: ${{ steps.generate_html.outputs.generated_files }}
+        file_pattern: '.'
         branch: main # or your default branch, e.g., 'master'
