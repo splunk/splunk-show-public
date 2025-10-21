@@ -9,21 +9,17 @@ import re # For regex cleaning
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
 GITHUB_REPO_NAME = 'splunk-show-public'
-GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/"
+# !!! UPDATED: New base URL for content !!!
+GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/public/"
 
-# !!! IMPORTANT: ENSURE THESE MATCH YOUR ACTUAL FOLDER NAMES EXACTLY !!!
-# These are the top-level directories within your repository that the script will scan
-# for files to create redirects for.
-SCAN_DIRECTORIES = [
-    "Workshops/Advanced Machine Learning - Extend Operational Insights",
-    "Workshops/AITK and DSDL Operationalization and Use Case",
-    "Workshops/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ",
-    "Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs", # Corrected name based on your log
-    "Workshops/InfoSec App Hands-On", # Your new folder
-    # Add any other workshop folders or content folders here that you want scanned
-]
+# !!! UPDATED: The SINGLE ROOT directory where all your content now lives !!!
+# This should be relative to your repository root.
+ROOT_CONTENT_DIRECTORY = "public/Workshops" # Assuming Workshops is directly under public
+# If all your content is directly under 'public' and 'Workshops' is just one of many top-level folders there,
+# you might set ROOT_CONTENT_DIRECTORY = "public" and the script will scan everything under 'public'.
+# For now, we'll assume 'Workshops' is the main content folder within 'public'.
 
-# --- Helper Functions ---
+# --- Helper Functions (No changes needed) ---
 def clean_filename_for_title(filename):
     """Removes file extensions and common date patterns, replaces underscores/hyphens with spaces."""
     name_without_ext = os.path.splitext(filename)[0] # Get name without extension
@@ -41,7 +37,7 @@ def slugify(text):
     text = text.strip('-')
     return text
 
-# --- Main Script Logic ---
+# --- Main Script Logic (No functional changes, just updated comments/context) ---
 repo_root = os.getenv('GITHUB_WORKSPACE')
 
 config_file_path = os.path.join(repo_root, 'redirects.json')
@@ -63,8 +59,6 @@ except FileNotFoundError:
     print("No existing redirects.json found. Starting fresh.", file=sys.stderr)
 except json.JSONDecodeError:
     print("Invalid JSON format in existing redirects.json. It might be overwritten. Error:", file=sys.stderr)
-    # If JSON is invalid, existing_redirects_map will remain empty, and everything will be re-inferred.
-    # This is a safe fallback but means manual tweaks are lost.
     existing_redirects_map = {}
 
 
@@ -77,93 +71,68 @@ except FileNotFoundError:
     print(f"Error: Template file not found at {template_file_path}. Exiting.", file=sys.stderr)
     sys.exit(1)
 
-final_redirects_config_for_writing = [] # This will be the final list of entries to write back
-discovered_original_file_urls = set() # To track all files we've processed in this run
+final_redirects_config_for_writing = []
+discovered_original_file_urls = set()
 
-# --- Discover files and build the new redirects list ---
-print(f"Starting file discovery in configured SCAN_DIRECTORIES: {SCAN_DIRECTORIES}")
-for scan_dir in SCAN_DIRECTORIES:
-    full_scan_dir_path = os.path.join(repo_root, scan_dir)
-    if not os.path.isdir(full_scan_dir_path):
-        print(f"Warning: Configured SCAN_DIRECTORY '{scan_dir}' not found at '{full_scan_dir_path}'. Skipping.", file=sys.stderr)
-        continue
-    print(f"Scanning directory: {full_scan_dir_path}")
+full_root_content_path = os.path.join(repo_root, ROOT_CONTENT_DIRECTORY)
+if not os.path.isdir(full_root_content_path):
+    print(f"Error: ROOT_CONTENT_DIRECTORY '{ROOT_CONTENT_DIRECTORY}' not found at '{full_root_content_path}'. No files will be scanned. Exiting.", file=sys.stderr)
+    sys.exit(1)
 
-    for root, _, files in os.walk(full_scan_dir_path):
-        for filename in files:
-            # Skip hidden files and common Git/system files
-            if filename.startswith('.') or filename in ['.gitkeep', 'Thumbs.db', 'desktop.ini']:
-                continue
+print(f"Starting recursive file discovery in '{full_root_content_path}'")
 
-            # Relative path from repo root to the original file
-            relative_original_file_path = os.path.relpath(os.path.join(root, filename), repo_root)
-            # Ensure forward slashes for URL consistency
-            relative_original_file_path = relative_original_file_path.replace(os.sep, '/')
+for root, _, files in os.walk(full_root_content_path):
+    for filename in files:
+        if filename.startswith('.') or filename in ['.gitkeep', 'Thumbs.db', 'desktop.ini']:
+            continue
 
-            # Construct the full GitHub Pages URL to the original file (with spaces)
-            # This will be used as the stable key for existing entries
-            current_target_file_url_in_json = GITHUB_PAGES_BASE_URL + relative_original_file_path
-            
-            # Add to discovered set
-            discovered_original_file_urls.add(current_target_file_url_in_json)
+        relative_original_file_path = os.path.relpath(os.path.join(root, filename), repo_root)
+        relative_original_file_path = relative_original_file_path.replace(os.sep, '/')
 
-            # --- Check for existing entry for this original file ---
-            # Get a copy to modify, or an empty dict if not found
-            entry_to_process = existing_redirects_map.get(current_target_file_url_in_json, {}).copy()
+        current_target_file_url_in_json = GITHUB_PAGES_BASE_URL + relative_original_file_path
+        
+        discovered_original_file_urls.add(current_target_file_url_in_json)
 
-            # Infer values
-            inferred_title = clean_filename_for_title(filename)
-            inferred_id = slugify(inferred_title)
-            
-            # Proposed redirect_html_path: same directory structure as original file,
-            # but with a slugified name (without original extension) and .html extension.
-            pdf_dir_relative = os.path.dirname(relative_original_file_path)
-            inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(os.path.splitext(filename)[0]) + '.html')
-            inferred_redirect_html_path = inferred_redirect_html_path.replace(os.sep, '/') # Ensure forward slashes
+        entry_to_process = existing_redirects_map.get(current_target_file_url_in_json, {}).copy()
 
-            # --- Apply overrides from existing entry if present ---
-            # If the entry was found in existing_redirects_map, its values for id, title,
-            # and redirect_html_path will be used. Otherwise, inferred values are used.
-            entry_id = entry_to_process.get('id', inferred_id)
-            entry_title = entry_to_process.get('title', inferred_title)
-            entry_redirect_html_path = entry_to_process.get('redirect_html_path', inferred_redirect_html_path)
+        inferred_title = clean_filename_for_title(filename)
+        inferred_id = slugify(inferred_title)
+        
+        pdf_dir_relative = os.path.dirname(relative_original_file_path)
+        inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(os.path.splitext(filename)[0]) + '.html')
+        inferred_redirect_html_path = inferred_redirect_html_path.replace(os.sep, '/')
 
-            # Create or update the entry dictionary
-            # Always update current_target_file to ensure it points to the discovered file
-            entry_data = {
-                "id": entry_id,
-                "title": entry_title,
-                "redirect_html_path": entry_redirect_html_path,
-                "current_target_file": current_target_file_url_in_json
-                # public_url will be calculated and added in the next stage
-            }
-            final_redirects_config_for_writing.append(entry_data)
-            print(f"Processed file: {relative_original_file_path} -> Redirect: {entry_redirect_html_path}")
+        entry_id = entry_to_process.get('id', inferred_id)
+        entry_title = entry_to_process.get('title', inferred_title)
+        entry_redirect_html_path = entry_to_process.get('redirect_html_path', inferred_redirect_html_path)
 
-# --- Generate HTML for all entries and update public_url ---
-# This loop also ensures that redirects.json is written back with 'public_url'
-# We iterate over a copy because we might remove entries during processing
+        new_entry = {
+            "id": entry_id,
+            "title": entry_title,
+            "redirect_html_path": entry_redirect_html_path,
+            "current_target_file": current_target_file_url_in_json
+        }
+        final_redirects_config_for_writing.append(new_entry)
+        print(f"Processed file: {relative_original_file_path} -> Redirect: {entry_redirect_html_path}")
+
 final_list_after_html_gen = []
-generated_html_files = set() # Track generated HTML files to detect deletions
+generated_html_files = set()
 
 for entry in final_redirects_config_for_writing:
     title = entry['title']
     raw_current_target_file = entry['current_target_file']
     relative_redirect_html_path = entry['redirect_html_path']
 
-    # URL-encode raw_current_target_file for use in HTML (path with spaces -> %20)
     parsed_target_url = urllib.parse.urlparse(raw_current_target_file)
     encoded_target_path = urllib.parse.quote(parsed_target_url.path, safe='/')
     encoded_target_query = urllib.parse.quote(parsed_target_url.query, safe='=&')
     target_url_for_html = urllib.parse.urlunparse(parsed_target_url._replace(path=encoded_target_path, query=encoded_target_query))
 
-    # Calculate the public_url for the redirect HTML file itself (based on the chosen redirect_html_path)
     path_segments = relative_redirect_html_path.split('/')
     encoded_path_segments = [urllib.parse.quote(segment, safe='') for segment in path_segments]
     public_url_path_encoded = '/'.join(encoded_path_segments)
     calculated_public_url = GITHUB_PAGES_BASE_URL + public_url_path_encoded
 
-    # Update 'public_url' in the entry dictionary for redirects.json
     entry['public_url'] = calculated_public_url
 
     full_redirect_html_path = os.path.join(repo_root, relative_redirect_html_path)
@@ -175,25 +144,24 @@ for entry in final_redirects_config_for_writing:
         f.write(rendered_html)
     print(f'Generated HTML: {full_redirect_html_path}')
     generated_html_files.add(full_redirect_html_path)
-    final_list_after_html_gen.append(entry) # Add to the list that will be written to JSON
+    final_list_after_html_gen.append(entry)
 
-# --- Clean up old HTML redirects not in the current list ---
-# This part ensures that if a file is removed or its redirect_html_path changes,
-# the old HTML redirect file is also removed from the repository.
 print("Cleaning up old HTML redirect files...")
-for scan_dir in SCAN_DIRECTORIES:
-    full_scan_dir_path = os.path.join(repo_root, scan_dir)
-    if not os.path.isdir(full_scan_dir_path):
-        continue
-    for root, _, files in os.walk(full_scan_dir_path):
-        for filename in files: # Check all files, not just HTML, to find potential old redirects
+# Scan only the ROOT_CONTENT_DIRECTORY for HTML files
+# This needs to be relative to repo_root for os.walk to work correctly
+full_root_content_path_for_cleanup = os.path.join(repo_root, ROOT_CONTENT_DIRECTORY)
+if os.path.isdir(full_root_content_path_for_cleanup):
+    for root, _, files in os.walk(full_root_content_path_for_cleanup):
+        for filename in files:
             if filename.lower().endswith('.html'):
                 full_html_path = os.path.join(root, filename)
                 if full_html_path not in generated_html_files:
                     os.remove(full_html_path)
                     print(f"Deleted old HTML redirect: {full_html_path}")
+else:
+    print(f"Warning: ROOT_CONTENT_DIRECTORY '{ROOT_CONTENT_DIRECTORY}' not found for cleanup. Skipping HTML cleanup.", file=sys.stderr)
 
-# Write the updated redirects_config back to redirects.json
+
 try:
     with open(config_file_path, 'w') as f:
         json.dump(final_list_after_html_gen, f, indent=2)
