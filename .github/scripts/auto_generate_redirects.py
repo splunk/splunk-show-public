@@ -9,15 +9,12 @@ import re # For regex cleaning
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
 GITHUB_REPO_NAME = 'splunk-show-public'
-# !!! UPDATED: New base URL for content !!!
+# Base URL for GitHub Pages content
 GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/public/"
 
 # !!! UPDATED: The SINGLE ROOT directory where all your content now lives !!!
 # This should be relative to your repository root.
-ROOT_CONTENT_DIRECTORY = "public/Workshops" # Assuming Workshops is directly under public
-# If all your content is directly under 'public' and 'Workshops' is just one of many top-level folders there,
-# you might set ROOT_CONTENT_DIRECTORY = "public" and the script will scan everything under 'public'.
-# For now, we'll assume 'Workshops' is the main content folder within 'public'.
+ROOT_CONTENT_DIRECTORY = "public/workshops" # !!! Changed to lowercase 'workshops' !!!
 
 # --- Helper Functions (No changes needed) ---
 def clean_filename_for_title(filename):
@@ -147,8 +144,6 @@ for entry in final_redirects_config_for_writing:
     final_list_after_html_gen.append(entry)
 
 print("Cleaning up old HTML redirect files...")
-# Scan only the ROOT_CONTENT_DIRECTORY for HTML files
-# This needs to be relative to repo_root for os.walk to work correctly
 full_root_content_path_for_cleanup = os.path.join(repo_root, ROOT_CONTENT_DIRECTORY)
 if os.path.isdir(full_root_content_path_for_cleanup):
     for root, _, files in os.walk(full_root_content_path_for_cleanup):
