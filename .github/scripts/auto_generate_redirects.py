@@ -11,7 +11,7 @@ from datetime import datetime # For timestamps
 GITHUB_REPO_OWNER = 'splunk'
 GITHUB_REPO_NAME = 'splunk-show-public'
 # Base URL for GitHub Pages content
-GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/"
+GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/public/"
 
 # The SINGLE ROOT directory where all your content now lives
 ROOT_CONTENT_DIRECTORY = "public"
@@ -170,7 +170,6 @@ for root, _, files in os.walk(full_root_content_path):
 
         # --- Try to find an existing entry by ID ---
         entry_data = {}
-        # NEW: Get current timestamp without milliseconds
         current_timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         if inferred_id in existing_redirects_map_by_id:
@@ -323,7 +322,7 @@ else:
         
         escaped_title = title.replace('|', '\\|')
         
-        public_file_list_content += f"| {escaped_title} | [{public_url}]({public_url}) | {last_updated_display} |\n"
+        public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
 
 try:
     with open(public_file_list_path, 'w') as f:
