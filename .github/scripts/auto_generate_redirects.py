@@ -4,13 +4,16 @@ from jinja2 import Template
 import os
 import sys
 import urllib.parse
-import re
+import re # For regex cleaning
 from datetime import datetime # For timestamps
 
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
 GITHUB_REPO_NAME = 'splunk-show-public'
+# Base URL for GitHub Pages content
 GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/"
+
+# The SINGLE ROOT directory where all your content now lives
 ROOT_CONTENT_DIRECTORY = "public"
 PUBLIC_FILE_LIST_FILENAME = "public_file_list.md"
 
@@ -21,26 +24,43 @@ def remove_date_patterns(text):
     Handles variations like " - Month YYYY", "Month YYYY", "YYYY-MM", "(Month YYYY)",
     and other common date separators.
     """
+    # Regex to match common month abbreviations
     months_abbr = r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
+    # Regex to match common full month names (less common in filenames, but good to have)
     months_full = r'(January|February|March|April|May|June|July|August|September|October|November|December)'
+
+    # Combine month patterns
     month_pattern = f"(?:{months_abbr}|{months_full})"
+
+    # Year pattern (e.g., 2023, '23)
     year_pattern = r'\d{4}|\'\d{2}'
+
+    # Day pattern (e.g., 01, 1st, 1)
     day_pattern = r'\d{1,2}(?:st|nd|rd|th)?'
 
+    # --- Comprehensive date patterns ---
     patterns = [
+        # " - Month YYYY" or " Month YYYY" or " (Month YYYY)"
         rf'(?:[\s_-]|\s*\(\s*)?{month_pattern}\s+{year_pattern}(?:\s*\))?\b',
+        # " - YYYY-MM(-DD)" or " YYYY-MM(-DD)" or " (YYYY-MM(-DD))"
         rf'(?:[\s_-]|\s*\(\s*)?\d{{4}}-\d{{2}}(?:-\d{{2}})?(?:\s*\))?\b',
+        # " - YYYYMMDD"
         rf'(?:[\s_-]|\s*\(\s*)?\d{{8}}(?:\s*\))?\b',
+        # " - DD Month YYYY" (e.g., 15 Oct 2023)
         rf'(?:[\s_-]|\s*\(\s*)?{day_pattern}\s+{month_pattern}\s+{year_pattern}(?:\s*\))?\b',
+        # " - Month DD, YYYY" (e.g., Oct 15, 2023)
         rf'(?:[\s_-]|\s*\(\s*)?{month_pattern}\s+{day_pattern},?\s+{year_pattern}(?:\s*\))?\b',
+        # " - YYYY" alone (less specific, but can catch trailing years)
         rf'(?:[\s_-]|\s*\(\s*)?{year_pattern}(?:\s*\))?\b',
     ]
 
+    # Apply patterns from most specific to least specific
     for pattern in patterns:
         text = re.sub(pattern, '', text, flags=re.IGNORECASE).strip()
     
+    # Clean up any residual separators or multiple spaces
     text = re.sub(r'[\s_-]+', ' ', text).strip(' -_')
-    text = re.sub(r'\s+', ' ', text).strip()
+    text = re.sub(r'\s+', ' ', text).strip() # Normalize spaces again
 
     return text.strip()
 
@@ -53,18 +73,29 @@ def clean_filename_for_title(filename):
     - Normalizes hyphens that act as separators to " - ".
     - Normalizes all other whitespace to a single space.
     """
-    name_without_ext = os.path.splitext(filename)[0]
+    name_without_ext = os.path.splitext(filename)[0] # Get name without extension
+    
+    # 1. Remove date patterns
     name_without_ext = remove_date_patterns(name_without_ext)
+    
+    # 2. Replace underscores with spaces
     name_without_ext = name_without_ext.replace('_', ' ')
+    
+    # 3. Normalize hyphens that act as separators to " - "
+    # This regex replaces any sequence of whitespace, hyphen, whitespace with a consistent " - "
+    # This should correctly preserve " - " as a separator, rather than collapsing it.
     name_without_ext = re.sub(r'\s*-\s*', ' - ', name_without_ext)
+    
+    # 4. Normalize all other whitespace to a single space
     name_without_ext = re.sub(r'\s+', ' ', name_without_ext)
-    return name_without_ext.strip()
+    
+    return name_without_ext.strip() # Remove leading/trailing spaces
 
 def slugify(text):
     """Converts text to a URL-friendly slug."""
-    text = text.lower()
-    text = re.sub(r'[^\w\s-]', '', text)
-    text = re.sub(r'[\s_-]+', '-', text)
+    text = text.lower() # Ensure slug is always lowercase for consistency
+    text = re.sub(r'[^\w\s-]', '', text) # Remove non-word chars
+    text = re.sub(r'[\s_-]+', '-', text) # Replace spaces/underscores/dashes with single dash
     text = text.strip('-')
     return text
 
@@ -131,7 +162,7 @@ for root, _, files in os.walk(full_root_content_path):
         name_for_slug_path = name_without_ext_and_date.replace('_', ' ')
 
         inferred_id = slugify(name_for_slug_path)
-        inferred_title = clean_filename_for_title(filename)
+        inferred_title = clean_filename_for_title(filename) # Use the improved function here
         
         pdf_dir_relative = os.path.dirname(relative_original_file_path)
         inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_for_slug_path) + '.html')
@@ -140,7 +171,7 @@ for root, _, files in os.walk(full_root_content_path):
         # --- Try to find an existing entry by ID ---
         entry_data = {}
         # NEW: Get current timestamp without milliseconds
-        current_timestamp = datetime.now().isoformat(timespec='seconds')
+        current_timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         if inferred_id in existing_redirects_map_by_id:
             existing_entry = existing_redirects_map_by_id[inferred_id]
@@ -151,12 +182,10 @@ for root, _, files in os.walk(full_root_content_path):
             
             entry_data['current_target_file'] = current_target_file_url_in_json
 
-            # Compare relevant fields to determine if last_updated_at needs update
             changed = False
             if entry_data['title'] != existing_entry.get('title'): changed = True
             if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): changed = True
             if entry_data['current_target_file'] != existing_entry.get('current_target_file'): changed = True
-            # public_url is calculated later, but its components (redirect_html_path) are checked
             
             if changed:
                 entry_data['last_updated_at'] = current_timestamp
@@ -167,13 +196,12 @@ for root, _, files in os.walk(full_root_content_path):
 
             print(f"Matched existing entry for ID '{entry_data['id']}'. Updating target from '{existing_entry.get('current_target_file', 'N/A')}' to '{current_target_file_url_in_json}'.")
         else:
-            # New entry, set timestamp
             entry_data = {
                 "id": inferred_id,
                 "title": inferred_title,
                 "redirect_html_path": inferred_redirect_html_path,
                 "current_target_file": current_target_file_url_in_json,
-                "last_updated_at": current_timestamp # Set timestamp for new entry
+                "last_updated_at": current_timestamp
             }
             print(f"Creating new entry for '{inferred_id}' -> '{current_target_file_url_in_json}' with timestamp {current_timestamp}.")
 
@@ -217,7 +245,7 @@ for entry in final_redirects_config_for_writing:
 
     # Check if public_url changed and update timestamp if it did
     if entry.get('public_url') != calculated_public_url:
-        entry['last_updated_at'] = datetime.now().isoformat(timespec='seconds') # Update timestamp
+        entry['last_updated_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print(f"Public URL for '{entry['id']}' changed. Updating timestamp.")
     entry['public_url'] = calculated_public_url
 
@@ -256,11 +284,10 @@ except Exception as e:
     print(f"Error writing updated redirects.json: {e}", file=sys.stderr)
     sys.exit(1)
 
-# --- NEW SECTION: Generate public_file_list.md with Last Update Column ---
+# --- Generate public_file_list.md with Last Update Column ---
 print(f"Generating {PUBLIC_FILE_LIST_FILENAME}...")
 public_file_list_content = "# Public File List\n\n"
 public_file_list_content += "This file is automatically generated by the GitHub Actions workflow. Do not edit manually.\n\n"
-# NEW: Workflow generation timestamp formatted without milliseconds
 public_file_list_content += f"Last generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}\n\n"
 
 if not final_list_after_html_gen:
@@ -275,13 +302,19 @@ else:
         title = entry.get('title', 'N/A')
         public_url = entry.get('public_url', '#')
         
-        # NEW: Format last_updated_at from ISO string to a more readable format without milliseconds
         last_updated_iso = entry.get('last_updated_at')
         if last_updated_iso and isinstance(last_updated_iso, str):
             try:
-                # Parse ISO format (which might still have milliseconds from previous runs)
-                dt_object = datetime.fromisoformat(last_updated_iso)
-                # Format back to string without milliseconds
+                # Parse existing timestamp (which might be ISO or our new format)
+                # Try new format first, then ISO fallback
+                dt_object = None
+                try:
+                    dt_object = datetime.strptime(last_updated_iso, '%Y-%m-%d %H:%M:%S')
+                except ValueError:
+                    # Fallback for ISO format from previous runs
+                    dt_object = datetime.fromisoformat(last_updated_iso)
+                
+                # Format back to string without 'T' or milliseconds
                 last_updated_display = dt_object.strftime('%Y-%m-%d %H:%M:%S UTC')
             except ValueError:
                 last_updated_display = last_updated_iso # Fallback if parsing fails
@@ -299,4 +332,3 @@ try:
 except Exception as e:
     print(f"Error writing {PUBLIC_FILE_LIST_FILENAME}: {e}", file=sys.stderr)
     sys.exit(1)
-# --------------------------------------------------
