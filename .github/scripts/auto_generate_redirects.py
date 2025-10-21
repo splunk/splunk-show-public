@@ -262,47 +262,39 @@ if not final_list_after_html_gen:
 else:
     grouped_entries = {}
     for entry in final_list_after_html_gen:
-        # Extract path relative to ROOT_CONTENT_DIRECTORY (e.g., "workshops/Subfolder Name/file.html")
         path_relative_to_root_content = os.path.relpath(entry['redirect_html_path'], ROOT_CONTENT_DIRECTORY)
+        relative_parts = path_relative_to_root_content.split(os.sep)
+
+        top_folder_name = "Root Files"
+        sub_folder_name = "Files"
+
+        if len(relative_parts) > 1:
+            top_folder_name = relative_parts[0]
+            if len(relative_parts) > 2:
+                sub_folder_name = os.path.join(*relative_parts[1:-1]).replace(os.sep, '/')
+            else:
+                sub_folder_name = f"Files in {top_folder_name}"
         
-        # Split this relative path into components
-        relative_parts = path_relative_to_root_content.split(os.sep) # Use os.sep for OS-agnostic splitting
-
-        top_folder_name = "Root Files" # Default for files directly under public/
-        sub_folder_name = "Files" # Default for files directly under top_folder
-
-        if len(relative_parts) > 1: # If there's at least one folder after ROOT_CONTENT_DIRECTORY
-            top_folder_name = relative_parts[0] # e.g., "workshops"
-            if len(relative_parts) > 2: # If there's a sub-subfolder
-                # Join the parts from index 1 up to the second-to-last (which is the filename)
-                sub_folder_name = os.path.join(*relative_parts[1:-1]).replace(os.sep, '/') # Rejoin with '/' and ensure forward slashes
-            else: # File directly under public/top_folder/ (e.g., public/workshops/file.html)
-                sub_folder_name = f"Files in {top_folder_name}" # Use raw folder name
-        # Else: File directly under public/ (handled by defaults)
-
         if top_folder_name not in grouped_entries:
             grouped_entries[top_folder_name] = {}
         if sub_folder_name not in grouped_entries[top_folder_name]:
             grouped_entries[top_folder_name][sub_folder_name] = []
         grouped_entries[top_folder_name][sub_folder_name].append(entry)
 
-    # Sort top-level folders
     sorted_top_folders = sorted(grouped_entries.keys())
 
     for top_folder in sorted_top_folders:
-        public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n\n" # Top-level section
+        public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n" # Single newline after summary
         
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
         for sub_folder in sorted_sub_folders:
-            # Reduce heading size (h4) and add indentation using &nbsp;
-            public_file_list_content += f"&nbsp;&nbsp;<details>\n&nbsp;&nbsp;  <summary><h4>{sub_folder}</h4></summary>\n\n"
+            # --- MODIFIED: Use bold text (<strong>) instead of h5 ---
+            public_file_list_content += f"&nbsp;&nbsp;<details>\n&nbsp;&nbsp;<summary><strong>{sub_folder}</strong></summary>\n" # Changed h5 to strong, single newline
             
-            # Markdown table lines - NO LEADING SPACES to ensure rendering
             public_file_list_content += "| Title | Public URL | Last Updated |\n"
             public_file_list_content += "|---|---|---|\n"
             
-            # Sort files within the sub-folder by title
             sorted_files = sorted(grouped_entries[top_folder][sub_folder], key=lambda x: x.get('title', '').lower())
 
             for entry in sorted_files:
@@ -315,21 +307,18 @@ else:
                         dt_object = datetime.strptime(last_updated_iso, '%Y-%m-%d %H:%M:%S')
                         last_updated_display = dt_object.strftime('%Y-%m-%d %H:%M:%S UTC')
                     except ValueError:
-                        dt_object = datetime.fromisoformat(last_updated_iso) # Fallback for ISO format
+                        dt_object = datetime.fromisoformat(last_updated_iso)
                         last_updated_display = dt_object.strftime('%Y-%m-%d %H:%M:%S UTC')
                 else:
                     last_updated_display = 'N/A'
                 
                 escaped_title = title.replace('|', '\\|')
                 
-                # Markdown table data lines - NO LEADING SPACES
                 public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
             
-            # Reduce spacing after table and before closing details
-            public_file_list_content += "\n&nbsp;&nbsp;</details>\n" # Changed \n\n to \n
+            public_file_list_content += "\n&nbsp;&nbsp;</details>\n" # Single newline after closing details
         
-        # Reduce spacing after top-level details
-        public_file_list_content += "</details>\n" # Changed \n\n to \n
+        public_file_list_content += "</details>\n" # Single newline after closing top-level details
 
 try:
     with open(public_file_list_path, 'w') as f:
