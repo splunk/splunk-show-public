@@ -1,0 +1,7 @@
+Service,Service Description,Dependent Services
+Splunk Widget Co.,,"Product Assembly Line, IIoT Monitoring, Order Management, Warehouse Management, Shipping Management, Inventory"
+Product Assembly Line,Sub-service of Splunk Widget Co.,"Robots, Misc Infra, Liquid Washers, Conveyor Belts"
+Warehouse Management,Sub-service of Splunk Widget Co.,Forklifts
+IIoT Monitoring,Sub-service of Splunk Widget Co.,"Drones, Turbines, Sensors"
+Robots,Sub-services of Product Assembly Line,"Welding Robots, Painting Robots, Automated Inspection"
+Misc Infra,Sub-services of Product Assembly Line,"ERP/CRM, 3rdPartyAPIs, 5G, WiFi"
