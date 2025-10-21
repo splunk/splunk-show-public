@@ -3,7 +3,7 @@ import json
 from jinja2 import Template
 import os
 import sys
-import urllib.parse
+import urllib.parse # Import for robust URL encoding
 
 repo_root = os.getenv('GITHUB_WORKSPACE')
 
@@ -30,45 +30,47 @@ except FileNotFoundError:
 
 github_pages_base_url = "https://splunk.github.io/splunk-show-public/"
 
-# This list will hold the potentially modified entries to write back to redirects.json
 updated_redirects_config = []
 
 for entry in redirects_config:
     title = entry['title']
-    target_url = entry['current_target_file']
+    raw_current_target_file = entry['current_target_file'] # Read the raw value with spaces
     relative_redirect_html_path = entry['redirect_html_path']
 
-    # Calculate the public_url
+    # --- NEW: URL-encode raw_current_target_file for use in HTML ---
+    # Parse the URL to correctly encode only the path and query components
+    parsed_target_url = urllib.parse.urlparse(raw_current_target_file)
+    encoded_target_path = urllib.parse.quote(parsed_target_url.path, safe='/') # Keep '/' unencoded
+    encoded_target_query = urllib.parse.quote(parsed_target_url.query, safe='=&') # Keep '=' and '&' unencoded
+    # Reconstruct the URL with encoded path and query
+    target_url_for_html = urllib.parse.urlunparse(parsed_target_url._replace(path=encoded_target_path, query=encoded_target_query))
+    # ---------------------------------------------------------------
+
+    # Calculate the public_url (this logic remains the same and is correct)
     path_segments = relative_redirect_html_path.split('/')
     encoded_path_segments = [urllib.parse.quote(segment, safe='') for segment in path_segments]
     public_url_path_encoded = '/'.join(encoded_path_segments)
     calculated_public_url = github_pages_base_url + public_url_path_encoded
 
-    # --- NEW: Add or update 'public_url' in the entry dictionary ---
+    # Add or update 'public_url' in the entry dictionary for redirects.json
     entry['public_url'] = calculated_public_url
-    # ---------------------------------------------------------------
 
     full_redirect_html_path = os.path.join(repo_root, relative_redirect_html_path)
 
     os.makedirs(os.path.dirname(full_redirect_html_path), exist_ok=True)
 
-    # Pass the calculated public_url to the template rendering context
-    rendered_html = template.render(title=title, target_url=target_url, public_url=calculated_public_url)
+    # Pass the correctly encoded target_url_for_html and calculated public_url to the template
+    rendered_html = template.render(title=title, target_url=target_url_for_html, public_url=calculated_public_url)
     with open(full_redirect_html_path, 'w') as f:
         f.write(rendered_html)
     print(f'Generated HTML: {full_redirect_html_path}')
 
-    updated_redirects_config.append(entry) # Collect the modified entry
+    updated_redirects_config.append(entry)
 
-# --- NEW: Write the updated redirects_config back to redirects.json ---
 try:
     with open(config_file_path, 'w') as f:
-        json.dump(updated_redirects_config, f, indent=2) # Write with 2-space indentation
+        json.dump(updated_redirects_config, f, indent=2)
     print(f'Updated redirects.json with public_url entries: {config_file_path}')
 except Exception as e:
     print(f"Error writing updated redirects.json: {e}", file=sys.stderr)
     sys.exit(1)
-# --------------------------------------------------------------------
-
-# The GITHUB_OUTPUT part for git-auto-commit-action is handled by file_pattern: '.'
-# so no changes needed here for the workflow itself.
