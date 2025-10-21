@@ -15,15 +15,31 @@ GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAM
 # The SINGLE ROOT directory where all your content now lives
 ROOT_CONTENT_DIRECTORY = "public"
 
-# --- Helper Functions (No changes needed) ---
-def clean_filename_for_title(filename):
-    """Removes file extensions and common date patterns, replaces underscores/hyphens with spaces."""
-    name_without_ext = os.path.splitext(filename)[0] # Get name without extension
+# --- Helper Functions ---
+def remove_date_patterns(text):
+    """Removes common date patterns from a string."""
     # Remove common date patterns like " - Oct 2023" or " - 2023-10"
-    name_without_ext = re.sub(r' - (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}', '', name_without_ext)
-    name_without_ext = re.sub(r' - \d{4}-\d{2}(-\d{2})?', '', name_without_ext) # YYYY-MM(-DD)
-    name_without_ext = name_without_ext.replace('-', ' ').replace('_', ' ')
-    return name_without_ext.strip()
+    text = re.sub(r' - (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}', '', text)
+    text = re.sub(r' - \d{4}-\d{2}(-\d{2})?', '', text) # YYYY-MM(-DD)
+    return text.strip()
+
+def clean_filename_for_title(filename):
+    """
+    Removes file extensions and common date patterns,
+    replaces underscores with spaces, and normalizes all whitespace to a single space.
+    """
+    name_without_ext = os.path.splitext(filename)[0] # Get name without extension
+    
+    # Remove date patterns
+    name_without_ext = remove_date_patterns(name_without_ext)
+    
+    # Replace underscores with spaces (preserving hyphens)
+    name_without_ext = name_without_ext.replace('_', ' ')
+    
+    # Normalize all whitespace (including multiple spaces) to a single space
+    name_without_ext = re.sub(r'\s+', ' ', name_without_ext)
+    
+    return name_without_ext.strip() # Remove leading/trailing spaces
 
 def slugify(text):
     """Converts text to a URL-friendly slug."""
@@ -79,14 +95,11 @@ print(f"Starting recursive file discovery in '{full_root_content_path}'")
 
 for root, _, files in os.walk(full_root_content_path):
     for filename in files:
-        # Skip hidden files and common Git/system files
         if filename.startswith('.') or filename in ['.gitkeep', 'Thumbs.db', 'desktop.ini']:
             continue
-        # !!! NEW: Skip HTML files as they are generated redirects !!!
         if filename.lower().endswith('.html'):
             print(f"Skipping generated HTML file: {os.path.join(root, filename)}")
             continue
-        # ----------------------------------------------------
 
         relative_original_file_path = os.path.relpath(os.path.join(root, filename), repo_root)
         relative_original_file_path = relative_original_file_path.replace(os.sep, '/')
@@ -98,11 +111,14 @@ for root, _, files in os.walk(full_root_content_path):
         entry_to_process = existing_redirects_map.get(current_target_file_url_in_json, {}).copy()
 
         inferred_title = clean_filename_for_title(filename)
-        inferred_id = slugify(inferred_title)
-        
+        inferred_id = slugify(inferred_title) # ID is still based on title, which has date removed
+
+        # --- MODIFIED: Construct redirect_html_path without date ---
+        name_without_ext_and_date = remove_date_patterns(os.path.splitext(filename)[0])
         pdf_dir_relative = os.path.dirname(relative_original_file_path)
-        inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(os.path.splitext(filename)[0]) + '.html')
+        inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_without_ext_and_date) + '.html')
         inferred_redirect_html_path = inferred_redirect_html_path.replace(os.sep, '/')
+        # -----------------------------------------------------------
 
         entry_id = entry_to_process.get('id', inferred_id)
         entry_title = entry_to_process.get('title', inferred_title)
@@ -161,6 +177,8 @@ if os.path.isdir(full_root_content_path_for_cleanup):
 else:
     print(f"Warning: ROOT_CONTENT_DIRECTORY '{ROOT_CONTENT_DIRECTORY}' not found for cleanup. Skipping HTML cleanup.", file=sys.stderr)
 
+
+final_list_after_html_gen.sort(key=lambda x: x.get('id', '').lower())
 
 try:
     with open(config_file_path, 'w') as f:
