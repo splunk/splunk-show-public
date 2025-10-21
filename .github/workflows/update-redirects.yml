@@ -5,13 +5,16 @@ on:
     branches:
       - main # or your default branch, e.g., 'master'
     paths:
-      - 'redirects.json' # Trigger when the config file changes
+      - 'redirects.json'             # Trigger when the config file changes
+      - 'Workshops/**/*'             # NEW: Trigger when ANY file in Workshops changes
+      # Add other paths like 'Docs/**/*' if you add more SCAN_DIRECTORIES
+      # The '**/*' pattern means any file or directory, recursively.
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # This is correctly set and is necessary
+      contents: write # Still needed for git-auto-commit-action
 
     steps:
     - name: Checkout repository
@@ -25,19 +28,17 @@ jobs:
     - name: Install Jinja2
       run: pip install Jinja2
 
-    - name: Generate redirect HTML files
+    - name: Auto-generate redirects.json and HTML files
       id: generate_html
-      run: python .github/scripts/generate_redirects.py
+      run: python .github/scripts/auto_generate_redirects.py
 
     - name: Debug generated files and output
       run: |
-        # The 'Generated files output' from the Python script is no longer strictly
-        # used by the auto-commit action, but it's good for debugging.
         echo "--- Debugging 'generate_html' step outputs ---"
-        # This will still print the output from the Python script if it's there
-        # but the auto-commit action will ignore it.
-        echo "--- Listing contents of the target directory ---"
-        ls -la "Workshops/Advanced Machine Learning - Extend Operational Insights/" || echo "Target directory not found or empty."
+        echo "--- Listing contents of all scanned directories ---"
+        # Adjust these 'ls' commands to match your SCAN_DIRECTORIES for better debugging
+        ls -la "Workshops/Advanced Machine Learning - Extend Operational Insights/" || echo "Advanced ML directory not found or empty."
+        ls -la "Workshops/Threat Hunting APTs/" || echo "Threat Hunting directory not found or empty."
         echo "--- Listing contents of Workshops/ (for general overview) ---"
         ls -la Workshops/
         echo "--- Listing contents of the root directory ---"
@@ -46,9 +47,6 @@ jobs:
     - name: Commit and push changes
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        commit_message: "feat: Auto-generate redirect HTMLs based on redirects.json"
-        # --- CRITICAL CHANGE HERE ---
-        # Commit ALL changes in the working directory.
+        commit_message: "feat: Auto-generate redirect HTMLs and update redirects.json"
         file_pattern: '.'
-        # ----------------------------
         branch: main # or your default branch, e.g., 'master'
