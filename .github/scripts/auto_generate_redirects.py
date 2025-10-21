@@ -12,9 +12,8 @@ GITHUB_REPO_NAME = 'splunk-show-public'
 # Base URL for GitHub Pages content
 GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/public/"
 
-# !!! UPDATED: The SINGLE ROOT directory where all your content now lives !!!
-# This will scan everything directly under the 'public' folder.
-ROOT_CONTENT_DIRECTORY = "public" # !!! Changed to just "public" !!!
+# The SINGLE ROOT directory where all your content now lives
+ROOT_CONTENT_DIRECTORY = "public"
 
 # --- Helper Functions (No changes needed) ---
 def clean_filename_for_title(filename):
@@ -34,7 +33,7 @@ def slugify(text):
     text = text.strip('-')
     return text
 
-# --- Main Script Logic (No functional changes, just updated comments/context) ---
+# --- Main Script Logic ---
 repo_root = os.getenv('GITHUB_WORKSPACE')
 
 config_file_path = os.path.join(repo_root, 'redirects.json')
@@ -80,8 +79,14 @@ print(f"Starting recursive file discovery in '{full_root_content_path}'")
 
 for root, _, files in os.walk(full_root_content_path):
     for filename in files:
+        # Skip hidden files and common Git/system files
         if filename.startswith('.') or filename in ['.gitkeep', 'Thumbs.db', 'desktop.ini']:
             continue
+        # !!! NEW: Skip HTML files as they are generated redirects !!!
+        if filename.lower().endswith('.html'):
+            print(f"Skipping generated HTML file: {os.path.join(root, filename)}")
+            continue
+        # ----------------------------------------------------
 
         relative_original_file_path = os.path.relpath(os.path.join(root, filename), repo_root)
         relative_original_file_path = relative_original_file_path.replace(os.sep, '/')
@@ -148,7 +153,7 @@ full_root_content_path_for_cleanup = os.path.join(repo_root, ROOT_CONTENT_DIRECT
 if os.path.isdir(full_root_content_path_for_cleanup):
     for root, _, files in os.walk(full_root_content_path_for_cleanup):
         for filename in files:
-            if filename.lower().endswith('.html'):
+            if filename.lower().endswith('.html'): # Only consider .html files for cleanup
                 full_html_path = os.path.join(root, filename)
                 if full_html_path not in generated_html_files:
                     os.remove(full_html_path)
