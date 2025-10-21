@@ -260,36 +260,25 @@ public_file_list_content += f"Last generated: {datetime.now().strftime('%Y-%m-%d
 if not final_list_after_html_gen:
     public_file_list_content += "No public files found.\n"
 else:
-    # Group entries by top-level folder (e.g., "workshops") then by sub-folder (e.g., "Advanced Machine Learning...")
     grouped_entries = {}
     for entry in final_list_after_html_gen:
-        redirect_path_parts = entry['redirect_html_path'].split('/')
-        
-        top_folder_name = "Root Files" # Default for files directly under public/
-        sub_folder_name = "Files" # Default for files directly under top_folder
-
-        # Determine top_folder_name and sub_folder_name based on path structure
-        # Example: public/workshops/Subfolder Name/file.html
-        # top_folder_name = workshops
-        # sub_folder_name = Subfolder Name
-        
-        # Path relative to ROOT_CONTENT_DIRECTORY (e.g., "workshops/Subfolder Name/file.html")
+        # Extract path relative to ROOT_CONTENT_DIRECTORY (e.g., "workshops/Subfolder Name/file.html")
         path_relative_to_root_content = os.path.relpath(entry['redirect_html_path'], ROOT_CONTENT_DIRECTORY)
         
         # Split this relative path into components
-        relative_parts = path_relative_to_root_content.split('/')
-        
+        relative_parts = path_relative_to_root_content.split(os.sep) # Use os.sep for OS-agnostic splitting
+
+        top_folder_name = "Root Files" # Default for files directly under public/
+        sub_folder_name = "Files" # Default for files directly under top_folder
+
         if len(relative_parts) > 1: # If there's at least one folder after ROOT_CONTENT_DIRECTORY
             top_folder_name = relative_parts[0] # e.g., "workshops"
             if len(relative_parts) > 2: # If there's a sub-subfolder
                 # Join the parts from index 1 up to the second-to-last (which is the filename)
-                sub_folder_name = '/'.join(relative_parts[1:-1])
+                sub_folder_name = os.path.join(*relative_parts[1:-1]).replace(os.sep, '/') # Rejoin with '/' and ensure forward slashes
             else: # File directly under public/top_folder/ (e.g., public/workshops/file.html)
-                sub_folder_name = f"Files in {top_folder_name.replace('-', ' ').title()}"
-        else: # File directly under public/ (e.g., public/file.html)
-            top_folder_name = "Root Files"
-            sub_folder_name = "Files"
-
+                sub_folder_name = f"Files in {top_folder_name}" # Use raw folder name
+        # Else: File directly under public/ (handled by defaults)
 
         if top_folder_name not in grouped_entries:
             grouped_entries[top_folder_name] = {}
@@ -301,16 +290,15 @@ else:
     sorted_top_folders = sorted(grouped_entries.keys())
 
     for top_folder in sorted_top_folders:
-        # Fix 1: Use exact folder names, not .title() or .replace()
-        public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n\n"
+        public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n\n" # Top-level section
         
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
         for sub_folder in sorted_sub_folders:
-            # Fix 1: Use exact folder names, not .title() or .replace()
-            public_file_list_content += f"  <details>\n    <summary><h3>{sub_folder}</h3></summary>\n\n"
+            # Fix 2: Indent the <details> tag for sub-sections and use smaller heading
+            public_file_list_content += f"&nbsp;&nbsp;<details>\n&nbsp;&nbsp;  <summary><h4>{sub_folder}</h4></summary>\n\n" # Sub-folder section
             
-            # Fix 2: Remove ALL leading indentation for Markdown table lines
+            # Fix 2: Ensure Markdown table lines have NO leading spaces
             public_file_list_content += "| Title | Public URL | Last Updated |\n"
             public_file_list_content += "|---|---|---|\n"
             
@@ -334,9 +322,9 @@ else:
                 
                 escaped_title = title.replace('|', '\\|')
                 
-                # Fix 2: Remove ALL leading indentation for Markdown table lines
+                # Fix 2: Ensure Markdown table lines have NO leading spaces
                 public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
-            public_file_list_content += "\n  </details>\n\n" # Close sub-folder details
+            public_file_list_content += "\n&nbsp;&nbsp;</details>\n\n" # Close sub-folder details with indent
         public_file_list_content += "</details>\n\n" # Close top-level details
 
 try:
