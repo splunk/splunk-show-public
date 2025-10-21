@@ -295,10 +295,10 @@ else:
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
         for sub_folder in sorted_sub_folders:
-            # Fix 2: Indent the <details> tag for sub-sections and use smaller heading
-            public_file_list_content += f"&nbsp;&nbsp;<details>\n&nbsp;&nbsp;  <summary><h4>{sub_folder}</h4></summary>\n\n" # Sub-folder section
+            # Reduce heading size (h4) and add indentation using &nbsp;
+            public_file_list_content += f"&nbsp;&nbsp;<details>\n&nbsp;&nbsp;  <summary><h4>{sub_folder}</h4></summary>\n\n"
             
-            # Fix 2: Ensure Markdown table lines have NO leading spaces
+            # Markdown table lines - NO LEADING SPACES to ensure rendering
             public_file_list_content += "| Title | Public URL | Last Updated |\n"
             public_file_list_content += "|---|---|---|\n"
             
@@ -322,10 +322,14 @@ else:
                 
                 escaped_title = title.replace('|', '\\|')
                 
-                # Fix 2: Ensure Markdown table lines have NO leading spaces
+                # Markdown table data lines - NO LEADING SPACES
                 public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
-            public_file_list_content += "\n&nbsp;&nbsp;</details>\n\n" # Close sub-folder details with indent
-        public_file_list_content += "</details>\n\n" # Close top-level details
+            
+            # Reduce spacing after table and before closing details
+            public_file_list_content += "\n&nbsp;&nbsp;</details>\n" # Changed \n\n to \n
+        
+        # Reduce spacing after top-level details
+        public_file_list_content += "</details>\n" # Changed \n\n to \n
 
 try:
     with open(public_file_list_path, 'w') as f:
