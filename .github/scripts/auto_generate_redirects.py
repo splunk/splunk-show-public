@@ -4,15 +4,12 @@ from jinja2 import Template
 import os
 import sys
 import urllib.parse
-import re # For regex cleaning
+import re
 
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
 GITHUB_REPO_NAME = 'splunk-show-public'
-# !!! UPDATED: Base URL for GitHub Pages site (DO NOT include the /public/ segment here) !!!
 GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/"
-
-# The SINGLE ROOT directory where all your content now lives
 ROOT_CONTENT_DIRECTORY = "public"
 
 # --- Helper Functions ---
@@ -22,43 +19,26 @@ def remove_date_patterns(text):
     Handles variations like " - Month YYYY", "Month YYYY", "YYYY-MM", "(Month YYYY)",
     and other common date separators.
     """
-    # Regex to match common month abbreviations
     months_abbr = r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
-    # Regex to match common full month names (less common in filenames, but good to have)
     months_full = r'(January|February|March|April|May|June|July|August|September|October|November|December)'
-
-    # Combine month patterns
     month_pattern = f"(?:{months_abbr}|{months_full})"
-
-    # Year pattern (e.g., 2023, '23)
     year_pattern = r'\d{4}|\'\d{2}'
-
-    # Day pattern (e.g., 01, 1st, 1)
     day_pattern = r'\d{1,2}(?:st|nd|rd|th)?'
 
-    # --- Comprehensive date patterns ---
     patterns = [
-        # " - Month YYYY" or " Month YYYY" or " (Month YYYY)"
         rf'(?:[\s_-]|\s*\(\s*)?{month_pattern}\s+{year_pattern}(?:\s*\))?\b',
-        # " - YYYY-MM(-DD)" or " YYYY-MM(-DD)" or " (YYYY-MM(-DD))"
         rf'(?:[\s_-]|\s*\(\s*)?\d{{4}}-\d{{2}}(?:-\d{{2}})?(?:\s*\))?\b',
-        # " - YYYYMMDD"
         rf'(?:[\s_-]|\s*\(\s*)?\d{{8}}(?:\s*\))?\b',
-        # " - DD Month YYYY" (e.g., 15 Oct 2023)
         rf'(?:[\s_-]|\s*\(\s*)?{day_pattern}\s+{month_pattern}\s+{year_pattern}(?:\s*\))?\b',
-        # " - Month DD, YYYY" (e.g., Oct 15, 2023)
         rf'(?:[\s_-]|\s*\(\s*)?{month_pattern}\s+{day_pattern},?\s+{year_pattern}(?:\s*\))?\b',
-        # " - YYYY" alone (less specific, but can catch trailing years)
         rf'(?:[\s_-]|\s*\(\s*)?{year_pattern}(?:\s*\))?\b',
     ]
 
-    # Apply patterns from most specific to least specific
     for pattern in patterns:
         text = re.sub(pattern, '', text, flags=re.IGNORECASE).strip()
     
-    # Clean up any residual separators or multiple spaces
     text = re.sub(r'[\s_-]+', ' ', text).strip(' -_')
-    text = re.sub(r'\s+', ' ', text).strip() # Normalize spaces again
+    text = re.sub(r'\s+', ' ', text).strip()
 
     return text.strip()
 
@@ -71,28 +51,18 @@ def clean_filename_for_title(filename):
     - Normalizes hyphens that act as separators to " - ".
     - Normalizes all other whitespace to a single space.
     """
-    name_without_ext = os.path.splitext(filename)[0] # Get name without extension
-    
-    # 1. Remove date patterns (this is now more robust)
+    name_without_ext = os.path.splitext(filename)[0]
     name_without_ext = remove_date_patterns(name_without_ext)
-    
-    # 2. Replace underscores with spaces
     name_without_ext = name_without_ext.replace('_', ' ')
-    
-    # 3. Normalize hyphens that act as separators to " - "
-    # This regex replaces any sequence of whitespace, hyphen, whitespace with a consistent " - "
     name_without_ext = re.sub(r'\s*-\s*', ' - ', name_without_ext)
-    
-    # 4. Normalize all other whitespace to a single space
     name_without_ext = re.sub(r'\s+', ' ', name_without_ext)
-    
-    return name_without_ext.strip() # Remove leading/trailing spaces
+    return name_without_ext.strip()
 
 def slugify(text):
     """Converts text to a URL-friendly slug."""
-    text = text.lower() # Ensure slug is always lowercase for consistency
-    text = re.sub(r'[^\w\s-]', '', text) # Remove non-word chars
-    text = re.sub(r'[\s_-]+', '-', text) # Replace spaces/underscores/dashes with single dash
+    text = text.lower()
+    text = re.sub(r'[^\w\s-]', '', text)
+    text = re.sub(r'[\s_-]+', '-', text)
     text = text.strip('-')
     return text
 
@@ -102,23 +72,23 @@ repo_root = os.getenv('GITHUB_WORKSPACE')
 config_file_path = os.path.join(repo_root, 'redirects.json')
 template_file_path = os.path.join(repo_root, '_redirect_templates', 'redirect_template.html')
 
-# Read existing redirects.json to preserve manual edits for 'id', 'title', and 'redirect_html_path'
-# Key: current_target_file (the URL to the original file), Value: existing entry
-existing_redirects_map = {}
+# Read existing redirects.json and map by 'id' for stable lookup
+existing_redirects_map_by_id = {} # Key: id, Value: entry
 try:
     with open(config_file_path, 'r') as f:
         existing_data = json.load(f)
         for entry in existing_data:
-            # Ensure 'current_target_file' exists and use it as the key
-            if 'current_target_file' in entry:
-                existing_redirects_map[entry['current_target_file']] = entry
+            if 'id' in entry:
+                if entry['id'] in existing_redirects_map_by_id:
+                    print(f"Warning: Duplicate 'id' found in redirects.json for '{entry['id']}'. Only the last one will be used for merging.", file=sys.stderr)
+                existing_redirects_map_by_id[entry['id']] = entry
             else:
-                print(f"Warning: Entry missing 'current_target_file' in redirects.json: {entry}. Skipping for merge.", file=sys.stderr)
+                print(f"Warning: Entry missing 'id' in redirects.json: {entry}. Cannot track for renames.", file=sys.stderr)
 except FileNotFoundError:
     print("No existing redirects.json found. Starting fresh.", file=sys.stderr)
 except json.JSONDecodeError:
     print("Invalid JSON format in existing redirects.json. It might be overwritten. Error:", file=sys.stderr)
-    existing_redirects_map = {}
+    existing_redirects_map_by_id = {}
 
 
 # Read HTML template
@@ -131,7 +101,7 @@ except FileNotFoundError:
     sys.exit(1)
 
 final_redirects_config_for_writing = []
-discovered_original_file_urls = set()
+processed_ids_in_this_run = set() # To track which existing IDs we've matched/updated
 
 full_root_content_path = os.path.join(repo_root, ROOT_CONTENT_DIRECTORY)
 if not os.path.isdir(full_root_content_path):
@@ -151,36 +121,72 @@ for root, _, files in os.walk(full_root_content_path):
         relative_original_file_path = os.path.relpath(os.path.join(root, filename), repo_root)
         relative_original_file_path = relative_original_file_path.replace(os.sep, '/')
 
-        # current_target_file_url_in_json will now correctly start with /public/
         current_target_file_url_in_json = GITHUB_PAGES_BASE_URL + relative_original_file_path
         
-        discovered_original_file_urls.add(current_target_file_url_in_json)
+        # --- Infer values for a potential new entry ---
+        name_without_ext_and_date = remove_date_patterns(os.path.splitext(filename)[0])
+        name_for_slug_path = name_without_ext_and_date.replace('_', ' ')
 
-        entry_to_process = existing_redirects_map.get(current_target_file_url_in_json, {}).copy()
-
+        inferred_id = slugify(name_for_slug_path)
         inferred_title = clean_filename_for_title(filename)
         
-        name_without_ext_and_date = remove_date_patterns(os.path.splitext(filename)[0])
-        name_without_ext_and_date = name_without_ext_and_date.replace('_', ' ')
-        inferred_id = slugify(name_without_ext_and_date)
-
         pdf_dir_relative = os.path.dirname(relative_original_file_path)
-        inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_without_ext_and_date) + '.html')
+        inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_for_slug_path) + '.html')
         inferred_redirect_html_path = inferred_redirect_html_path.replace(os.sep, '/')
 
-        entry_id = entry_to_process.get('id', inferred_id)
-        entry_title = entry_to_process.get('title', inferred_title)
-        entry_redirect_html_path = entry_to_process.get('redirect_html_path', inferred_redirect_html_path)
+        # --- Try to find an existing entry by ID ---
+        entry_data = {}
+        if inferred_id in existing_redirects_map_by_id:
+            # Found an existing entry with this ID, likely a rename or a re-run
+            existing_entry = existing_redirects_map_by_id[inferred_id]
+            
+            # Preserve manual tweaks for id, title, redirect_html_path
+            entry_data['id'] = existing_entry.get('id', inferred_id)
+            entry_data['title'] = existing_entry.get('title', inferred_title)
+            entry_data['redirect_html_path'] = existing_entry.get('redirect_html_path', inferred_redirect_html_path)
+            
+            # ALWAYS update current_target_file to the newly discovered path
+            entry_data['current_target_file'] = current_target_file_url_in_json
+            
+            print(f"Matched existing entry for ID '{entry_data['id']}'. Updating target from '{existing_entry.get('current_target_file', 'N/A')}' to '{current_target_file_url_in_json}'.")
+        else:
+            # No existing entry with this ID, create a new one with inferred values
+            entry_data = {
+                "id": inferred_id,
+                "title": inferred_title,
+                "redirect_html_path": inferred_redirect_html_path,
+                "current_target_file": current_target_file_url_in_json
+            }
+            print(f"Creating new entry for '{inferred_id}' -> '{current_target_file_url_in_json}'")
 
-        new_entry = {
-            "id": entry_id,
-            "title": entry_title,
-            "redirect_html_path": entry_redirect_html_path,
-            "current_target_file": current_target_file_url_in_json
-        }
-        final_redirects_config_for_writing.append(new_entry)
-        print(f"Processed file: {relative_original_file_path} -> Redirect: {entry_redirect_html_path}")
+        final_redirects_config_for_writing.append(entry_data)
+        processed_ids_in_this_run.add(entry_data['id']) # Mark this ID as processed
 
+# --- Handle entries that were in redirects.json but are no longer discovered ---
+# This means files were deleted or renamed with a new inferred ID
+for existing_id, existing_entry in existing_redirects_map_by_id.items():
+    if existing_id not in processed_ids_in_this_run:
+        # Check if the file associated with this ID still exists in the repo
+        # This helps differentiate between a file deletion and a file rename that resulted in a new ID
+        # (e.g., if the user manually changed the ID in redirects.json)
+        
+        # Extract relative path from current_target_file
+        if 'current_target_file' in existing_entry:
+            parsed_url = urllib.parse.urlparse(existing_entry['current_target_file'])
+            relative_path_from_base_url = parsed_url.path.replace(f'/{GITHUB_REPO_NAME}/', '', 1) # Remove repo name
+            if relative_path_from_base_url.startswith('public/'):
+                relative_path_from_base_url = relative_path_from_base_url[len('public/'):] # Remove leading public/
+            
+            full_path_on_runner = os.path.join(repo_root, ROOT_CONTENT_DIRECTORY, relative_path_from_base_url)
+            
+            if os.path.exists(full_path_on_runner):
+                print(f"Warning: Existing entry '{existing_id}' points to '{existing_entry['current_target_file']}' which still exists, but its ID was not matched by any discovered file. This entry will be removed unless you manually edit redirects.json to match its new inferred ID or update its 'current_target_file' to match an an existing file.", file=sys.stderr)
+            else:
+                print(f"Removing entry for '{existing_id}' as its associated file '{existing_entry.get('current_target_file', 'N/A')}' was not found in scanned directories.", file=sys.stderr)
+        else:
+            print(f"Removing entry for '{existing_id}' as it's not associated with a discovered file and has no 'current_target_file'.", file=sys.stderr)
+
+# --- Generate HTML for all entries and update public_url ---
 final_list_after_html_gen = []
 generated_html_files = set()
 
@@ -197,7 +203,6 @@ for entry in final_redirects_config_for_writing:
     path_segments = relative_redirect_html_path.split('/')
     encoded_path_segments = [urllib.parse.quote(segment, safe='') for segment in path_segments]
     public_url_path_encoded = '/'.join(encoded_path_segments)
-    # calculated_public_url will now correctly start with /public/
     calculated_public_url = GITHUB_PAGES_BASE_URL + public_url_path_encoded
 
     entry['public_url'] = calculated_public_url
@@ -218,7 +223,7 @@ full_root_content_path_for_cleanup = os.path.join(repo_root, ROOT_CONTENT_DIRECT
 if os.path.isdir(full_root_content_path_for_cleanup):
     for root, _, files in os.walk(full_root_content_path_for_cleanup):
         for filename in files:
-            if filename.lower().endswith('.html'): # Only consider .html files for cleanup
+            if filename.lower().endswith('.html'):
                 full_html_path = os.path.join(root, filename)
                 if full_html_path not in generated_html_files:
                     os.remove(full_html_path)
