@@ -284,14 +284,16 @@ else:
     sorted_top_folders = sorted(grouped_entries.keys())
 
     for top_folder in sorted_top_folders:
-        public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n" # Single newline after summary
+        public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n"
         
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
         for sub_folder in sorted_sub_folders:
-            # --- MODIFIED: Use bold text (<strong>) instead of h5 ---
-            public_file_list_content += f"&nbsp;&nbsp;<details>\n&nbsp;&nbsp;<summary><strong>{sub_folder}</strong></summary>\n" # Changed h5 to strong, single newline
+            # --- FIX: Ensure a blank line after <summary> for Markdown table rendering ---
+            # And no indentation for the table itself.
+            public_file_list_content += f"&nbsp;&nbsp;<details>\n&nbsp;&nbsp;<summary><strong>{sub_folder}</strong></summary>\n\n" # Added \n here
             
+            # These lines MUST NOT have any leading spaces for the Markdown table to render
             public_file_list_content += "| Title | Public URL | Last Updated |\n"
             public_file_list_content += "|---|---|---|\n"
             
@@ -314,11 +316,12 @@ else:
                 
                 escaped_title = title.replace('|', '\\|')
                 
+                # These lines MUST NOT have any leading spaces
                 public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
             
-            public_file_list_content += "\n&nbsp;&nbsp;</details>\n" # Single newline after closing details
+            public_file_list_content += "\n&nbsp;&nbsp;</details>\n"
         
-        public_file_list_content += "</details>\n" # Single newline after closing top-level details
+        public_file_list_content += "</details>\n"
 
 try:
     with open(public_file_list_path, 'w') as f:
