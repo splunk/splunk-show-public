@@ -268,42 +268,40 @@ else:
         # Expecting path structure like "public/workshops/Folder Name/file.html"
         # So, after "public/", the first part is the top_folder (e.g., "workshops")
         # And the second part is the sub_folder (e.g., "Folder Name")
-        if len(redirect_path_parts) >= 3: # At least public/top_folder/file.html
-            top_folder = redirect_path_parts[1] # e.g., "workshops"
+        top_folder_name = "Root Files" # Default for files directly under public/
+        sub_folder_name = "Files" # Default for files directly under top_folder
+
+        if len(redirect_path_parts) > 1: # At least public/file.html or public/folder/file.html
+            # The top-level folder is the one immediately after "public/"
+            top_folder_name = redirect_path_parts[1] 
             
-            # If there's a sub-subfolder (e.g., "Workshops/Advanced Machine Learning - Extend Operational Insights")
-            # Extract the folder name directly from the path, before the filename
-            sub_folder_path_parts = redirect_path_parts[2:-1] # From 'Advanced Machine Learning' to 'Insights'
-            sub_folder_name = '/'.join(sub_folder_path_parts) # Rejoin with '/' if sub-subfolder has spaces
-            
-            if not top_folder: # Handle cases where redirect_html_path might start directly with public/file.html
-                top_folder = "Root Files"
-                sub_folder_name = "Files"
-            elif not sub_folder_name: # Handle files directly in public/workshops/
-                 sub_folder_name = "Files in " + top_folder.capitalize()
+            # The sub-folder is the path segment(s) between the top_folder and the filename
+            if len(redirect_path_parts) > 2: # If there's a folder after public/top_folder/
+                # Join the parts from index 2 up to the second-to-last (which is the filename)
+                sub_folder_name = '/'.join(redirect_path_parts[2:-1])
+            else: # File directly under public/top_folder/
+                sub_folder_name = "Files in " + top_folder_name.replace('-', ' ').title() # Default for files directly in a top folder
 
-
-        else: # Files directly under public/ or public/file.html
-            top_folder = "Root Files"
-            sub_folder_name = "Files"
-
-        if top_folder not in grouped_entries:
-            grouped_entries[top_folder] = {}
-        if sub_folder_name not in grouped_entries[top_folder]:
-            grouped_entries[top_folder][sub_folder_name] = []
-        grouped_entries[top_folder][sub_folder_name].append(entry)
+        if top_folder_name not in grouped_entries:
+            grouped_entries[top_folder_name] = {}
+        if sub_folder_name not in grouped_entries[top_folder_name]:
+            grouped_entries[top_folder_name][sub_folder_name] = []
+        grouped_entries[top_folder_name][sub_folder_name].append(entry)
 
     # Sort top-level folders
     sorted_top_folders = sorted(grouped_entries.keys())
 
     for top_folder in sorted_top_folders:
-        public_file_list_content += f"<details>\n  <summary><h2>{top_folder.replace('-', ' ').title()}</h2></summary>\n\n" # Top-level section
+        # Fix 1: Use exact folder names, not .title() or .replace()
+        public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n\n"
         
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
         for sub_folder in sorted_sub_folders:
-            public_file_list_content += f"  <details>\n    <summary><h3>{sub_folder.replace('-', ' ').title()}</h3></summary>\n\n" # Sub-folder section
+            # Fix 1: Use exact folder names, not .title() or .replace()
+            public_file_list_content += f"  <details>\n    <summary><h3>{sub_folder}</h3></summary>\n\n"
             
+            # Fix 2: Remove leading indentation for Markdown table lines
             public_file_list_content += "    | Title | Public URL | Last Updated |\n"
             public_file_list_content += "    |---|---|---|\n"
             
@@ -327,6 +325,7 @@ else:
                 
                 escaped_title = title.replace('|', '\\|')
                 
+                # Fix 2: Remove leading indentation for Markdown table lines
                 public_file_list_content += f"    | {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
             public_file_list_content += "\n  </details>\n\n" # Close sub-folder details
         public_file_list_content += "</details>\n\n" # Close top-level details
