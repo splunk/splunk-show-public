@@ -4,16 +4,13 @@ from jinja2 import Template
 import os
 import sys
 import urllib.parse
-import re # For regex cleaning
-from datetime import datetime # For timestamps
+import re
+from datetime import datetime
 
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
 GITHUB_REPO_NAME = 'splunk-show-public'
-# Base URL for GitHub Pages content
 GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/"
-
-# The SINGLE ROOT directory where all your content now lives
 ROOT_CONTENT_DIRECTORY = "public"
 PUBLIC_FILE_LIST_FILENAME = "public_file_list.md"
 
@@ -24,43 +21,26 @@ def remove_date_patterns(text):
     Handles variations like " - Month YYYY", "Month YYYY", "YYYY-MM", "(Month YYYY)",
     and other common date separators.
     """
-    # Regex to match common month abbreviations
     months_abbr = r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
-    # Regex to match common full month names (less common in filenames, but good to have)
     months_full = r'(January|February|March|April|May|June|July|August|September|October|November|December)'
-
-    # Combine month patterns
     month_pattern = f"(?:{months_abbr}|{months_full})"
-
-    # Year pattern (e.g., 2023, '23)
     year_pattern = r'\d{4}|\'\d{2}'
-
-    # Day pattern (e.g., 01, 1st, 1)
     day_pattern = r'\d{1,2}(?:st|nd|rd|th)?'
 
-    # --- Comprehensive date patterns ---
     patterns = [
-        # " - Month YYYY" or " Month YYYY" or " (Month YYYY)"
         rf'(?:[\s_-]|\s*\(\s*)?{month_pattern}\s+{year_pattern}(?:\s*\))?\b',
-        # " - YYYY-MM(-DD)" or " YYYY-MM(-DD)" or " (YYYY-MM(-DD))"
         rf'(?:[\s_-]|\s*\(\s*)?\d{{4}}-\d{{2}}(?:-\d{{2}})?(?:\s*\))?\b',
-        # " - YYYYMMDD"
         rf'(?:[\s_-]|\s*\(\s*)?\d{{8}}(?:\s*\))?\b',
-        # " - DD Month YYYY" (e.g., 15 Oct 2023)
         rf'(?:[\s_-]|\s*\(\s*)?{day_pattern}\s+{month_pattern}\s+{year_pattern}(?:\s*\))?\b',
-        # " - Month DD, YYYY" (e.g., Oct 15, 2023)
         rf'(?:[\s_-]|\s*\(\s*)?{month_pattern}\s+{day_pattern},?\s+{year_pattern}(?:\s*\))?\b',
-        # " - YYYY" alone (less specific, but can catch trailing years)
         rf'(?:[\s_-]|\s*\(\s*)?{year_pattern}(?:\s*\))?\b',
     ]
 
-    # Apply patterns from most specific to least specific
     for pattern in patterns:
         text = re.sub(pattern, '', text, flags=re.IGNORECASE).strip()
     
-    # Clean up any residual separators or multiple spaces
     text = re.sub(r'[\s_-]+', ' ', text).strip(' -_')
-    text = re.sub(r'\s+', ' ', text).strip() # Normalize spaces again
+    text = re.sub(r'\s+', ' ', text).strip()
 
     return text.strip()
 
@@ -73,29 +53,18 @@ def clean_filename_for_title(filename):
     - Normalizes hyphens that act as separators to " - ".
     - Normalizes all other whitespace to a single space.
     """
-    name_without_ext = os.path.splitext(filename)[0] # Get name without extension
-    
-    # 1. Remove date patterns
+    name_without_ext = os.path.splitext(filename)[0]
     name_without_ext = remove_date_patterns(name_without_ext)
-    
-    # 2. Replace underscores with spaces
     name_without_ext = name_without_ext.replace('_', ' ')
-    
-    # 3. Normalize hyphens that act as separators to " - "
-    # This regex replaces any sequence of whitespace, hyphen, whitespace with a consistent " - "
-    # This should correctly preserve " - " as a separator, rather than collapsing it.
     name_without_ext = re.sub(r'\s*-\s*', ' - ', name_without_ext)
-    
-    # 4. Normalize all other whitespace to a single space
     name_without_ext = re.sub(r'\s+', ' ', name_without_ext)
-    
-    return name_without_ext.strip() # Remove leading/trailing spaces
+    return name_without_ext.strip()
 
 def slugify(text):
     """Converts text to a URL-friendly slug."""
-    text = text.lower() # Ensure slug is always lowercase for consistency
-    text = re.sub(r'[^\w\s-]', '', text) # Remove non-word chars
-    text = re.sub(r'[\s_-]+', '-', text) # Replace spaces/underscores/dashes with single dash
+    text = text.lower()
+    text = re.sub(r'[^\w\s-]', '', text)
+    text = re.sub(r'[\s_-]+', '-', text)
     text = text.strip('-')
     return text
 
@@ -162,7 +131,7 @@ for root, _, files in os.walk(full_root_content_path):
         name_for_slug_path = name_without_ext_and_date.replace('_', ' ')
 
         inferred_id = slugify(name_for_slug_path)
-        inferred_title = clean_filename_for_title(filename) # Use the improved function here
+        inferred_title = clean_filename_for_title(filename)
         
         pdf_dir_relative = os.path.dirname(relative_original_file_path)
         inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_for_slug_path) + '.html')
@@ -242,7 +211,6 @@ for entry in final_redirects_config_for_writing:
     public_url_path_encoded = '/'.join(encoded_path_segments)
     calculated_public_url = GITHUB_PAGES_BASE_URL + public_url_path_encoded
 
-    # Check if public_url changed and update timestamp if it did
     if entry.get('public_url') != calculated_public_url:
         entry['last_updated_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print(f"Public URL for '{entry['id']}' changed. Updating timestamp.")
@@ -292,37 +260,76 @@ public_file_list_content += f"Last generated: {datetime.now().strftime('%Y-%m-%d
 if not final_list_after_html_gen:
     public_file_list_content += "No public files found.\n"
 else:
-    public_file_list_content += "| Title | Public URL | Last Updated |\n"
-    public_file_list_content += "|---|---|---|\n"
-    
-    sorted_for_markdown = sorted(final_list_after_html_gen, key=lambda x: x.get('title', '').lower())
+    # Group entries by top-level folder (e.g., "workshops") then by sub-folder (e.g., "Advanced Machine Learning...")
+    grouped_entries = {}
+    for entry in final_list_after_html_gen:
+        redirect_path_parts = entry['redirect_html_path'].split('/')
+        
+        # Expecting path structure like "public/workshops/Folder Name/file.html"
+        # So, after "public/", the first part is the top_folder (e.g., "workshops")
+        # And the second part is the sub_folder (e.g., "Folder Name")
+        if len(redirect_path_parts) >= 3: # At least public/top_folder/file.html
+            top_folder = redirect_path_parts[1] # e.g., "workshops"
+            
+            # If there's a sub-subfolder (e.g., "Workshops/Advanced Machine Learning - Extend Operational Insights")
+            # Extract the folder name directly from the path, before the filename
+            sub_folder_path_parts = redirect_path_parts[2:-1] # From 'Advanced Machine Learning' to 'Insights'
+            sub_folder_name = '/'.join(sub_folder_path_parts) # Rejoin with '/' if sub-subfolder has spaces
+            
+            if not top_folder: # Handle cases where redirect_html_path might start directly with public/file.html
+                top_folder = "Root Files"
+                sub_folder_name = "Files"
+            elif not sub_folder_name: # Handle files directly in public/workshops/
+                 sub_folder_name = "Files in " + top_folder.capitalize()
 
-    for entry in sorted_for_markdown:
-        title = entry.get('title', 'N/A')
-        public_url = entry.get('public_url', '#')
+
+        else: # Files directly under public/ or public/file.html
+            top_folder = "Root Files"
+            sub_folder_name = "Files"
+
+        if top_folder not in grouped_entries:
+            grouped_entries[top_folder] = {}
+        if sub_folder_name not in grouped_entries[top_folder]:
+            grouped_entries[top_folder][sub_folder_name] = []
+        grouped_entries[top_folder][sub_folder_name].append(entry)
+
+    # Sort top-level folders
+    sorted_top_folders = sorted(grouped_entries.keys())
+
+    for top_folder in sorted_top_folders:
+        public_file_list_content += f"<details>\n  <summary><h2>{top_folder.replace('-', ' ').title()}</h2></summary>\n\n" # Top-level section
         
-        last_updated_iso = entry.get('last_updated_at')
-        if last_updated_iso and isinstance(last_updated_iso, str):
-            try:
-                # Parse existing timestamp (which might be ISO or our new format)
-                # Try new format first, then ISO fallback
-                dt_object = None
-                try:
-                    dt_object = datetime.strptime(last_updated_iso, '%Y-%m-%d %H:%M:%S')
-                except ValueError:
-                    # Fallback for ISO format from previous runs
-                    dt_object = datetime.fromisoformat(last_updated_iso)
+        sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
+
+        for sub_folder in sorted_sub_folders:
+            public_file_list_content += f"  <details>\n    <summary><h3>{sub_folder.replace('-', ' ').title()}</h3></summary>\n\n" # Sub-folder section
+            
+            public_file_list_content += "    | Title | Public URL | Last Updated |\n"
+            public_file_list_content += "    |---|---|---|\n"
+            
+            # Sort files within the sub-folder by title
+            sorted_files = sorted(grouped_entries[top_folder][sub_folder], key=lambda x: x.get('title', '').lower())
+
+            for entry in sorted_files:
+                title = entry.get('title', 'N/A')
+                public_url = entry.get('public_url', '#')
                 
-                # Format back to string without 'T' or milliseconds
-                last_updated_display = dt_object.strftime('%Y-%m-%d %H:%M:%S UTC')
-            except ValueError:
-                last_updated_display = last_updated_iso # Fallback if parsing fails
-        else:
-            last_updated_display = 'N/A'
-        
-        escaped_title = title.replace('|', '\\|')
-        
-        public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
+                last_updated_iso = entry.get('last_updated_at')
+                if last_updated_iso and isinstance(last_updated_iso, str):
+                    try:
+                        dt_object = datetime.strptime(last_updated_iso, '%Y-%m-%d %H:%M:%S')
+                        last_updated_display = dt_object.strftime('%Y-%m-%d %H:%M:%S UTC')
+                    except ValueError:
+                        dt_object = datetime.fromisoformat(last_updated_iso) # Fallback for ISO format
+                        last_updated_display = dt_object.strftime('%Y-%m-%d %H:%M:%S UTC')
+                else:
+                    last_updated_display = 'N/A'
+                
+                escaped_title = title.replace('|', '\\|')
+                
+                public_file_list_content += f"    | {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
+            public_file_list_content += "\n  </details>\n\n" # Close sub-folder details
+        public_file_list_content += "</details>\n\n" # Close top-level details
 
 try:
     with open(public_file_list_path, 'w') as f:
