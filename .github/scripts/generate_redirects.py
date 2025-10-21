@@ -3,6 +3,7 @@ import json
 from jinja2 import Template
 import os
 import sys
+import urllib.parse # Import for robust URL encoding
 
 repo_root = os.getenv('GITHUB_WORKSPACE')
 
@@ -28,20 +29,24 @@ except FileNotFoundError:
     sys.exit(1)
 
 # Define the base URL for your GitHub Pages site
+# Make sure this matches your actual GitHub Pages URL structure
 github_pages_base_url = "https://splunk.github.io/splunk-show-public/"
 
 for entry in redirects_config:
     title = entry['title']
     target_url = entry['current_target_file']
     relative_redirect_html_path = entry['redirect_html_path']
-    full_redirect_html_path = os.path.join(repo_root, relative_redirect_html_path)
 
-    # Construct the public_url for the redirect HTML file itself
-    # Replace spaces with %20 for URL compatibility
-    # Note: urllib.parse.quote is more robust for general URL encoding,
-    # but a simple replace is sufficient here as we only expect spaces.
-    public_url_path_encoded = relative_redirect_html_path.replace(' ', '%20')
+    # --- Calculate the public_url here ---
+    # Split the path, URL-encode each segment, then re-join
+    # This correctly handles spaces and other special characters in path segments
+    path_segments = relative_redirect_html_path.split('/')
+    encoded_path_segments = [urllib.parse.quote(segment, safe='') for segment in path_segments]
+    public_url_path_encoded = '/'.join(encoded_path_segments)
     public_url = github_pages_base_url + public_url_path_encoded
+    # -------------------------------------
+
+    full_redirect_html_path = os.path.join(repo_root, relative_redirect_html_path)
 
     os.makedirs(os.path.dirname(full_redirect_html_path), exist_ok=True)
 
@@ -51,4 +56,5 @@ for entry in redirects_config:
         f.write(rendered_html)
     print(f'Generated: {full_redirect_html_path}')
 
-# No changes needed for GITHUB_OUTPUT as per our last successful fix.
+# The GITHUB_OUTPUT part for git-auto-commit-action is handled by file_pattern: '.'
+# so no changes needed here.
