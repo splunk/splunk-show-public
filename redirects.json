@@ -45,12 +45,14 @@
     "id": "cust-journey-threat-hunting-apts-attendee",
     "title": "Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs - Attendee",
     "redirect_html_path": "Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Cust-Threat-Hunting-Attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Threat Hunting APTs - Attendee - Sep 2025.pdf"
+    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Threat Hunting APTs - Attendee - Sep 2025.pdf",
+    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Customer%20Onboarding%20Enablement%20Journey%20Workshop-%20Threat%20Hunting%20APTs/Cust-Threat-Hunting-Attendee.html"
   },
   {
     "id": "cust-journey-threat-hunting-apts-lab-guide",
     "title": "Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs - Lab Guide",
     "redirect_html_path": "Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Cust-Threat-Hunting-LabGuide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Threat Hunting APTs - Lab Guide - Sep 2025.pdf"
+    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Threat Hunting APTs - Lab Guide - Sep 2025.pdf",
+    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Customer%20Onboarding%20Enablement%20Journey%20Workshop-%20Threat%20Hunting%20APTs/Cust-Threat-Hunting-LabGuide.html"
   }
 ]
