@@ -9,8 +9,8 @@ import re # For regex cleaning
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
 GITHUB_REPO_NAME = 'splunk-show-public'
-# Base URL for GitHub Pages content
-GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/public/"
+# !!! UPDATED: Base URL for GitHub Pages site (DO NOT include the /public/ segment here) !!!
+GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/"
 
 # The SINGLE ROOT directory where all your content now lives
 ROOT_CONTENT_DIRECTORY = "public"
@@ -151,6 +151,7 @@ for root, _, files in os.walk(full_root_content_path):
         relative_original_file_path = os.path.relpath(os.path.join(root, filename), repo_root)
         relative_original_file_path = relative_original_file_path.replace(os.sep, '/')
 
+        # current_target_file_url_in_json will now correctly start with /public/
         current_target_file_url_in_json = GITHUB_PAGES_BASE_URL + relative_original_file_path
         
         discovered_original_file_urls.add(current_target_file_url_in_json)
@@ -159,15 +160,12 @@ for root, _, files in os.walk(full_root_content_path):
 
         inferred_title = clean_filename_for_title(filename)
         
-        # --- MODIFIED: Ensure filename is date-free before slugifying for redirect_html_path ---
-        name_for_slug_path = os.path.splitext(filename)[0]
-        name_for_slug_path = remove_date_patterns(name_for_slug_path) # Remove dates
-        name_for_slug_path = name_for_slug_path.replace('_', ' ') # Replace underscores before slugifying
-        inferred_id = slugify(name_for_slug_path) # ID is now based on the date-free slug path
-        # ---------------------------------------------------------------------------------------
+        name_without_ext_and_date = remove_date_patterns(os.path.splitext(filename)[0])
+        name_without_ext_and_date = name_without_ext_and_date.replace('_', ' ')
+        inferred_id = slugify(name_without_ext_and_date)
 
         pdf_dir_relative = os.path.dirname(relative_original_file_path)
-        inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_for_slug_path) + '.html')
+        inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_without_ext_and_date) + '.html')
         inferred_redirect_html_path = inferred_redirect_html_path.replace(os.sep, '/')
 
         entry_id = entry_to_process.get('id', inferred_id)
@@ -199,6 +197,7 @@ for entry in final_redirects_config_for_writing:
     path_segments = relative_redirect_html_path.split('/')
     encoded_path_segments = [urllib.parse.quote(segment, safe='') for segment in path_segments]
     public_url_path_encoded = '/'.join(encoded_path_segments)
+    # calculated_public_url will now correctly start with /public/
     calculated_public_url = GITHUB_PAGES_BASE_URL + public_url_path_encoded
 
     entry['public_url'] = calculated_public_url
