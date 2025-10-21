@@ -11,7 +11,7 @@ from datetime import datetime # For timestamps
 GITHUB_REPO_OWNER = 'splunk'
 GITHUB_REPO_NAME = 'splunk-show-public'
 # Base URL for GitHub Pages content
-GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/public/"
+GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/"
 
 # The SINGLE ROOT directory where all your content now lives
 ROOT_CONTENT_DIRECTORY = "public"
