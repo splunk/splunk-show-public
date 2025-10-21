@@ -13,8 +13,8 @@ GITHUB_REPO_NAME = 'splunk-show-public'
 GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/public/"
 
 # !!! UPDATED: The SINGLE ROOT directory where all your content now lives !!!
-# This should be relative to your repository root.
-ROOT_CONTENT_DIRECTORY = "public/workshops" # !!! Changed to lowercase 'workshops' !!!
+# This will scan everything directly under the 'public' folder.
+ROOT_CONTENT_DIRECTORY = "public" # !!! Changed to just "public" !!!
 
 # --- Helper Functions (No changes needed) ---
 def clean_filename_for_title(filename):
