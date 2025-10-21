@@ -1,10 +1,10 @@
 [
   {
-    "id": "advanced-ml-attendee",
-    "title": "Advanced Machine Learning - Attendee",
-    "redirect_html_path": "Workshops/Advanced Machine Learning - Extend Operational Insights/AdvancedML-Attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Advanced Machine Learning - Extend Operational Insights/Advanced Machine Learning - Extend Operational Insights - Attendee - Oct 2023.pdf",
-    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/AdvancedML-Attendee.html"
+    "id": "advancedml-attendee",
+    "title": "AdvancedML Attendee",
+    "redirect_html_path": "Workshops/Advanced Machine Learning - Extend Operational Insights/advancedml-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Advanced Machine Learning - Extend Operational Insights/AdvancedML-Attendee.html",
+    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/advancedml-attendee.html"
   },
   {
     "id": "advanced-ml-lab-guide",
@@ -14,45 +14,17 @@
     "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/AdvancedML-LabGuide.html"
   },
   {
-    "id": "aitk-dsdl-attendee",
-    "title": "AITK and DSDL Operationalization and Use Case - Attendee",
-    "redirect_html_path": "Workshops/AITK and DSDL Operationalization and Use Case/AITK-DSDL-Attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/AITK and DSDL Operationalization and Use Case/AITK and DSDL Operationalization and Use Case Workshop - Attendee - Aug 2024.pdf",
-    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/AITK%20and%20DSDL%20Operationalization%20and%20Use%20Case/AITK-DSDL-Attendee.html"
+    "id": "advanced-ml-attendee",
+    "title": "Advanced Machine Learning - Attendee",
+    "redirect_html_path": "Workshops/Advanced Machine Learning - Extend Operational Insights/AdvancedML-Attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Advanced Machine Learning - Extend Operational Insights/Advanced Machine Learning - Extend Operational Insights - Attendee - Oct 2023.pdf",
+    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/AdvancedML-Attendee.html"
   },
   {
-    "id": "aitk-dsdl-lab-guide",
-    "title": "AITK and DSDL Operationalization and Use Case - Lab Guide",
-    "redirect_html_path": "Workshops/AITK and DSDL Operationalization and Use Case/AITK-DSDL-LabGuide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/AITK and DSDL Operationalization and Use Case/AITK and DSDL Operationalization and Use Case Workshop - Lab Guide - Aug 2024.pdf",
-    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/AITK%20and%20DSDL%20Operationalization%20and%20Use%20Case/AITK-DSDL-LabGuide.html"
-  },
-  {
-    "id": "appd-business-iq-lab-guide",
-    "title": "Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ - Lab Guide",
-    "redirect_html_path": "Workshops/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ/AppD-BusIQ-LabGuide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ - Lab Guide - Feb 2025.pdf",
-    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Business%20Context%20Matters-%20Driving%20Business%20Outcomes%20with%20AppDynamics%20Business%20IQ/AppD-BusIQ-LabGuide.html"
-  },
-  {
-    "id": "appd-business-iq-attendee",
-    "title": "Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ - Attendee",
-    "redirect_html_path": "Workshops/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ/AppD-BusIQ-Attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ - Attendee - Feb 2025.pdf",
-    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Business%20Context%20Matters-%20Driving%20Business%20Outcomes%20with%20AppDynamics%20Business%20IQ/AppD-BusIQ-Attendee.html"
-  },
-  {
-    "id": "cust-journey-threat-hunting-apts-attendee",
-    "title": "Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs - Attendee",
-    "redirect_html_path": "Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Cust-Threat-Hunting-Attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Threat Hunting APTs - Attendee - Sep 2025.pdf",
-    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Customer%20Onboarding%20Enablement%20Journey%20Workshop-%20Threat%20Hunting%20APTs/Cust-Threat-Hunting-Attendee.html"
-  },
-  {
-    "id": "cust-journey-threat-hunting-apts-lab-guide",
-    "title": "Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs - Lab Guide",
-    "redirect_html_path": "Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Cust-Threat-Hunting-LabGuide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Threat Hunting APTs - Lab Guide - Sep 2025.pdf",
-    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Customer%20Onboarding%20Enablement%20Journey%20Workshop-%20Threat%20Hunting%20APTs/Cust-Threat-Hunting-LabGuide.html"
+    "id": "advancedml-labguide",
+    "title": "AdvancedML LabGuide",
+    "redirect_html_path": "Workshops/Advanced Machine Learning - Extend Operational Insights/advancedml-labguide.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Advanced Machine Learning - Extend Operational Insights/AdvancedML-LabGuide.html",
+    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/advancedml-labguide.html"
   }
 ]
