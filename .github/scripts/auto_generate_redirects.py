@@ -17,26 +17,73 @@ ROOT_CONTENT_DIRECTORY = "public"
 
 # --- Helper Functions ---
 def remove_date_patterns(text):
-    """Removes common date patterns from a string."""
-    # Remove common date patterns like " - Oct 2023" or " - 2023-10"
-    text = re.sub(r' - (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}', '', text)
-    text = re.sub(r' - \d{4}-\d{2}(-\d{2})?', '', text) # YYYY-MM(-DD)
+    """
+    Removes common date patterns from a string, especially at the end.
+    Handles variations like " - Month YYYY", "Month YYYY", "YYYY-MM", "(Month YYYY)",
+    and other common date separators.
+    """
+    # Regex to match common month abbreviations
+    months_abbr = r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
+    # Regex to match common full month names (less common in filenames, but good to have)
+    months_full = r'(January|February|March|April|May|June|July|August|September|October|November|December)'
+
+    # Combine month patterns
+    month_pattern = f"(?:{months_abbr}|{months_full})"
+
+    # Year pattern (e.g., 2023, '23)
+    year_pattern = r'\d{4}|\'\d{2}'
+
+    # Day pattern (e.g., 01, 1st, 1)
+    day_pattern = r'\d{1,2}(?:st|nd|rd|th)?'
+
+    # --- Comprehensive date patterns ---
+    patterns = [
+        # " - Month YYYY" or " Month YYYY" or " (Month YYYY)"
+        rf'(?:[\s_-]|\s*\(\s*)?{month_pattern}\s+{year_pattern}(?:\s*\))?\b',
+        # " - YYYY-MM(-DD)" or " YYYY-MM(-DD)" or " (YYYY-MM(-DD))"
+        rf'(?:[\s_-]|\s*\(\s*)?\d{{4}}-\d{{2}}(?:-\d{{2}})?(?:\s*\))?\b',
+        # " - YYYYMMDD"
+        rf'(?:[\s_-]|\s*\(\s*)?\d{{8}}(?:\s*\))?\b',
+        # " - DD Month YYYY" (e.g., 15 Oct 2023)
+        rf'(?:[\s_-]|\s*\(\s*)?{day_pattern}\s+{month_pattern}\s+{year_pattern}(?:\s*\))?\b',
+        # " - Month DD, YYYY" (e.g., Oct 15, 2023)
+        rf'(?:[\s_-]|\s*\(\s*)?{month_pattern}\s+{day_pattern},?\s+{year_pattern}(?:\s*\))?\b',
+        # " - YYYY" alone (less specific, but can catch trailing years)
+        rf'(?:[\s_-]|\s*\(\s*)?{year_pattern}(?:\s*\))?\b',
+    ]
+
+    # Apply patterns from most specific to least specific
+    for pattern in patterns:
+        text = re.sub(pattern, '', text, flags=re.IGNORECASE).strip()
+    
+    # Clean up any residual separators or multiple spaces
+    text = re.sub(r'[\s_-]+', ' ', text).strip(' -_')
+    text = re.sub(r'\s+', ' ', text).strip() # Normalize spaces again
+
     return text.strip()
 
 def clean_filename_for_title(filename):
     """
-    Removes file extensions and common date patterns,
-    replaces underscores with spaces, and normalizes all whitespace to a single space.
+    Cleans a filename to produce a human-readable title.
+    - Removes file extensions.
+    - Removes common date patterns.
+    - Replaces underscores with spaces.
+    - Normalizes hyphens that act as separators to " - ".
+    - Normalizes all other whitespace to a single space.
     """
     name_without_ext = os.path.splitext(filename)[0] # Get name without extension
     
-    # Remove date patterns
+    # 1. Remove date patterns (this is now more robust)
     name_without_ext = remove_date_patterns(name_without_ext)
     
-    # Replace underscores with spaces (preserving hyphens)
+    # 2. Replace underscores with spaces
     name_without_ext = name_without_ext.replace('_', ' ')
     
-    # Normalize all whitespace (including multiple spaces) to a single space
+    # 3. Normalize hyphens that act as separators to " - "
+    # This regex replaces any sequence of whitespace, hyphen, whitespace with a consistent " - "
+    name_without_ext = re.sub(r'\s*-\s*', ' - ', name_without_ext)
+    
+    # 4. Normalize all other whitespace to a single space
     name_without_ext = re.sub(r'\s+', ' ', name_without_ext)
     
     return name_without_ext.strip() # Remove leading/trailing spaces
@@ -111,14 +158,17 @@ for root, _, files in os.walk(full_root_content_path):
         entry_to_process = existing_redirects_map.get(current_target_file_url_in_json, {}).copy()
 
         inferred_title = clean_filename_for_title(filename)
-        inferred_id = slugify(inferred_title) # ID is still based on title, which has date removed
+        
+        # --- MODIFIED: Ensure filename is date-free before slugifying for redirect_html_path ---
+        name_for_slug_path = os.path.splitext(filename)[0]
+        name_for_slug_path = remove_date_patterns(name_for_slug_path) # Remove dates
+        name_for_slug_path = name_for_slug_path.replace('_', ' ') # Replace underscores before slugifying
+        inferred_id = slugify(name_for_slug_path) # ID is now based on the date-free slug path
+        # ---------------------------------------------------------------------------------------
 
-        # --- MODIFIED: Construct redirect_html_path without date ---
-        name_without_ext_and_date = remove_date_patterns(os.path.splitext(filename)[0])
         pdf_dir_relative = os.path.dirname(relative_original_file_path)
-        inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_without_ext_and_date) + '.html')
+        inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_for_slug_path) + '.html')
         inferred_redirect_html_path = inferred_redirect_html_path.replace(os.sep, '/')
-        # -----------------------------------------------------------
 
         entry_id = entry_to_process.get('id', inferred_id)
         entry_title = entry_to_process.get('title', inferred_title)
