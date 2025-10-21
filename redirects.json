@@ -9,22 +9,8 @@
   {
     "id": "advanced-ml-lab-guide",
     "title": "Advanced Machine Learning - Lab Guide",
-    "redirect_html_path": "Workshops/Advanced Machine Learning - Extend Operational Insights/AdvancedML-LabGuide.html",
+    "redirect_html_path": "Workshops/Advanced Machine Learning - Extend Operational Insights/advancedml-labguide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Advanced Machine Learning - Extend Operational Insights/Advanced Machine Learning - Extend Operational Insights - Lab Guide - Oct 2023.pdf",
     "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/AdvancedML-LabGuide.html"
-  },
-  {
-    "id": "advanced-ml-attendee",
-    "title": "Advanced Machine Learning - Attendee",
-    "redirect_html_path": "Workshops/Advanced Machine Learning - Extend Operational Insights/AdvancedML-Attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Advanced Machine Learning - Extend Operational Insights/Advanced Machine Learning - Extend Operational Insights - Attendee - Oct 2023.pdf",
-    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/AdvancedML-Attendee.html"
-  },
-  {
-    "id": "advancedml-labguide",
-    "title": "AdvancedML LabGuide",
-    "redirect_html_path": "Workshops/Advanced Machine Learning - Extend Operational Insights/advancedml-labguide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/Workshops/Advanced Machine Learning - Extend Operational Insights/AdvancedML-LabGuide.html",
-    "public_url": "https://splunk.github.io/splunk-show-public/Workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/advancedml-labguide.html"
   }
 ]
