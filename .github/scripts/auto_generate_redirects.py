@@ -265,22 +265,31 @@ else:
     for entry in final_list_after_html_gen:
         redirect_path_parts = entry['redirect_html_path'].split('/')
         
-        # Expecting path structure like "public/workshops/Folder Name/file.html"
-        # So, after "public/", the first part is the top_folder (e.g., "workshops")
-        # And the second part is the sub_folder (e.g., "Folder Name")
         top_folder_name = "Root Files" # Default for files directly under public/
         sub_folder_name = "Files" # Default for files directly under top_folder
 
-        if len(redirect_path_parts) > 1: # At least public/file.html or public/folder/file.html
-            # The top-level folder is the one immediately after "public/"
-            top_folder_name = redirect_path_parts[1] 
-            
-            # The sub-folder is the path segment(s) between the top_folder and the filename
-            if len(redirect_path_parts) > 2: # If there's a folder after public/top_folder/
-                # Join the parts from index 2 up to the second-to-last (which is the filename)
-                sub_folder_name = '/'.join(redirect_path_parts[2:-1])
-            else: # File directly under public/top_folder/
-                sub_folder_name = "Files in " + top_folder_name.replace('-', ' ').title() # Default for files directly in a top folder
+        # Determine top_folder_name and sub_folder_name based on path structure
+        # Example: public/workshops/Subfolder Name/file.html
+        # top_folder_name = workshops
+        # sub_folder_name = Subfolder Name
+        
+        # Path relative to ROOT_CONTENT_DIRECTORY (e.g., "workshops/Subfolder Name/file.html")
+        path_relative_to_root_content = os.path.relpath(entry['redirect_html_path'], ROOT_CONTENT_DIRECTORY)
+        
+        # Split this relative path into components
+        relative_parts = path_relative_to_root_content.split('/')
+        
+        if len(relative_parts) > 1: # If there's at least one folder after ROOT_CONTENT_DIRECTORY
+            top_folder_name = relative_parts[0] # e.g., "workshops"
+            if len(relative_parts) > 2: # If there's a sub-subfolder
+                # Join the parts from index 1 up to the second-to-last (which is the filename)
+                sub_folder_name = '/'.join(relative_parts[1:-1])
+            else: # File directly under public/top_folder/ (e.g., public/workshops/file.html)
+                sub_folder_name = f"Files in {top_folder_name.replace('-', ' ').title()}"
+        else: # File directly under public/ (e.g., public/file.html)
+            top_folder_name = "Root Files"
+            sub_folder_name = "Files"
+
 
         if top_folder_name not in grouped_entries:
             grouped_entries[top_folder_name] = {}
@@ -301,9 +310,9 @@ else:
             # Fix 1: Use exact folder names, not .title() or .replace()
             public_file_list_content += f"  <details>\n    <summary><h3>{sub_folder}</h3></summary>\n\n"
             
-            # Fix 2: Remove leading indentation for Markdown table lines
-            public_file_list_content += "    | Title | Public URL | Last Updated |\n"
-            public_file_list_content += "    |---|---|---|\n"
+            # Fix 2: Remove ALL leading indentation for Markdown table lines
+            public_file_list_content += "| Title | Public URL | Last Updated |\n"
+            public_file_list_content += "|---|---|---|\n"
             
             # Sort files within the sub-folder by title
             sorted_files = sorted(grouped_entries[top_folder][sub_folder], key=lambda x: x.get('title', '').lower())
@@ -325,8 +334,8 @@ else:
                 
                 escaped_title = title.replace('|', '\\|')
                 
-                # Fix 2: Remove leading indentation for Markdown table lines
-                public_file_list_content += f"    | {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
+                # Fix 2: Remove ALL leading indentation for Markdown table lines
+                public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
             public_file_list_content += "\n  </details>\n\n" # Close sub-folder details
         public_file_list_content += "</details>\n\n" # Close top-level details
 
