@@ -6,9 +6,7 @@ on:
       - main # or your default branch, e.g., 'master'
     paths:
       - 'redirects.json'             # Trigger when the config file changes
-      - 'Workshops/**/*'             # NEW: Trigger when ANY file in Workshops changes
-      # Add other paths like 'Docs/**/*' if you add more SCAN_DIRECTORIES
-      # The '**/*' pattern means any file or directory, recursively.
+      - 'public/**/*'                # !!! UPDATED: Trigger when ANY file in the 'public' directory changes !!!
 
 jobs:
   build:
@@ -35,12 +33,8 @@ jobs:
     - name: Debug generated files and output
       run: |
         echo "--- Debugging 'generate_html' step outputs ---"
-        echo "--- Listing contents of all scanned directories ---"
-        # Adjust these 'ls' commands to match your SCAN_DIRECTORIES for better debugging
-        ls -la "Workshops/Advanced Machine Learning - Extend Operational Insights/" || echo "Advanced ML directory not found or empty."
-        ls -la "Workshops/Threat Hunting APTs/" || echo "Threat Hunting directory not found or empty."
-        echo "--- Listing contents of Workshops/ (for general overview) ---"
-        ls -la Workshops/
+        echo "--- Listing contents of ROOT_CONTENT_DIRECTORY (public) ---"
+        ls -la "public/" || echo "public/ directory not found or empty." # !!! UPDATED DEBUG PATH !!!
         echo "--- Listing contents of the root directory ---"
         ls -la
 
