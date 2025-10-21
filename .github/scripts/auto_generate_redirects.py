@@ -5,12 +5,14 @@ import os
 import sys
 import urllib.parse
 import re
+from datetime import datetime # NEW: For timestamps
 
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
 GITHUB_REPO_NAME = 'splunk-show-public'
 GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/"
 ROOT_CONTENT_DIRECTORY = "public"
+PUBLIC_FILE_LIST_FILENAME = "public_file_list.md"
 
 # --- Helper Functions ---
 def remove_date_patterns(text):
@@ -71,9 +73,10 @@ repo_root = os.getenv('GITHUB_WORKSPACE')
 
 config_file_path = os.path.join(repo_root, 'redirects.json')
 template_file_path = os.path.join(repo_root, '_redirect_templates', 'redirect_template.html')
+public_file_list_path = os.path.join(repo_root, PUBLIC_FILE_LIST_FILENAME)
 
 # Read existing redirects.json and map by 'id' for stable lookup
-existing_redirects_map_by_id = {} # Key: id, Value: entry
+existing_redirects_map_by_id = {} # Key: id, Value: full existing entry
 try:
     with open(config_file_path, 'r') as f:
         existing_data = json.load(f)
@@ -101,7 +104,7 @@ except FileNotFoundError:
     sys.exit(1)
 
 final_redirects_config_for_writing = []
-processed_ids_in_this_run = set() # To track which existing IDs we've matched/updated
+processed_ids_in_this_run = set()
 
 full_root_content_path = os.path.join(repo_root, ROOT_CONTENT_DIRECTORY)
 if not os.path.isdir(full_root_content_path):
@@ -136,8 +139,9 @@ for root, _, files in os.walk(full_root_content_path):
 
         # --- Try to find an existing entry by ID ---
         entry_data = {}
+        current_timestamp = datetime.now().isoformat() # Get current timestamp
+
         if inferred_id in existing_redirects_map_by_id:
-            # Found an existing entry with this ID, likely a rename or a re-run
             existing_entry = existing_redirects_map_by_id[inferred_id]
             
             # Preserve manual tweaks for id, title, redirect_html_path
@@ -145,42 +149,48 @@ for root, _, files in os.walk(full_root_content_path):
             entry_data['title'] = existing_entry.get('title', inferred_title)
             entry_data['redirect_html_path'] = existing_entry.get('redirect_html_path', inferred_redirect_html_path)
             
-            # ALWAYS update current_target_file to the newly discovered path
+            # Always update current_target_file to the newly discovered path
             entry_data['current_target_file'] = current_target_file_url_in_json
+
+            # --- NEW: Compare relevant fields to determine if last_updated_at needs update ---
+            changed = False
+            if entry_data['title'] != existing_entry.get('title'): changed = True
+            if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): changed = True
+            if entry_data['current_target_file'] != existing_entry.get('current_target_file'): changed = True
+            # public_url is calculated later, but its components (redirect_html_path) are checked
             
+            if changed:
+                entry_data['last_updated_at'] = current_timestamp
+                print(f"Entry '{entry_data['id']}' changed. Updating timestamp to {current_timestamp}.")
+            else:
+                entry_data['last_updated_at'] = existing_entry.get('last_updated_at', current_timestamp)
+                print(f"Entry '{entry_data['id']}' unchanged. Preserving timestamp.")
+
             print(f"Matched existing entry for ID '{entry_data['id']}'. Updating target from '{existing_entry.get('current_target_file', 'N/A')}' to '{current_target_file_url_in_json}'.")
         else:
-            # No existing entry with this ID, create a new one with inferred values
+            # New entry, set timestamp
             entry_data = {
                 "id": inferred_id,
                 "title": inferred_title,
                 "redirect_html_path": inferred_redirect_html_path,
-                "current_target_file": current_target_file_url_in_json
+                "current_target_file": current_target_file_url_in_json,
+                "last_updated_at": current_timestamp # NEW: Set timestamp for new entry
             }
-            print(f"Creating new entry for '{inferred_id}' -> '{current_target_file_url_in_json}'")
+            print(f"Creating new entry for '{inferred_id}' -> '{current_target_file_url_in_json}' with timestamp {current_timestamp}.")
 
         final_redirects_config_for_writing.append(entry_data)
-        processed_ids_in_this_run.add(entry_data['id']) # Mark this ID as processed
+        processed_ids_in_this_run.add(entry_data['id'])
 
 # --- Handle entries that were in redirects.json but are no longer discovered ---
-# This means files were deleted or renamed with a new inferred ID
 for existing_id, existing_entry in existing_redirects_map_by_id.items():
     if existing_id not in processed_ids_in_this_run:
-        # Check if the file associated with this ID still exists in the repo
-        # This helps differentiate between a file deletion and a file rename that resulted in a new ID
-        # (e.g., if the user manually changed the ID in redirects.json)
-        
-        # Extract relative path from current_target_file
         if 'current_target_file' in existing_entry:
             parsed_url = urllib.parse.urlparse(existing_entry['current_target_file'])
-            relative_path_from_base_url = parsed_url.path.replace(f'/{GITHUB_REPO_NAME}/', '', 1) # Remove repo name
-            if relative_path_from_base_url.startswith('public/'):
-                relative_path_from_base_url = relative_path_from_base_url[len('public/'):] # Remove leading public/
-            
-            full_path_on_runner = os.path.join(repo_root, ROOT_CONTENT_DIRECTORY, relative_path_from_base_url)
+            path_after_base = parsed_url.path.replace(f'/{GITHUB_REPO_NAME}/', '', 1)
+            full_path_on_runner = os.path.join(repo_root, path_after_base.lstrip('/'))
             
             if os.path.exists(full_path_on_runner):
-                print(f"Warning: Existing entry '{existing_id}' points to '{existing_entry['current_target_file']}' which still exists, but its ID was not matched by any discovered file. This entry will be removed unless you manually edit redirects.json to match its new inferred ID or update its 'current_target_file' to match an an existing file.", file=sys.stderr)
+                print(f"Warning: Existing entry '{existing_id}' points to '{existing_entry['current_target_file']}' which still exists, but its ID was not matched by any discovered file. This entry will be removed unless you manually edit redirects.json to match its new inferred ID or update its 'current_target_file' to match an existing file.", file=sys.stderr)
             else:
                 print(f"Removing entry for '{existing_id}' as its associated file '{existing_entry.get('current_target_file', 'N/A')}' was not found in scanned directories.", file=sys.stderr)
         else:
@@ -205,7 +215,13 @@ for entry in final_redirects_config_for_writing:
     public_url_path_encoded = '/'.join(encoded_path_segments)
     calculated_public_url = GITHUB_PAGES_BASE_URL + public_url_path_encoded
 
+    # --- NEW: Check if public_url changed and update timestamp if it did ---
+    # This comparison needs to happen here because calculated_public_url is only available now
+    if entry.get('public_url') != calculated_public_url:
+        entry['last_updated_at'] = datetime.now().isoformat() # Update timestamp
+        print(f"Public URL for '{entry['id']}' changed. Updating timestamp.")
     entry['public_url'] = calculated_public_url
+    # ----------------------------------------------------------------------
 
     full_redirect_html_path = os.path.join(repo_root, relative_redirect_html_path)
 
@@ -241,3 +257,37 @@ try:
 except Exception as e:
     print(f"Error writing updated redirects.json: {e}", file=sys.stderr)
     sys.exit(1)
+
+# --- NEW SECTION: Generate public_file_list.md with Last Update Column ---
+print(f"Generating {PUBLIC_FILE_LIST_FILENAME}...")
+public_file_list_content = "# Public File List\n\n"
+public_file_list_content += "This file is automatically generated by the GitHub Actions workflow. Do not edit manually.\n\n"
+public_file_list_content += f"Last generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}\n\n" # NEW: Workflow generation timestamp
+
+if not final_list_after_html_gen:
+    public_file_list_content += "No public files found.\n"
+else:
+    public_file_list_content += "| Title | Public URL | Last Updated |\n" # NEW COLUMN HEADER
+    public_file_list_content += "|---|---|---|\n" # NEW SEPARATOR
+    
+    # Sort the list by title for the Markdown table
+    sorted_for_markdown = sorted(final_list_after_html_gen, key=lambda x: x.get('title', '').lower())
+
+    for entry in sorted_for_markdown:
+        title = entry.get('title', 'N/A')
+        public_url = entry.get('public_url', '#')
+        last_updated = entry.get('last_updated_at', 'N/A') # NEW: Get last_updated_at
+        
+        # Escape pipe characters in title if they exist, to avoid breaking Markdown table
+        escaped_title = title.replace('|', '\\|')
+        
+        public_file_list_content += f"| {escaped_title} | [{public_url}]({public_url}) | {last_updated} |\n" # NEW COLUMN
+
+try:
+    with open(public_file_list_path, 'w') as f:
+        f.write(public_file_list_content)
+    print(f'Generated {PUBLIC_FILE_LIST_FILENAME}: {public_file_list_path}')
+except Exception as e:
+    print(f"Error writing {PUBLIC_FILE_LIST_FILENAME}: {e}", file=sys.stderr)
+    sys.exit(1)
+# --------------------------------------------------
