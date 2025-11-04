@@ -165,12 +165,10 @@ for root, _, files in os.walk(full_root_content_path):
         if inferred_id in existing_redirects_map_by_id:
             existing_entry = existing_redirects_map_by_id[inferred_id]
             
-            # Preserve manual tweaks for id, title, redirect_html_path
             entry_data['id'] = existing_entry.get('id', inferred_id)
             entry_data['title'] = existing_entry.get('title', inferred_title)
             entry_data['redirect_html_path'] = existing_entry.get('redirect_html_path', inferred_redirect_html_path)
             
-            # Always update current_target_file to the newly discovered path
             entry_data['current_target_file'] = current_target_file_url_in_json
 
             # --- Compare relevant fields AND file SHA to determine if last_updated_at needs update ---
@@ -318,8 +316,8 @@ else:
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
         for sub_folder in sorted_sub_folders:
-            # --- MODIFIED: Increased indentation and added prefix ---
-            public_file_list_content += f"&nbsp;&nbsp;&nbsp;&nbsp;<details>\n&nbsp;&nbsp;&nbsp;&nbsp;<summary>▸ <strong>{sub_folder}</strong></summary>\n\n" # Increased &nbsp;, added ▸, changed to strong
+            # --- MODIFIED: Increased indentation, removed arrow ---
+            public_file_list_content += f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<details>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<summary><strong>{sub_folder}</strong></summary>\n\n" # Increased &nbsp;, removed ▸
             
             public_file_list_content += "| Title | Public URL | Last Updated |\n"
             public_file_list_content += "|---|---|---|\n"
@@ -345,7 +343,7 @@ else:
                 
                 public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
             
-            public_file_list_content += "\n&nbsp;&nbsp;&nbsp;&nbsp;</details>\n" # Increased &nbsp;
+            public_file_list_content += "\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</details>\n" # Increased &nbsp;
         
         public_file_list_content += "</details>\n"
 
