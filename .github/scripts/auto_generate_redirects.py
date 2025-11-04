@@ -171,25 +171,23 @@ for root, _, files in os.walk(full_root_content_path):
             
             entry_data['current_target_file'] = current_target_file_url_in_json
 
-            # --- Compare relevant fields AND file SHA to determine if last_updated_at needs update ---
             changed = False
             if entry_data['title'] != existing_entry.get('title'): changed = True
             if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): changed = True
             if entry_data['current_target_file'] != existing_entry.get('current_target_file'): changed = True
-            if current_file_sha != existing_entry.get('file_sha'): changed = True # Compare SHAs
+            if current_file_sha != existing_entry.get('file_sha'): changed = True
             
             if changed:
                 entry_data['last_updated_at'] = current_timestamp_str
-                entry_data['file_sha'] = current_file_sha # Update SHA if content or other fields changed
+                entry_data['file_sha'] = current_file_sha
                 print(f"Entry '{entry_data['id']}' changed (content or metadata). Updating timestamp to {current_timestamp_str}.")
             else:
                 entry_data['last_updated_at'] = existing_entry.get('last_updated_at', current_timestamp_str)
-                entry_data['file_sha'] = existing_entry.get('file_sha', current_file_sha) # Preserve SHA
+                entry_data['file_sha'] = existing_entry.get('file_sha', current_file_sha)
                 print(f"Entry '{entry_data['id']}' unchanged. Preserving timestamp and SHA.")
 
             print(f"Matched existing entry for ID '{entry_data['id']}'. Updating target from '{existing_entry.get('current_target_file', 'N/A')}' to '{current_target_file_url_in_json}'.")
         else:
-            # New entry, set timestamp and SHA
             entry_data = {
                 "id": inferred_id,
                 "title": inferred_title,
@@ -312,12 +310,13 @@ else:
 
     for top_folder in sorted_top_folders:
         public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n"
+        # NEW: Add horizontal rule after h2 summary
+        public_file_list_content += "---\n\n" # Markdown for horizontal rule
         
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
         for sub_folder in sorted_sub_folders:
-            # --- MODIFIED: Increased indentation, removed arrow ---
-            public_file_list_content += f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<details>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<summary><strong>{sub_folder}</strong></summary>\n\n" # Increased &nbsp;, removed ▸
+            public_file_list_content += f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<details>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<summary><strong>{sub_folder}</strong></summary>\n\n"
             
             public_file_list_content += "| Title | Public URL | Last Updated |\n"
             public_file_list_content += "|---|---|---|\n"
@@ -343,7 +342,7 @@ else:
                 
                 public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
             
-            public_file_list_content += "\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</details>\n" # Increased &nbsp;
+            public_file_list_content += "\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</details>\n"
         
         public_file_list_content += "</details>\n"
 
