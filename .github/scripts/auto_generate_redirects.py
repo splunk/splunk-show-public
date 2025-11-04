@@ -16,19 +16,27 @@ ROOT_CONTENT_DIRECTORY = "public"
 PUBLIC_FILE_LIST_FILENAME = "public_file_list.md"
 
 # --- Helper Functions ---
-def get_file_git_sha(file_path_relative_to_repo_root):
+def get_file_git_sha(file_path_full_on_runner):
     """
-    Gets the Git SHA-1 hash of a file's content at HEAD.
+    Gets the Git SHA-1 hash of a file's content using 'git hash-object'.
+    This calculates the hash of the current working tree content.
     Returns None if the file is new/untracked or an error occurs.
     """
     try:
-        cmd = ['git', 'hash-object', file_path_relative_to_repo_root]
-        result = subprocess.run(cmd, cwd=os.getenv('GITHUB_WORKSPACE'), capture_output=True, text=True, check=True)
-        return result.stdout.strip()
-    except subprocess.CalledProcessError:
+        # Use git hash-object --stdin < file_path_full_on_runner
+        # This is more robust for files that might be new or untracked by Git yet
+        # It calculates the hash of the current content on disk.
+        with open(file_path_full_on_runner, 'rb') as f:
+            cmd = ['git', 'hash-object', '--stdin']
+            result = subprocess.run(cmd, cwd=os.getenv('GITHUB_WORKSPACE'), input=f.read(), capture_output=True, check=True)
+            return result.stdout.decode('utf-8').strip()
+    except FileNotFoundError: # File might not exist on disk (e.g., if it was just deleted)
         return None
-    except FileNotFoundError:
-        print("Error: 'git' command not found. Ensure Git is installed and in PATH.", file=sys.stderr)
+    except subprocess.CalledProcessError as e:
+        print(f"Warning: Could not get SHA for '{file_path_full_on_runner}': {e.stderr.decode('utf-8').strip()}", file=sys.stderr)
+        return None
+    except Exception as e:
+        print(f"Error getting SHA for '{file_path_full_on_runner}': {e}", file=sys.stderr)
         return None
 
 def remove_date_patterns(text):
@@ -165,29 +173,37 @@ for root, _, files in os.walk(full_root_content_path):
         if inferred_id in existing_redirects_map_by_id:
             existing_entry = existing_redirects_map_by_id[inferred_id]
             
+            # Preserve manual tweaks for id, title, redirect_html_path
             entry_data['id'] = existing_entry.get('id', inferred_id)
             entry_data['title'] = existing_entry.get('title', inferred_title)
             entry_data['redirect_html_path'] = existing_entry.get('redirect_html_path', inferred_redirect_html_path)
             
+            # Always update current_target_file to the newly discovered path
             entry_data['current_target_file'] = current_target_file_url_in_json
 
+            # --- Compare relevant fields AND file SHA to determine if last_updated_at needs update ---
             changed = False
             if entry_data['title'] != existing_entry.get('title'): changed = True
             if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): changed = True
             if entry_data['current_target_file'] != existing_entry.get('current_target_file'): changed = True
-            if current_file_sha != existing_entry.get('file_sha'): changed = True
+            
+            # NEW: Compare current_file_sha with the stored file_sha
+            if current_file_sha != existing_entry.get('file_sha'):
+                changed = True
+                print(f"DEBUG: '{entry_data['id']}' file content SHA changed. Old: '{existing_entry.get('file_sha')}', New: '{current_file_sha}'")
             
             if changed:
                 entry_data['last_updated_at'] = current_timestamp_str
-                entry_data['file_sha'] = current_file_sha
+                entry_data['file_sha'] = current_file_sha # Update SHA if content or other fields changed
                 print(f"Entry '{entry_data['id']}' changed (content or metadata). Updating timestamp to {current_timestamp_str}.")
             else:
                 entry_data['last_updated_at'] = existing_entry.get('last_updated_at', current_timestamp_str)
-                entry_data['file_sha'] = existing_entry.get('file_sha', current_file_sha)
+                entry_data['file_sha'] = existing_entry.get('file_sha', current_file_sha) # Preserve SHA
                 print(f"Entry '{entry_data['id']}' unchanged. Preserving timestamp and SHA.")
 
             print(f"Matched existing entry for ID '{entry_data['id']}'. Updating target from '{existing_entry.get('current_target_file', 'N/A')}' to '{current_target_file_url_in_json}'.")
         else:
+            # New entry, set timestamp and SHA
             entry_data = {
                 "id": inferred_id,
                 "title": inferred_title,
@@ -310,8 +326,7 @@ else:
 
     for top_folder in sorted_top_folders:
         public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n"
-        # NEW: Add horizontal rule after h2 summary
-        public_file_list_content += "---\n\n" # Markdown for horizontal rule
+        public_file_list_content += "---\n\n"
         
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
@@ -321,9 +336,21 @@ else:
             public_file_list_content += "| Title | Public URL | Last Updated |\n"
             public_file_list_content += "|---|---|---|\n"
             
-            sorted_files = sorted(grouped_entries[top_folder][sub_folder], key=lambda x: x.get('title', '').lower())
+            sorted_files = sorted(final_list_after_html_gen, key=lambda x: x.get('title', '').lower()) # Sort by title
+            
+            # Filter files for the current sub_folder
+            files_for_this_subfolder = [f for f in sorted_files if 
+                                        os.path.relpath(f['redirect_html_path'], ROOT_CONTENT_DIRECTORY).startswith(os.path.join(top_folder, sub_folder).replace(os.sep, '/'))
+                                        or (top_folder == "Root Files" and sub_folder == "Files" and not os.path.dirname(os.path.relpath(f['redirect_html_path'], ROOT_CONTENT_DIRECTORY)))
+                                        or (top_folder == relative_parts[0] and sub_folder == f"Files in {top_folder}" and os.path.dirname(os.path.relpath(f['redirect_html_path'], ROOT_CONTENT_DIRECTORY)) == top_folder)] # This filtering logic needs to be more precise based on your grouping
 
-            for entry in sorted_files:
+            # Re-evaluate the grouping and filtering logic for the markdown table
+            # The current grouping logic creates the structure, but the table loop is still iterating over all files.
+            # We need to use the already grouped_entries[top_folder][sub_folder] list.
+            
+            sorted_files_for_table = sorted(grouped_entries[top_folder][sub_folder], key=lambda x: x.get('title', '').lower())
+
+            for entry in sorted_files_for_table:
                 title = entry.get('title', 'N/A')
                 public_url = entry.get('public_url', '#')
                 
