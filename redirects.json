@@ -1,10 +1,11 @@
 [
-  { 
+  {
     "id": "advanced-machine-learning-extend-operational-insights-attendee",
     "title": "Advanced Machine Learning - Extend Operational Insights - Attendee",
     "redirect_html_path": "public/workshops/Advanced Machine Learning - Extend Operational Insights/advanced-machine-learning-extend-operational-insights-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Advanced Machine Learning - Extend Operational Insights/Advanced Machine Learning - Extend Operational Insights - Attendee - Oct 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "b2fe7994cb566a6af29fb5b5e115f4984ce955f7",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/advanced-machine-learning-extend-operational-insights-attendee.html"
   },
   {
@@ -12,7 +13,8 @@
     "title": "Advanced Machine Learning - Extend Operational Insights Lab Guide",
     "redirect_html_path": "public/workshops/Advanced Machine Learning - Extend Operational Insights/advanced-machine-learning-extend-operational-insights-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Advanced Machine Learning - Extend Operational Insights/Advanced Machine Learning - Extend Operational Insights - Lab Guide - Oct 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "4497a6c310bf6a8a287e5e316789130f445a62db",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Advanced%20Machine%20Learning%20-%20Extend%20Operational%20Insights/advanced-machine-learning-extend-operational-insights-lab-guide.html"
   },
   {
@@ -20,7 +22,8 @@
     "title": "AITK and DSDL Operationalization and Use Case Workshop Attendee",
     "redirect_html_path": "public/workshops/AITK and DSDL Operationalization and Use Case/aitk-and-dsdl-operationalization-and-use-case-workshop-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/AITK and DSDL Operationalization and Use Case/AITK and DSDL Operationalization and Use Case Workshop - Attendee - Aug 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "c4f68d9f9bf20fca288b0a3274b0a83a116328b5",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/AITK%20and%20DSDL%20Operationalization%20and%20Use%20Case/aitk-and-dsdl-operationalization-and-use-case-workshop-attendee.html"
   },
   {
@@ -28,7 +31,8 @@
     "title": "AITK and DSDL Operationalization and Use Case Workshop Lab Guide",
     "redirect_html_path": "public/workshops/AITK and DSDL Operationalization and Use Case/aitk-and-dsdl-operationalization-and-use-case-workshop-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/AITK and DSDL Operationalization and Use Case/AITK and DSDL Operationalization and Use Case Workshop - Lab Guide - Aug 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "7a4dd4cb6bd991ecee2827d78f5efdc30f9880a1",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/AITK%20and%20DSDL%20Operationalization%20and%20Use%20Case/aitk-and-dsdl-operationalization-and-use-case-workshop-lab-guide.html"
   },
   {
@@ -36,7 +40,8 @@
     "title": "Business Context Matters Driving Business Outcomes with AppDynamics Business IQ Attendee",
     "redirect_html_path": "public/workshops/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ/business-context-matters-driving-business-outcomes-with-appdynamics-business-iq-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ - Attendee - Feb 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "5139ecf5dbd1ca4e6b7a3088d1d35daae9a75a81",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Business%20Context%20Matters-%20Driving%20Business%20Outcomes%20with%20AppDynamics%20Business%20IQ/business-context-matters-driving-business-outcomes-with-appdynamics-business-iq-attendee.html"
   },
   {
@@ -44,7 +49,8 @@
     "title": "Business Context Matters Driving Business Outcomes with AppDynamics Business IQ Lab Guide",
     "redirect_html_path": "public/workshops/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ/business-context-matters-driving-business-outcomes-with-appdynamics-business-iq-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ/Business Context Matters- Driving Business Outcomes with AppDynamics Business IQ - Lab Guide - Feb 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "8eb8684bafceed939ad838c74460bbb9adb1e22c",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Business%20Context%20Matters-%20Driving%20Business%20Outcomes%20with%20AppDynamics%20Business%20IQ/business-context-matters-driving-business-outcomes-with-appdynamics-business-iq-lab-guide.html"
   },
   {
@@ -52,7 +58,8 @@
     "title": "Buttercup Background",
     "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/buttercup-background.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Buttercup_Background.jpg",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "0a5a951d1df493cb4056c2c6429425b7752f4ef3",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/buttercup-background.html"
   },
   {
@@ -60,7 +67,8 @@
     "title": "ButtercupGames Background",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/buttercupgames-background.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/ButtercupGames_Background.png",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "704098a14df6b24d9edf4c0f6e70b0d365e81f5a",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Dashboard%20Studio%20%28DS4R%29/buttercupgames-background.html"
   },
   {
@@ -68,7 +76,8 @@
     "title": "ButtercupMascot",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/buttercupmascot.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/ButtercupMascot.png",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "4e8425e7c9bd86590274a377bb77591936f923ff",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Dashboard%20Studio%20%28DS4R%29/buttercupmascot.html"
   },
   {
@@ -76,7 +85,8 @@
     "title": "cisco logs small",
     "redirect_html_path": "public/workshops/Splunk Data Management Workshop/cisco-logs-small.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Data Management Workshop/cisco_logs_small.sample",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "8830b0e71bb2218a924738b7e8a292ea95b44748",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/cisco-logs-small.html"
   },
   {
@@ -84,7 +94,8 @@
     "title": "conf25 TEMPLATE LAB GUIDE [Workshop Name] Lab Guide [Date]",
     "redirect_html_path": "public/conf/conf25-template-lab-guide-workshop-name-lab-guide-date.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/conf/conf25 TEMPLATE - LAB GUIDE [Workshop Name] - Lab Guide - [Date].docx",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "0889082b3bdbe8ebe4c0d45c051f32927ef87364",
     "public_url": "https://splunk.github.io/splunk-show-public/public/conf/conf25-template-lab-guide-workshop-name-lab-guide-date.html"
   },
   {
@@ -92,7 +103,8 @@
     "title": "fin user viz broken.tar",
     "redirect_html_path": "public/workshops/Splunk4Admins - Apps/fin-user-viz-brokentar.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Apps/fin_user_viz_broken.tar.gz",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "d55c75a57298ce9be82c863949bdb031c8a13419",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Apps/fin-user-viz-brokentar.html"
   },
   {
@@ -100,7 +112,8 @@
     "title": "fin user viz.tar",
     "redirect_html_path": "public/workshops/Splunk4Admins - Apps/fin-user-viztar.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Apps/fin_user_viz.tar.gz",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "c207c4a3943f036132fc85ce8c6ef6d36fcf694e",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Apps/fin-user-viztar.html"
   },
   {
@@ -108,7 +121,8 @@
     "title": "InfoSec App Hands On Attendee",
     "redirect_html_path": "public/workshops/InfoSec App Hands-On/infosec-app-hands-on-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec App Hands-On/InfoSec App Hands-On - Attendee - Sep 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec%20App%20Hands-On/infosec-app-hands-on-attendee.html"
   },
   {
@@ -116,7 +130,8 @@
     "title": "InfoSec App Hands On Lab Guide",
     "redirect_html_path": "public/workshops/InfoSec App Hands-On/infosec-app-hands-on-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec App Hands-On/InfoSec App Hands-On - Lab Guide - Sep 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "bcdd621980aacf2dd40fec99fa8988cc857e0059",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec%20App%20Hands-On/infosec-app-hands-on-lab-guide.html"
   },
   {
@@ -124,7 +139,8 @@
     "title": "IT Workshops Credential Template",
     "redirect_html_path": "public/workshops/IT Service Intelligence (ITSI) - Business Service Insights (BSI) - Hands-On/it-workshops-credential-template.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/IT Service Intelligence (ITSI) - Business Service Insights (BSI) - Hands-On/IT Workshops - Credential Template.xlsx",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "8323edcd0ed0be51b5540b1cfaeba43d01f8c302",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/IT%20Service%20Intelligence%20%28ITSI%29%20-%20Business%20Service%20Insights%20%28BSI%29%20-%20Hands-On/it-workshops-credential-template.html"
   },
   {
@@ -132,7 +148,8 @@
     "title": "ITSI for SLED Workshop Attendee",
     "redirect_html_path": "public/workshops/ITSI for SLED Workshop/itsi-for-sled-workshop-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/ITSI for SLED Workshop/ITSI for SLED Workshop - Attendee - Jan 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "ddbbdf2fddfa033284911ab777f70a66f53c4fb1",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/ITSI%20for%20SLED%20Workshop/itsi-for-sled-workshop-attendee.html"
   },
   {
@@ -140,7 +157,8 @@
     "title": "ITSI for SLED Workshop Flyer",
     "redirect_html_path": "public/workshops/ITSI for SLED Workshop/itsi-for-sled-workshop-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/ITSI for SLED Workshop/ITSI for SLED Workshop - Flyer - Jan 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "c28dbdf8b527293815ba515d17af6983823e0a15",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/ITSI%20for%20SLED%20Workshop/itsi-for-sled-workshop-flyer.html"
   },
   {
@@ -148,7 +166,8 @@
     "title": "ITSI Service Tree Automation Attendee",
     "redirect_html_path": "public/workshops/ITSI Service Tree Automation (Workshop)/itsi-service-tree-automation-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/ITSI Service Tree Automation (Workshop)/ITSI Service Tree Automation - Attendee - Aug 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "c00344cd4e1f55883e42a9ed10bcfd6849f63ecf",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/ITSI%20Service%20Tree%20Automation%20%28Workshop%29/itsi-service-tree-automation-attendee.html"
   },
   {
@@ -156,7 +175,8 @@
     "title": "ITSI Service Tree Automation Flyer",
     "redirect_html_path": "public/workshops/ITSI Service Tree Automation (Workshop)/itsi-service-tree-automation-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/ITSI Service Tree Automation (Workshop)/ITSI Service Tree Automation - Flyer - Aug 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "2d970b4f089ffe55dcd34d00ddbbc7d4ecc91371",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/ITSI%20Service%20Tree%20Automation%20%28Workshop%29/itsi-service-tree-automation-flyer.html"
   },
   {
@@ -164,7 +184,8 @@
     "title": "Machine Learning and Data Science Hands On Attendee",
     "redirect_html_path": "public/workshops/Machine Learning and Data Science Hands-On/machine-learning-and-data-science-hands-on-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Machine Learning and Data Science Hands-On/Machine Learning and Data Science Hands-On - Attendee - Aug 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "7a5203a2574705d978f132c67dfa8bd0f344f2b3",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Machine%20Learning%20and%20Data%20Science%20Hands-On/machine-learning-and-data-science-hands-on-attendee.html"
   },
   {
@@ -172,7 +193,8 @@
     "title": "Machine Learning and Data Science Hands On Lab Guide",
     "redirect_html_path": "public/workshops/Machine Learning and Data Science Hands-On/machine-learning-and-data-science-hands-on-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Machine Learning and Data Science Hands-On/Machine Learning and Data Science Hands-On - Lab Guide - Aug 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "a2bd420a2c31e2a049fd5f7e385b652cebdc0c54",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Machine%20Learning%20and%20Data%20Science%20Hands-On/machine-learning-and-data-science-hands-on-lab-guide.html"
   },
   {
@@ -180,7 +202,8 @@
     "title": "Metrics Onboarding Workshop for IT Ops Attendee",
     "redirect_html_path": "public/workshops/Metrics Onboarding Workshop for IT Ops/metrics-onboarding-workshop-for-it-ops-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Metrics Onboarding Workshop for IT Ops/Metrics Onboarding Workshop for IT Ops - Attendee - Oct 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "6147527d768a2e4648596aa79a6bcbdcf93a4a6c",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Metrics%20Onboarding%20Workshop%20for%20IT%20Ops/metrics-onboarding-workshop-for-it-ops-attendee.html"
   },
   {
@@ -188,7 +211,8 @@
     "title": "Metrics Onboarding Workshop for IT Ops Lab Sheet",
     "redirect_html_path": "public/workshops/Metrics Onboarding Workshop for IT Ops/metrics-onboarding-workshop-for-it-ops-lab-sheet.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Metrics Onboarding Workshop for IT Ops/Metrics Onboarding Workshop for IT Ops - Lab Sheet - Sep 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "b9b3ad855a531766d9f3ff2293e807144ccd6c3d",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Metrics%20Onboarding%20Workshop%20for%20IT%20Ops/metrics-onboarding-workshop-for-it-ops-lab-sheet.html"
   },
   {
@@ -196,7 +220,8 @@
     "title": "(Partners) BSI Hands On Workshop Setup Guide",
     "redirect_html_path": "public/workshops/IT Service Intelligence (ITSI) - Business Service Insights (BSI) - Hands-On/partners-bsi-hands-on-workshop-setup-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/IT Service Intelligence (ITSI) - Business Service Insights (BSI) - Hands-On/(Partners) BSI Hands-On Workshop Setup Guide - July 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "7344b49b7d8c6671eaaf2683afe201cef2a7cb96",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/IT%20Service%20Intelligence%20%28ITSI%29%20-%20Business%20Service%20Insights%20%28BSI%29%20-%20Hands-On/partners-bsi-hands-on-workshop-setup-guide.html"
   },
   {
@@ -204,7 +229,8 @@
     "title": "PEAK Threat Hunting Workshop Exercise Guide",
     "redirect_html_path": "public/workshops/PEAK Threat Hunting/peak-threat-hunting-workshop-exercise-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/PEAK Threat Hunting/PEAK Threat Hunting Workshop - Exercise Guide.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "84f57b01d3781ab908a6d519f475a1e3d514ed4e",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/PEAK%20Threat%20Hunting/peak-threat-hunting-workshop-exercise-guide.html"
   },
   {
@@ -212,7 +238,8 @@
     "title": "PEAK Threat Hunting Workshop Flyer",
     "redirect_html_path": "public/workshops/PEAK Threat Hunting/peak-threat-hunting-workshop-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/PEAK Threat Hunting/PEAK Threat Hunting Workshop - Flyer.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "57fb88a74586514f2cdd632971cece4a7f567f31",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/PEAK%20Threat%20Hunting/peak-threat-hunting-workshop-flyer.html"
   },
   {
@@ -220,7 +247,8 @@
     "title": "Predictive Maintenance Walkthrough Attendee",
     "redirect_html_path": "public/workshops/Predictive Maintenance Walkthrough/predictive-maintenance-walkthrough-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Predictive Maintenance Walkthrough/Predictive Maintenance Walkthrough - Attendee - Oct 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "8ae1fad8219eef3ce9656a65ed33b6173363accc",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Predictive%20Maintenance%20Walkthrough/predictive-maintenance-walkthrough-attendee.html"
   },
   {
@@ -228,7 +256,8 @@
     "title": "SAA Workshop Data Sheet",
     "redirect_html_path": "public/workshops/Splunk Attack Analyzer and Splunk SOAR Hands-On Workshop/saa-workshop-data-sheet.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Attack Analyzer and Splunk SOAR Hands-On Workshop/SAA Workshop Data Sheet.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "5acf5c87b74904c7ef8094ef81ffd4c2a40f8733",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Attack%20Analyzer%20and%20Splunk%20SOAR%20Hands-On%20Workshop/saa-workshop-data-sheet.html"
   },
   {
@@ -236,7 +265,8 @@
     "title": "SOAR Playbook Workshop Lab Guide",
     "redirect_html_path": "public/workshops/SOAR Playbook Workshop/soar-playbook-workshop-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/SOAR Playbook Workshop/SOAR Playbook Workshop - Lab Guide - Oct 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "1f95c44d0993fbfd197877a1dcd43b95a1f6da82",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/SOAR%20Playbook%20Workshop/soar-playbook-workshop-lab-guide.html"
   },
   {
@@ -244,7 +274,8 @@
     "title": "Splunk 101 201 Hands On Attendee",
     "redirect_html_path": "public/workshops/Splunk 101 201 301 Hands-On/splunk-101-201-hands-on-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101 201 301 Hands-On/Splunk 101-201 Hands-On - Attendee - Jan 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "8869b17d797586284cee669db39467f9ff6ef4d0",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101%20201%20301%20Hands-On/splunk-101-201-hands-on-attendee.html"
   },
   {
@@ -252,7 +283,8 @@
     "title": "Splunk 101 Hands On Attendee",
     "redirect_html_path": "public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/splunk-101-hands-on-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/Splunk 101 Hands-On - Attendee - June 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "25eec12aede548812574dca14a463862e3011eb8",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101%20201%20301%20Hands-On/GSS%20Materials/splunk-101-hands-on-attendee.html"
   },
   {
@@ -260,7 +292,8 @@
     "title": "Splunk 101 Hands On Lab Guide",
     "redirect_html_path": "public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/splunk-101-hands-on-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/Splunk 101 Hands-On - Lab Guide - June 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "0700ab0a1fa80eb39f7baab53ac5adcb7d4ca9c8",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101%20201%20301%20Hands-On/GSS%20Materials/splunk-101-hands-on-lab-guide.html"
   },
   {
@@ -268,7 +301,8 @@
     "title": "Splunk 201 Hands On Attendee",
     "redirect_html_path": "public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/splunk-201-hands-on-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/Splunk 201 Hands-On - Attendee - July 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "d01c906bd82915153f13ef9f858460c0e7456c43",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101%20201%20301%20Hands-On/GSS%20Materials/splunk-201-hands-on-attendee.html"
   },
   {
@@ -276,7 +310,8 @@
     "title": "Splunk 201 Hands On Lab Guide",
     "redirect_html_path": "public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/splunk-201-hands-on-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/Splunk 201 Hands-On - Lab Guide - July 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "c51fce69c23bcf66f5c87fe2110b29a396216651",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101%20201%20301%20Hands-On/GSS%20Materials/splunk-201-hands-on-lab-guide.html"
   },
   {
@@ -284,7 +319,8 @@
     "title": "Splunk Attack Analyzer and Splunk SOAR Workshop Lab Guide",
     "redirect_html_path": "public/workshops/Splunk Attack Analyzer and Splunk SOAR Hands-On Workshop/splunk-attack-analyzer-and-splunk-soar-workshop-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Attack Analyzer and Splunk SOAR Hands-On Workshop/Splunk Attack Analyzer and Splunk SOAR Workshop Lab Guide.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "ae0dfbaddced5ac760ea0aee2623fc30f651c7ea",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Attack%20Analyzer%20and%20Splunk%20SOAR%20Hands-On%20Workshop/splunk-attack-analyzer-and-splunk-soar-workshop-lab-guide.html"
   },
   {
@@ -292,7 +328,8 @@
     "title": "Splunk Attack Analyzer Only Workshop Lab Guide",
     "redirect_html_path": "public/workshops/Splunk Attack Analyzer and Splunk SOAR Hands-On Workshop/splunk-attack-analyzer-only-workshop-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Attack Analyzer and Splunk SOAR Hands-On Workshop/Splunk Attack Analyzer Only Workshop Lab Guide.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "b0f1dc6fa4d6cc3cf221d867d74bdf2235249693",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Attack%20Analyzer%20and%20Splunk%20SOAR%20Hands-On%20Workshop/splunk-attack-analyzer-only-workshop-lab-guide.html"
   },
   {
@@ -300,7 +337,8 @@
     "title": "Splunk buttercup hoof gradient",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Dashboard Studio/splunk-buttercup-hoof-gradient.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Dashboard Studio/Splunk-2020-buttercup-hoof-gradient.png",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "ba9231006e4bd22cf4b3bd2a43b2ddd7cdb4b15e",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk-buttercup-hoof-gradient.html"
   },
   {
@@ -308,7 +346,8 @@
     "title": "Splunk com Registration Best Practices",
     "redirect_html_path": "public/other/Splunk-com Registration Best Practices/splunk-com-registration-best-practices.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/other/Splunk-com Registration Best Practices/Splunk-com Registration Best Practices.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "214edafe96757dc3bd9498e4b44755586bcc61fe",
     "public_url": "https://splunk.github.io/splunk-show-public/public/other/Splunk-com%20Registration%20Best%20Practices/splunk-com-registration-best-practices.html"
   },
   {
@@ -316,7 +355,8 @@
     "title": "Splunk Federated Data Management Workshop Attendee",
     "redirect_html_path": "public/workshops/Splunk Data Management Workshop/splunk-federated-data-management-workshop-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Data Management Workshop/Splunk Federated Data Management Workshop - Attendee - Feb 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "2b85f1dab74ecca90321b31d7617c20e9c567d45",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/splunk-federated-data-management-workshop-attendee.html"
   },
   {
@@ -324,7 +364,8 @@
     "title": "Splunk Federated Data Management Workshop Lab Guide",
     "redirect_html_path": "public/workshops/Splunk Data Management Workshop/splunk-federated-data-management-workshop-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Data Management Workshop/Splunk Federated Data Management Workshop - Lab Guide - Feb 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "74d9c9789c1eccab7ae696c3063910a13dd74dc7",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/splunk-federated-data-management-workshop-lab-guide.html"
   },
   {
@@ -332,7 +373,8 @@
     "title": "Splunk for Telco Analysts Hands on Attendee",
     "redirect_html_path": "public/workshops/Splunk for Telco Analysts Hands-On/splunk-for-telco-analysts-hands-on-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk for Telco Analysts Hands-On/Splunk for Telco Analysts Hands-on - Attendee - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "c5e56ceadb0394d43d8261e2b4effc5847c56a4c",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20for%20Telco%20Analysts%20Hands-On/splunk-for-telco-analysts-hands-on-attendee.html"
   },
   {
@@ -340,7 +382,8 @@
     "title": "splunk gu\u00eda referencia r\u00e1pida",
     "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/Espa\u00f1ol/splunk-gu\u00eda-referencia-r\u00e1pida.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Espa\u00f1ol/splunk-gu\u00eda-referencia-r\u00e1pida.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "6c5945beb7c413df8b8bebb22bc16006be6bcf89",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/Espa%C3%B1ol/splunk-gu%C3%ADa-referencia-r%C3%A1pida.html"
   },
   {
@@ -348,7 +391,8 @@
     "title": "Splunk Show User Guide for Partners",
     "redirect_html_path": "public/other/Splunk Show User Guide for Partners/splunk-show-user-guide-for-partners.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/other/Splunk Show User Guide for Partners/Splunk Show User Guide for Partners.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "53ff9735df0f294f33b246b30666464f337e9178",
     "public_url": "https://splunk.github.io/splunk-show-public/public/other/Splunk%20Show%20User%20Guide%20for%20Partners/splunk-show-user-guide-for-partners.html"
   },
   {
@@ -356,7 +400,8 @@
     "title": "Splunk4Admins Admin Config Service Attendee",
     "redirect_html_path": "public/workshops/Splunk4Admins - Admin Config Service/splunk4admins-admin-config-service-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Admin Config Service/Splunk4Admins - Admin Config Service - Attendee - July 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "392377138361c36990f2c6a8d2cb72e1b4f508eb",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Admin%20Config%20Service/splunk4admins-admin-config-service-attendee.html"
   },
   {
@@ -364,7 +409,8 @@
     "title": "Splunk4Admins Admin Config Service Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - Admin Config Service/splunk4admins-admin-config-service-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Admin Config Service/Splunk4Admins - Admin Config Service - Lab Guide - Mar 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "a93316029f9b73cc2ea064b9b7b9fb240032fd10",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Admin%20Config%20Service/splunk4admins-admin-config-service-lab-guide.html"
   },
   {
@@ -372,7 +418,8 @@
     "title": "Splunk4Admins Advanced Data Routing with Forwarders and Ingest Actions Attendee",
     "redirect_html_path": "public/workshops/Splunk4Admins - Advanced Data Routing with Forwarders and Ingest Actions/splunk4admins-advanced-data-routing-with-forwarders-and-ingest-actions-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Advanced Data Routing with Forwarders and Ingest Actions/Splunk4Admins - Advanced Data Routing with Forwarders and Ingest Actions - Attendee - Mar 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "02a1b503b57e34e72f00f05f39c47531b37984e5",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Advanced%20Data%20Routing%20with%20Forwarders%20and%20Ingest%20Actions/splunk4admins-advanced-data-routing-with-forwarders-and-ingest-actions-attendee.html"
   },
   {
@@ -380,7 +427,8 @@
     "title": "Splunk4Admins Advanced Data Routing with Forwarders and Ingest Actions Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - Advanced Data Routing with Forwarders and Ingest Actions/splunk4admins-advanced-data-routing-with-forwarders-and-ingest-actions-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Advanced Data Routing with Forwarders and Ingest Actions/Splunk4Admins - Advanced Data Routing with Forwarders and Ingest Actions - Lab Guide - Mar 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "a95120c2c8c782658b579ed08f8a508cfebf6414",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Advanced%20Data%20Routing%20with%20Forwarders%20and%20Ingest%20Actions/splunk4admins-advanced-data-routing-with-forwarders-and-ingest-actions-lab-guide.html"
   },
   {
@@ -388,7 +436,8 @@
     "title": "Splunk4Admins Apps Attendee",
     "redirect_html_path": "public/workshops/Splunk4Admins - Apps/splunk4admins-apps-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Apps/Splunk4Admins - Apps - Attendee - Oct 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "b57767fd5f39607ad10a8494a09bc287773d98b2",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Apps/splunk4admins-apps-attendee.html"
   },
   {
@@ -396,7 +445,8 @@
     "title": "Splunk4Admins Apps Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - Apps/splunk4admins-apps-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Apps/Splunk4Admins - Apps - Lab Guide - Sep 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "228fd24f07193f1a299bf3ed0daef16201ef3834",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Apps/splunk4admins-apps-lab-guide.html"
   },
   {
@@ -404,7 +454,8 @@
     "title": "Splunk4Admins Cloud Monitoring Console Attendee",
     "redirect_html_path": "public/workshops/Splunk4Admins - Cloud Monitoring Console/splunk4admins-cloud-monitoring-console-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Cloud Monitoring Console/Splunk4Admins - Cloud Monitoring Console - Attendee - Aug 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "27a167990bf229202a5a2e8df5958f8fdd89addc",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Cloud%20Monitoring%20Console/splunk4admins-cloud-monitoring-console-attendee.html"
   },
   {
@@ -412,7 +463,8 @@
     "title": "Splunk4Admins Cloud Monitoring Console Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - Cloud Monitoring Console/splunk4admins-cloud-monitoring-console-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Cloud Monitoring Console/Splunk4Admins - Cloud Monitoring Console - Lab Guide - Aug 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "a165251f3eb7e3165e8f79cfbaab14e83b199cc0",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Cloud%20Monitoring%20Console/splunk4admins-cloud-monitoring-console-lab-guide.html"
   },
   {
@@ -420,7 +472,8 @@
     "title": "Splunk4Admins Clustering Attendee",
     "redirect_html_path": "public/workshops/Splunk4Admins - Clustering/splunk4admins-clustering-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Clustering/Splunk4Admins - Clustering - Attendee - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "9e81973b6dcd80a86abc1b854a21e038900e5ab0",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Clustering/splunk4admins-clustering-attendee.html"
   },
   {
@@ -428,7 +481,8 @@
     "title": "Splunk4Admins Clustering Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - Clustering/splunk4admins-clustering-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Clustering/Splunk4Admins - Clustering - Lab Guide - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "a8e8bd89f716f17b75a3db8ec9a0085a80b0b5a4",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Clustering/splunk4admins-clustering-lab-guide.html"
   },
   {
@@ -436,7 +490,8 @@
     "title": "Splunk4Admins Encryption of Data in Transit (DIT) Attendee",
     "redirect_html_path": "public/workshops/Splunk4Admins - Encryption of Data in Transit (DIT)/splunk4admins-encryption-of-data-in-transit-dit-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Encryption of Data in Transit (DIT)/Splunk4Admins - Encryption of Data in Transit (DIT) - Attendee - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "0be25f778fd3929a70df137244450e240368a2ba",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Encryption%20of%20Data%20in%20Transit%20%28DIT%29/splunk4admins-encryption-of-data-in-transit-dit-attendee.html"
   },
   {
@@ -444,7 +499,8 @@
     "title": "Splunk4Admins Encryption of Data in Transit (DIT) Cheat Sheet",
     "redirect_html_path": "public/workshops/Splunk4Admins - Encryption of Data in Transit (DIT)/splunk4admins-encryption-of-data-in-transit-dit-cheat-sheet.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Encryption of Data in Transit (DIT)/Splunk4Admins - Encryption of Data in Transit (DIT) - Cheat Sheet - Sep 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "33c0f70fa6412e7b6223a70f7c8a3af861a1bc32",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Encryption%20of%20Data%20in%20Transit%20%28DIT%29/splunk4admins-encryption-of-data-in-transit-dit-cheat-sheet.html"
   },
   {
@@ -452,7 +508,8 @@
     "title": "Splunk4Admins Encryption of Data in Transit (DIT) Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - Encryption of Data in Transit (DIT)/splunk4admins-encryption-of-data-in-transit-dit-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Encryption of Data in Transit (DIT)/Splunk4Admins - Encryption of Data in Transit (DIT) - Lab Guide - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "eee61bac3e3f4b0d02a0b58b6e8c28ff9f5512f9",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Encryption%20of%20Data%20in%20Transit%20%28DIT%29/splunk4admins-encryption-of-data-in-transit-dit-lab-guide.html"
   },
   {
@@ -460,7 +517,8 @@
     "title": "Splunk4Admins Forwarder Management Attendee",
     "redirect_html_path": "public/workshops/Splunk4Admins - Forwarder Management/splunk4admins-forwarder-management-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Forwarder Management/Splunk4Admins - Forwarder Management - Attendee - Oct 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "975bc53183da387101e0ce506cf001fa239c1850",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Forwarder%20Management/splunk4admins-forwarder-management-attendee.html"
   },
   {
@@ -468,7 +526,8 @@
     "title": "Splunk4Admins Forwarder Management Cheat Sheet",
     "redirect_html_path": "public/workshops/Splunk4Admins - Forwarder Management/splunk4admins-forwarder-management-cheat-sheet.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Forwarder Management/Splunk4Admins - Forwarder Management - Cheat Sheet - Sep 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "f0637e4ed1e5a5b0619877f501728f7872e22ba0",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Forwarder%20Management/splunk4admins-forwarder-management-cheat-sheet.html"
   },
   {
@@ -476,7 +535,8 @@
     "title": "Splunk4Admins Forwarder Management Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - Forwarder Management/splunk4admins-forwarder-management-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Forwarder Management/Splunk4Admins - Forwarder Management - Lab Guide - Oct 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "2194bbc39ff4dd0268cdb0821c31b9ca73d5a92b",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Forwarder%20Management/splunk4admins-forwarder-management-lab-guide.html"
   },
   {
@@ -484,7 +544,8 @@
     "title": "Splunk4Admins Indexer Performance Attendees",
     "redirect_html_path": "public/workshops/Splunk4Admins - Indexer Performance/splunk4admins-indexer-performance-attendees.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Indexer Performance/Splunk4Admins - Indexer Performance - Attendees - Aug 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "b4cd110ddec39886ce1441e3512045eb2287cdb5",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Indexer%20Performance/splunk4admins-indexer-performance-attendees.html"
   },
   {
@@ -492,7 +553,8 @@
     "title": "Splunk4Admins Indexer Performance Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - Indexer Performance/splunk4admins-indexer-performance-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Indexer Performance/Splunk4Admins - Indexer Performance - Lab Guide - Aug 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "e59a31b8a3b4647cbfb841db517ebe609e544698",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Indexer%20Performance/splunk4admins-indexer-performance-lab-guide.html"
   },
   {
@@ -500,7 +562,8 @@
     "title": "Splunk4Admins Monitoring Console Attendee",
     "redirect_html_path": "public/workshops/Splunk4Admins - Monitoring Console/splunk4admins-monitoring-console-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Monitoring Console/Splunk4Admins - Monitoring Console - Attendee - Mar 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "07c6b5c9d6dde69cfe0b5ce33d375d4b9a225194",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Monitoring%20Console/splunk4admins-monitoring-console-attendee.html"
   },
   {
@@ -508,7 +571,8 @@
     "title": "Splunk4Admins Monitoring Console Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - Monitoring Console/splunk4admins-monitoring-console-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Monitoring Console/Splunk4Admins - Monitoring Console - Lab Guide - Mar 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "570aa1d95cc8177294760a87090c8ee30a535368",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Monitoring%20Console/splunk4admins-monitoring-console-lab-guide.html"
   },
   {
@@ -516,7 +580,8 @@
     "title": "Splunk4Admins Splunk Cloud Storage Attendee",
     "redirect_html_path": "public/workshops/Splunk4Admins - Splunk Cloud Storage/splunk4admins-splunk-cloud-storage-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Splunk Cloud Storage/Splunk4Admins - Splunk Cloud Storage - Attendee - Mar 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "e66ab0d8f458814820ae67f374787c14c3edf8a4",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Splunk%20Cloud%20Storage/splunk4admins-splunk-cloud-storage-attendee.html"
   },
   {
@@ -524,7 +589,8 @@
     "title": "Splunk4Admins Splunk Cloud Storage Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - Splunk Cloud Storage/splunk4admins-splunk-cloud-storage-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - Splunk Cloud Storage/Splunk4Admins - Splunk Cloud Storage - Lab Guide - Mar 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "d49061f792b1c48cd70764ec8a0e74982a728872",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Splunk%20Cloud%20Storage/splunk4admins-splunk-cloud-storage-lab-guide.html"
   },
   {
@@ -532,7 +598,8 @@
     "title": "Splunk4Admins User Management Attendee",
     "redirect_html_path": "public/workshops/Splunk4Admins - User Management/splunk4admins-user-management-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - User Management/Splunk4Admins - User Management - Attendee - July 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "52d2cf4957b2a639d3d80a509c323f7bfeb0a296",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20User%20Management/splunk4admins-user-management-attendee.html"
   },
   {
@@ -540,7 +607,8 @@
     "title": "Splunk4Admins User Management Cheat Sheet",
     "redirect_html_path": "public/workshops/Splunk4Admins - User Management/splunk4admins-user-management-cheat-sheet.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - User Management/Splunk4Admins - User Management - Cheat Sheet - May 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "a750e5cc180de1522965689412b5fd6a6cee0529",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20User%20Management/splunk4admins-user-management-cheat-sheet.html"
   },
   {
@@ -548,7 +616,8 @@
     "title": "Splunk4Admins User Management Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Admins - User Management/splunk4admins-user-management-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins - User Management/Splunk4Admins - User Management - Lab Guide - July 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "8353e2a0331cb7d3e28df23d6514355bcabd28da",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20User%20Management/splunk4admins-user-management-lab-guide.html"
   },
   {
@@ -556,7 +625,8 @@
     "title": "Splunk4Champions Flyer",
     "redirect_html_path": "public/workshops/Splunk4Champions/splunk4champions-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Champions/Splunk4Champions Flyer - June 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "04310bcf2424cb7e0c46b9d3b61c717298ccf7a6",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Champions/splunk4champions-flyer.html"
   },
   {
@@ -564,7 +634,8 @@
     "title": "Splunk4Ninjas Common Information Model Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Common Information Model/splunk4ninjas-common-information-model-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Common Information Model/Splunk4Ninjas - Common Information Model - Attendee - Aug 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "2bc8f36ffc80d1ec76fce213d9593a7b2008be49",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Common%20Information%20Model/splunk4ninjas-common-information-model-attendee.html"
   },
   {
@@ -572,7 +643,8 @@
     "title": "Splunk4Ninjas Common Information Model Flyer",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Common Information Model/splunk4ninjas-common-information-model-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Common Information Model/Splunk4Ninjas - Common Information Model - Flyer - Aug 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "3d9a7de6b4b2675c0229a7c693ae9a81b6d04ae5",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Common%20Information%20Model/splunk4ninjas-common-information-model-flyer.html"
   },
   {
@@ -580,7 +652,8 @@
     "title": "Splunk4Ninjas Custom Commands Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Custom Commands/splunk4ninjas-custom-commands-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Custom Commands/Splunk4Ninjas - Custom Commands - Attendee - Aug 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "52247612bbfb881da7d3a6d894d2da6c9dccdd4e",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Custom%20Commands/splunk4ninjas-custom-commands-attendee.html"
   },
   {
@@ -588,7 +661,8 @@
     "title": "Splunk4Ninjas Custom Commands Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Custom Commands/splunk4ninjas-custom-commands-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Custom Commands/Splunk4Ninjas - Custom Commands - Lab Guide - Aug 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "577264d8815798679bcd794aa02a7587083f1403",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Custom%20Commands/splunk4ninjas-custom-commands-lab-guide.html"
   },
   {
@@ -596,7 +670,8 @@
     "title": "Splunk4Ninjas Dashboard Studio Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Dashboard Studio/splunk4ninjas-dashboard-studio-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Dashboard Studio/Splunk4Ninjas - Dashboard Studio - Attendee - Apr 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "d8f45823b3d6ee0ad82c2db2b6ff421e0648a3b4",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-attendee.html"
   },
   {
@@ -604,7 +679,8 @@
     "title": "Splunk4Ninjas Dashboard Studio Flyer",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Dashboard Studio/splunk4ninjas-dashboard-studio-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Dashboard Studio/Splunk4Ninjas - Dashboard Studio - Flyer - July 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "7aa8cf7fbc543153f71e2581548b4aead3a948c5",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-flyer.html"
   },
   {
@@ -612,7 +688,8 @@
     "title": "Splunk4Ninjas Dashboard Studio Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Dashboard Studio/splunk4ninjas-dashboard-studio-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Dashboard Studio/Splunk4Ninjas - Dashboard Studio - Lab Guide - Apr 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "c5891f2a7fbeb20d0141616a786b576e18805d19",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-lab-guide.html"
   },
   {
@@ -620,7 +697,8 @@
     "title": "Splunk4Ninjas Data Onboarding Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Data Onboarding/splunk4ninjas-data-onboarding-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Data Onboarding/Splunk4Ninjas - Data Onboarding - Attendee - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "cc383f09291a0f2ac5698894fddbae33ee4252b6",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Data%20Onboarding/splunk4ninjas-data-onboarding-attendee.html"
   },
   {
@@ -628,7 +706,8 @@
     "title": "Splunk4Ninjas Data Onboarding Flyer",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Data Onboarding/splunk4ninjas-data-onboarding-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Data Onboarding/Splunk4Ninjas - Data Onboarding - Flyer - Jan 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "a364b8dec1b25b930bc3a2e77b779bf1aed1458c",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Data%20Onboarding/splunk4ninjas-data-onboarding-flyer.html"
   },
   {
@@ -636,7 +715,8 @@
     "title": "Splunk4Ninjas Data Onboarding Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Data Onboarding/splunk4ninjas-data-onboarding-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Data Onboarding/Splunk4Ninjas - Data Onboarding - Lab Guide - Feb 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "88ff99fb000f1ba483c00a9d3b31bfde225acb7d",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Data%20Onboarding/splunk4ninjas-data-onboarding-lab-guide.html"
   },
   {
@@ -644,7 +724,8 @@
     "title": "Splunk4Ninjas Machine Learning and AIOps Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning and AIOps/splunk4ninjas-machine-learning-and-aiops-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning and AIOps/Splunk4Ninjas - Machine Learning and AIOps - Attendee - Aug 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "a41f4502d6719cdc6db2160a39222aa523de0252",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20and%20AIOps/splunk4ninjas-machine-learning-and-aiops-attendee.html"
   },
   {
@@ -652,7 +733,8 @@
     "title": "Splunk4Ninjas Machine Learning and AIOps Flyer",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning and AIOps/splunk4ninjas-machine-learning-and-aiops-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning and AIOps/Splunk4Ninjas - Machine Learning and AIOps - Flyer - Jan 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "a151a5a1b9fdc5e4248c7e2c1e2c0ec732e286b5",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20and%20AIOps/splunk4ninjas-machine-learning-and-aiops-flyer.html"
   },
   {
@@ -660,7 +742,8 @@
     "title": "Splunk4Ninjas Machine Learning and AIOps Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning and AIOps/splunk4ninjas-machine-learning-and-aiops-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning and AIOps/Splunk4Ninjas - Machine Learning and AIOps - Lab Guide - Feb 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "d62acbf6b9512d1d80fc9a76ce1f2e68fa278827",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20and%20AIOps/splunk4ninjas-machine-learning-and-aiops-lab-guide.html"
   },
   {
@@ -668,7 +751,8 @@
     "title": "Splunk4Ninjas Machine Learning Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning/splunk4ninjas-machine-learning-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning/Splunk4Ninjas - Machine Learning - Attendee - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "f4aff2d4b73421f7bad415ec415a64bc12586521",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning/splunk4ninjas-machine-learning-attendee.html"
   },
   {
@@ -676,7 +760,8 @@
     "title": "Splunk4Ninjas Machine Learning Flyer",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning/splunk4ninjas-machine-learning-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning/Splunk4Ninjas - Machine Learning - Flyer - Aug 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "7925cca5a2cb9a9d33af0559e677d3e444b14357",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning/splunk4ninjas-machine-learning-flyer.html"
   },
   {
@@ -684,7 +769,8 @@
     "title": "Splunk4Ninjas Machine Learning for Security Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning for Security/splunk4ninjas-machine-learning-for-security-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning for Security/Splunk4Ninjas - Machine Learning for Security - Attendee - Oct 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "9e4dbc9aec33920a202298166327628b07ff896b",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20for%20Security/splunk4ninjas-machine-learning-for-security-attendee.html"
   },
   {
@@ -692,7 +778,8 @@
     "title": "Splunk4Ninjas Machine Learning for Security Flyer",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning for Security/splunk4ninjas-machine-learning-for-security-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning for Security/Splunk4Ninjas - Machine Learning for Security - Flyer - Sep 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "1de5cf11e963353773bd893095455509bd204b3b",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20for%20Security/splunk4ninjas-machine-learning-for-security-flyer.html"
   },
   {
@@ -700,7 +787,8 @@
     "title": "Splunk4Ninjas Machine Learning for Security Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning for Security/splunk4ninjas-machine-learning-for-security-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning for Security/Splunk4Ninjas - Machine Learning for Security - Lab Guide - Oct 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "8b15a31b73eed6f6b330b5c8a4cdcd6a8017ba16",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20for%20Security/splunk4ninjas-machine-learning-for-security-lab-guide.html"
   },
   {
@@ -708,7 +796,8 @@
     "title": "Splunk4Ninjas ML Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning/splunk4ninjas-ml-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning/Splunk4Ninjas - ML - Lab Guide - May 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "940c847454db1ad4fdacbbf7701f755cc04931a1",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning/splunk4ninjas-ml-lab-guide.html"
   },
   {
@@ -716,7 +805,8 @@
     "title": "Splunk4Ninjas SPL Best Practices Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - SPL Best Practices/splunk4ninjas-spl-best-practices-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - SPL Best Practices/Splunk4Ninjas - SPL Best Practices - Attendee - Apr 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "68734997e7a0488435705790f9417933ecf3b506",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20SPL%20Best%20Practices/splunk4ninjas-spl-best-practices-attendee.html"
   },
   {
@@ -724,7 +814,8 @@
     "title": "Splunk4Ninjas SPL Best Practices Flyer",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - SPL Best Practices/splunk4ninjas-spl-best-practices-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - SPL Best Practices/Splunk4Ninjas - SPL Best Practices - Flyer - Jan 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "3ac3b76b557019f8ce136a7890b851703388aba9",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20SPL%20Best%20Practices/splunk4ninjas-spl-best-practices-flyer.html"
   },
   {
@@ -732,7 +823,8 @@
     "title": "Splunk4Ninjas Splunk Connect for SNMP Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Splunk Connect for SNMP/splunk4ninjas-splunk-connect-for-snmp-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Splunk Connect for SNMP/Splunk4Ninjas - Splunk Connect for SNMP - Attendee - Jan 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "f91b0b36e177ebe8e5c79ceb11c162a9dc2032e4",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Splunk%20Connect%20for%20SNMP/splunk4ninjas-splunk-connect-for-snmp-attendee.html"
   },
   {
@@ -740,7 +832,8 @@
     "title": "Splunk4Rookies Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/splunk4rookies-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Splunk4Rookies - Attendee - Apr 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "77e9f9143eca5ccb28d87f0414623f111e107d9a",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/splunk4rookies-attendee.html"
   },
   {
@@ -748,7 +841,8 @@
     "title": "Splunk4Rookies AWS Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - AWS/splunk4rookies-aws-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - AWS/Splunk4Rookies - AWS - Attendee - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "5006466a46daeaf1d8e5277aadb39af6d792932f",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20AWS/splunk4rookies-aws-attendee.html"
   },
   {
@@ -756,7 +850,8 @@
     "title": "Splunk4Rookies AWS Flyer",
     "redirect_html_path": "public/workshops/Splunk4Rookies - AWS/splunk4rookies-aws-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - AWS/Splunk4Rookies - AWS - Flyer - July 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "27ea1d1fd18ee0d02d7b580c42930b78231eeff4",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20AWS/splunk4rookies-aws-flyer.html"
   },
   {
@@ -764,7 +859,8 @@
     "title": "Splunk4Rookies AWS Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Rookies - AWS/splunk4rookies-aws-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - AWS/Splunk4Rookies - AWS - Lab Guide - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "17c0326a61a4abbb06bec73473b1086a4eb03392",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20AWS/splunk4rookies-aws-lab-guide.html"
   },
   {
@@ -772,7 +868,8 @@
     "title": "Splunk4Rookies Business Insights Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Business Insights/splunk4rookies-business-insights-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Business Insights/Splunk4Rookies - Business Insights - Attendee - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "38626b83dfd0aa4d7454f9072357bf3bc95a461f",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Business%20Insights/splunk4rookies-business-insights-attendee.html"
   },
   {
@@ -780,7 +877,8 @@
     "title": "Splunk4Rookies Business Insights One Pager",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Business Insights/splunk4rookies-business-insights-one-pager.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Business Insights/Splunk4Rookies - Business Insights - One-Pager - July 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "382fe6395e9d5e2e2c5879fab247abd18b90f62c",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Business%20Insights/splunk4rookies-business-insights-one-pager.html"
   },
   {
@@ -788,7 +886,8 @@
     "title": "Splunk4Rookies CSX Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - CSX/splunk4rookies-csx-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - CSX/Splunk4Rookies - CSX - Attendee - Apr 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "02798508fafe5d34ea2c4b382dd52c15d49aa000",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20CSX/splunk4rookies-csx-attendee.html"
   },
   {
@@ -796,7 +895,8 @@
     "title": "Splunk4Rookies CSX Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Rookies - CSX/splunk4rookies-csx-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - CSX/Splunk4Rookies - CSX - Lab Guide - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "7189c879c8430d8e1cabdac1ae8b741ab61860f3",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20CSX/splunk4rookies-csx-lab-guide.html"
   },
   {
@@ -804,7 +904,8 @@
     "title": "Splunk4Rookies Dashboard Studio Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/splunk4rookies-dashboard-studio-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/Splunk4Rookies - Dashboard Studio - Attendee - May 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "f2dcd83fa555d4cf1f137ed57a2f69620a12a749",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Dashboard%20Studio%20%28DS4R%29/splunk4rookies-dashboard-studio-attendee.html"
   },
   {
@@ -812,7 +913,8 @@
     "title": "Splunk4Rookies Dashboard Studio Flyer",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/splunk4rookies-dashboard-studio-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/Splunk4Rookies - Dashboard Studio - Flyer - May 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "eec1327701ab65cfc3440208b9088e708566268d",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Dashboard%20Studio%20%28DS4R%29/splunk4rookies-dashboard-studio-flyer.html"
   },
   {
@@ -820,7 +922,8 @@
     "title": "Splunk4Rookies Dashboard Studio Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/splunk4rookies-dashboard-studio-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/Splunk4Rookies - Dashboard Studio - Lab Guide - May 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "910bf8fc851e1cd75d0969caa6965bfc69795b21",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Dashboard%20Studio%20%28DS4R%29/splunk4rookies-dashboard-studio-lab-guide.html"
   },
   {
@@ -828,7 +931,8 @@
     "title": "Splunk4Rookies Flyer",
     "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/splunk4rookies-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Splunk4Rookies - Flyer - Apr 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "d1659dd53f8d8cd7ecc699560726b153482848e5",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/splunk4rookies-flyer.html"
   },
   {
@@ -836,7 +940,8 @@
     "title": "Splunk4Rookies Flyer ESP",
     "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/Espa\u00f1ol/splunk4rookies-flyer-esp.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Espa\u00f1ol/Splunk4Rookies - Flyer - Oct 2024 - ESP.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "b56fe0d33eca53b5ff244e5e24e58c916eb4b443",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/Espa%C3%B1ol/splunk4rookies-flyer-esp.html"
   },
   {
@@ -844,7 +949,8 @@
     "title": "Splunk4Rookies Gu\u00eda de Laboratorio",
     "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/Espa\u00f1ol/splunk4rookies-gu\u00eda-de-laboratorio.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Espa\u00f1ol/Splunk4Rookies - Gu\u00eda de Laboratorio - Nov 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "e66e04fd6ef7ebf35eefada51cb623b1ece3db88",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/Espa%C3%B1ol/splunk4rookies-gu%C3%ADa-de-laboratorio.html"
   },
   {
@@ -852,7 +958,8 @@
     "title": "Splunk4Rookies Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/splunk4rookies-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Splunk4Rookies - Lab Guide - Apr 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "7a32404af8bd9f95ebdc0eb9b4725cd14f4d4f1f",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/splunk4rookies-lab-guide.html"
   },
   {
@@ -860,7 +967,8 @@
     "title": "Splunk4Rookies Machine Learning Event Workshop Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Machine Learning Event Workshop/splunk4rookies-machine-learning-event-workshop-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Machine Learning Event Workshop/Splunk4Rookies - Machine Learning Event Workshop - Attendee - Apr 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "6ea59826a4fcb74806472174c97c8f66397ddc6d",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Machine%20Learning%20Event%20Workshop/splunk4rookies-machine-learning-event-workshop-attendee.html"
   },
   {
@@ -868,7 +976,8 @@
     "title": "Splunk4Rookies Machine Learning Event Workshop Flyer",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Machine Learning Event Workshop/splunk4rookies-machine-learning-event-workshop-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Machine Learning Event Workshop/Splunk4Rookies - Machine Learning Event Workshop - Flyer - Apr 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "416b7d088f46f818ad9c9652be648d38216c3c57",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Machine%20Learning%20Event%20Workshop/splunk4rookies-machine-learning-event-workshop-flyer.html"
   },
   {
@@ -876,7 +985,8 @@
     "title": "Splunk4Rookies Machine Learning for IT Ops Flyer",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Machine Learning for IT Ops/splunk4rookies-machine-learning-for-it-ops-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Machine Learning for IT Ops/Splunk4Rookies - Machine Learning for IT Ops - Flyer - Apr 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "ac3273ef1179f7b2bee96743f453fb97613222a0",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Machine%20Learning%20for%20IT%20Ops/splunk4rookies-machine-learning-for-it-ops-flyer.html"
   },
   {
@@ -884,7 +994,8 @@
     "title": "Splunk4Rookies Machine Learning for ITOps Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Machine Learning for IT Ops/splunk4rookies-machine-learning-for-itops-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Machine Learning for IT Ops/Splunk4Rookies - Machine Learning for ITOps - Attendee - Aug 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "a648ec5c18aa89fcd4624f72fc0d798664555d63",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Machine%20Learning%20for%20IT%20Ops/splunk4rookies-machine-learning-for-itops-attendee.html"
   },
   {
@@ -892,7 +1003,8 @@
     "title": "Splunk4Rookies Machine Learning for Security Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Machine Learning for Security/splunk4rookies-machine-learning-for-security-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Machine Learning for Security/Splunk4Rookies - Machine Learning for Security - Attendee - Aug 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "fcf3a302ed29219dce586f4e410350a993c44995",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Machine%20Learning%20for%20Security/splunk4rookies-machine-learning-for-security-attendee.html"
   },
   {
@@ -900,7 +1012,8 @@
     "title": "Splunk4Rookies Machine Learning for Security Flyer",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Machine Learning for Security/splunk4rookies-machine-learning-for-security-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Machine Learning for Security/Splunk4Rookies - Machine Learning for Security - Flyer - April 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "0e2ca9b2ff24ce4dc272ad43ba939c14f4dfc3d6",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Machine%20Learning%20for%20Security/splunk4rookies-machine-learning-for-security-flyer.html"
   },
   {
@@ -908,7 +1021,8 @@
     "title": "Splunk4Rookies Observability Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Observability/splunk4rookies-observability-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Observability/Splunk4Rookies - Observability - Attendee - Jan 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "50e23d932492b3d047ef593210a98aec2b16d299",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Observability/splunk4rookies-observability-attendee.html"
   },
   {
@@ -916,7 +1030,8 @@
     "title": "Splunk4Rookies Observability Flyer",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Observability/splunk4rookies-observability-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Observability/Splunk4Rookies - Observability - Flyer - July 2024.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "9d82e4342666ae1d4184a425168fb7024e70cdf5",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Observability/splunk4rookies-observability-flyer.html"
   },
   {
@@ -924,7 +1039,8 @@
     "title": "Splunk4Rookies Security Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Security/splunk4rookies-security-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Security/Splunk4Rookies - Security - Attendee - July 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "5b907f34bf5544814b7ee266c18b66b45026232c",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Security/splunk4rookies-security-attendee.html"
   },
   {
@@ -932,7 +1048,8 @@
     "title": "Splunk4Rookies Security Flyer",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Security/splunk4rookies-security-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Security/Splunk4Rookies - Security - Flyer - July 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "e74d47ef3fb5ff6c89cb3f80d20e238265939119",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Security/splunk4rookies-security-flyer.html"
   },
   {
@@ -940,7 +1057,8 @@
     "title": "Splunk4Rookies Splunk Connect for Syslog Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/splunk4rookies-splunk-connect-for-syslog-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/Splunk4Rookies - Splunk Connect for Syslog - Attendee - Nov 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "8e2f778570d1730c6fc906198447f2de6b843af3",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Splunk%20Connect%20for%20Syslog%20%28SC4S%29/splunk4rookies-splunk-connect-for-syslog-attendee.html"
   },
   {
@@ -948,7 +1066,8 @@
     "title": "Splunk4Rookies Splunk Connect for Syslog Flyer",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/splunk4rookies-splunk-connect-for-syslog-flyer.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/Splunk4Rookies - Splunk Connect for Syslog - Flyer - Nov 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "9c70c9a97c13049e15c6f4f29e065b59b4050fc6",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Splunk%20Connect%20for%20Syslog%20%28SC4S%29/splunk4rookies-splunk-connect-for-syslog-flyer.html"
   },
   {
@@ -956,7 +1075,8 @@
     "title": "Splunk4Rookies Splunk Connect for Syslog Lab Guide",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/splunk4rookies-splunk-connect-for-syslog-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/Splunk4Rookies - Splunk Connect for Syslog - Lab Guide - Nov 2023.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "aa83ba18837aecf9e83abfc5b88067db957ebe9f",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Splunk%20Connect%20for%20Syslog%20%28SC4S%29/splunk4rookies-splunk-connect-for-syslog-lab-guide.html"
   },
   {
@@ -964,7 +1084,8 @@
     "title": "Threat Hunting APTs Attendee",
     "redirect_html_path": "public/workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/threat-hunting-apts-attendee.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Threat Hunting APTs - Attendee - Sep 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "e2bbcb454d50f2ce14bb34cdffae734e5818e26d",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Customer%20Onboarding%20Enablement%20Journey%20Workshop-%20Threat%20Hunting%20APTs/threat-hunting-apts-attendee.html"
   },
   {
@@ -972,7 +1093,8 @@
     "title": "Threat Hunting APTs Lab Guide",
     "redirect_html_path": "public/workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/threat-hunting-apts-lab-guide.html",
     "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Customer Onboarding Enablement Journey Workshop- Threat Hunting APTs/Threat Hunting APTs - Lab Guide - Sep 2025.pdf",
-    "last_updated_at": "2025-10-31 15:11:12",
+    "last_updated_at": "2025-11-04 12:59:14",
+    "file_sha": "17289cfc10fba760761fc3e6cf2906234aa0455e",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Customer%20Onboarding%20Enablement%20Journey%20Workshop-%20Threat%20Hunting%20APTs/threat-hunting-apts-lab-guide.html"
   }
 ]
