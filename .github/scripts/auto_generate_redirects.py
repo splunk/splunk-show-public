@@ -6,7 +6,6 @@ import sys
 import urllib.parse
 import re
 from datetime import datetime
-import subprocess # NEW: To run git commands
 
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
@@ -16,31 +15,6 @@ ROOT_CONTENT_DIRECTORY = "public"
 PUBLIC_FILE_LIST_FILENAME = "public_file_list.md"
 
 # --- Helper Functions ---
-def get_file_git_sha(file_path_relative_to_repo_root):
-    """
-    Gets the Git SHA-1 hash of a file's content at HEAD.
-    Returns None if the file is new/untracked or an error occurs.
-    """
-    try:
-        # Use git rev-parse HEAD:<path> to get the blob SHA of the file
-        # This works even if the file is not staged, as long as it's in the repo
-        # and has been committed at some point.
-        # If the file is brand new and not yet committed, this will fail.
-        # If the file is modified but not staged, it gets the SHA of the HEAD version.
-        # We need the SHA of the *current working tree content*.
-        # For working tree content, git hash-object is more appropriate.
-        cmd = ['git', 'hash-object', file_path_relative_to_repo_root]
-        result = subprocess.run(cmd, cwd=os.getenv('GITHUB_WORKSPACE'), capture_output=True, text=True, check=True)
-        return result.stdout.strip()
-    except subprocess.CalledProcessError as e:
-        # This typically happens if the file is brand new and not yet committed/tracked by Git
-        # Or if the file doesn't exist at the given path
-        # print(f"Debug: Could not get SHA for {file_path_relative_to_repo_root}: {e.stderr.strip()}", file=sys.stderr)
-        return None
-    except FileNotFoundError:
-        print("Error: 'git' command not found. Ensure Git is installed and in PATH.", file=sys.stderr)
-        return None
-
 def remove_date_patterns(text):
     """
     Removes common date patterns from a string, especially at the end.
@@ -165,52 +139,39 @@ for root, _, files in os.walk(full_root_content_path):
 
         # --- Try to find an existing entry by ID ---
         entry_data = {}
-        current_timestamp_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S') # Formatted timestamp
-
-        # NEW: Get the current SHA of the file
-        full_path_to_original_file = os.path.join(repo_root, relative_original_file_path)
-        current_file_sha = get_file_git_sha(full_path_to_original_file)
-
+        current_timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         if inferred_id in existing_redirects_map_by_id:
             existing_entry = existing_redirects_map_by_id[inferred_id]
             
-            # Preserve manual tweaks for id, title, redirect_html_path
             entry_data['id'] = existing_entry.get('id', inferred_id)
             entry_data['title'] = existing_entry.get('title', inferred_title)
             entry_data['redirect_html_path'] = existing_entry.get('redirect_html_path', inferred_redirect_html_path)
             
-            # Always update current_target_file to the newly discovered path
             entry_data['current_target_file'] = current_target_file_url_in_json
 
-            # --- NEW: Compare relevant fields AND file SHA to determine if last_updated_at needs update ---
             changed = False
             if entry_data['title'] != existing_entry.get('title'): changed = True
             if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): changed = True
             if entry_data['current_target_file'] != existing_entry.get('current_target_file'): changed = True
-            if current_file_sha != existing_entry.get('file_sha'): changed = True # NEW: Compare SHAs
             
             if changed:
-                entry_data['last_updated_at'] = current_timestamp_str
-                entry_data['file_sha'] = current_file_sha # NEW: Update SHA if content or other fields changed
-                print(f"Entry '{entry_data['id']}' changed (content or metadata). Updating timestamp to {current_timestamp_str}.")
+                entry_data['last_updated_at'] = current_timestamp
+                print(f"Entry '{entry_data['id']}' changed. Updating timestamp to {current_timestamp}.")
             else:
-                entry_data['last_updated_at'] = existing_entry.get('last_updated_at', current_timestamp_str)
-                entry_data['file_sha'] = existing_entry.get('file_sha', current_file_sha) # NEW: Preserve SHA
-                print(f"Entry '{entry_data['id']}' unchanged. Preserving timestamp and SHA.")
+                entry_data['last_updated_at'] = existing_entry.get('last_updated_at', current_timestamp)
+                print(f"Entry '{entry_data['id']}' unchanged. Preserving timestamp.")
 
             print(f"Matched existing entry for ID '{entry_data['id']}'. Updating target from '{existing_entry.get('current_target_file', 'N/A')}' to '{current_target_file_url_in_json}'.")
         else:
-            # New entry, set timestamp and SHA
             entry_data = {
                 "id": inferred_id,
                 "title": inferred_title,
                 "redirect_html_path": inferred_redirect_html_path,
                 "current_target_file": current_target_file_url_in_json,
-                "last_updated_at": current_timestamp_str, # NEW: Set timestamp for new entry
-                "file_sha": current_file_sha # NEW: Set SHA for new entry
+                "last_updated_at": current_timestamp
             }
-            print(f"Creating new entry for '{inferred_id}' -> '{current_target_file_url_in_json}' with timestamp {current_timestamp_str}.")
+            print(f"Creating new entry for '{inferred_id}' -> '{current_target_file_url_in_json}' with timestamp {current_timestamp}.")
 
         final_redirects_config_for_writing.append(entry_data)
         processed_ids_in_this_run.add(entry_data['id'])
@@ -250,9 +211,6 @@ for entry in final_redirects_config_for_writing:
     public_url_path_encoded = '/'.join(encoded_path_segments)
     calculated_public_url = GITHUB_PAGES_BASE_URL + public_url_path_encoded
 
-    # Check if public_url changed and update timestamp if it did
-    # This check is now redundant if redirect_html_path is already checked above,
-    # but keeping it for completeness if public_url calculation logic changes.
     if entry.get('public_url') != calculated_public_url:
         entry['last_updated_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print(f"Public URL for '{entry['id']}' changed. Updating timestamp.")
@@ -331,8 +289,11 @@ else:
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
         for sub_folder in sorted_sub_folders:
-            public_file_list_content += f"&nbsp;&nbsp;<details>\n&nbsp;&nbsp;<summary><strong>{sub_folder}</strong></summary>\n\n"
+            # --- FIX: Ensure a blank line after <summary> for Markdown table rendering ---
+            # And no indentation for the table itself.
+            public_file_list_content += f"&nbsp;&nbsp;<details>\n&nbsp;&nbsp;<summary><strong>{sub_folder}</strong></summary>\n\n" # Added \n here
             
+            # These lines MUST NOT have any leading spaces for the Markdown table to render
             public_file_list_content += "| Title | Public URL | Last Updated |\n"
             public_file_list_content += "|---|---|---|\n"
             
@@ -355,6 +316,7 @@ else:
                 
                 escaped_title = title.replace('|', '\\|')
                 
+                # These lines MUST NOT have any leading spaces
                 public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
             
             public_file_list_content += "\n&nbsp;&nbsp;</details>\n"
