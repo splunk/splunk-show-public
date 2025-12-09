@@ -7,7 +7,7 @@
     "last_updated_at": "2025-12-09 12:13:48",
     "public_url": "https://splunk.github.io/splunk-show-public/public/demos/Edge%20Processor%20for%20Splunk%20Enterprise%2010/admin-root-events-ep-demo-data.html"
   },
-  {
+  { 
     "id": "advanced-apt-hunting-workshop-data-sheet",
     "title": "Advanced APT Hunting Workshop Data Sheet",
     "redirect_html_path": "public/workshops/Advanced APT Hunting/advanced-apt-hunting-workshop-data-sheet.html",
