@@ -35,7 +35,7 @@
     "file_sha": "214edafe96757dc3bd9498e4b44755586bcc61fe",
     "public_url": "https://splunk.github.io/splunk-show-public/public/other/Splunk-com%20Registration%20Best%20Practices/splunk-com-registration-best-practices.html"
   },
-  {
+  { 
     "id": "publicothersplunk-show-user-guide-for-partnerssplunk-show-user-guide-for-partners",
     "title": "Splunk Show User Guide for Partners",
     "redirect_html_path": "public/other/Splunk Show User Guide for Partners/splunk-show-user-guide-for-partners.html",
