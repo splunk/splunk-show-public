@@ -12,7 +12,7 @@ import subprocess
 GITHUB_REPO_OWNER = 'splunk'
 GITHUB_REPO_NAME = 'splunk-show-public'
 GITHUB_PAGES_BASE_URL = f"https://{GITHUB_REPO_OWNER}.github.io/{GITHUB_REPO_NAME}/"
-ROOT_CONTENT_DIRECTORY = "public" # This assumes your top-level content folder is named 'public' (lowercase)
+ROOT_CONTENT_DIRECTORY = "public"
 PUBLIC_FILE_LIST_FILENAME = "public_file_list.md"
 
 # --- Helper Functions ---
@@ -35,7 +35,6 @@ def get_file_git_sha(file_path_full_on_runner):
             result = subprocess.run(cmd, cwd=os.getenv('GITHUB_WORKSPACE'), input=file_content, capture_output=True, check=True)
             
             sha = result.stdout.decode('utf-8').strip()
-            # print(f"DEBUG SHA: Successfully got SHA '{sha}' for {file_path_full_on_runner}", file=sys.stderr)
             return sha
     except FileNotFoundError:
         return None
@@ -113,7 +112,6 @@ try:
         existing_data = json.load(f)
         for entry in existing_data:
             if 'current_target_file' in entry:
-                # NEW: Normalize the key to lowercase for case-insensitive matching
                 existing_redirects_map_by_normalized_target_url[entry['current_target_file'].lower()] = entry
             else:
                 print(f"Warning: Entry missing 'current_target_file' in redirects.json: {entry}. This entry will be ignored for merging.", file=sys.stderr)
@@ -154,16 +152,12 @@ for root, _, files in os.walk(full_root_content_path):
         relative_original_file_path = os.path.relpath(os.path.join(root, filename), repo_root)
         relative_original_file_path = relative_original_file_path.replace(os.sep, '/')
 
-        # Construct the full GitHub Pages URL to the original file (with spaces)
-        # This will have the ACTUAL casing from the file system
         current_target_file_url_in_json_actual_casing = GITHUB_PAGES_BASE_URL + relative_original_file_path
-        discovered_target_urls.add(current_target_file_url_in_json_actual_casing) # Track this original file's URL
+        discovered_target_urls.add(current_target_file_url_in_json_actual_casing)
 
-        # --- Infer values for a potential new entry ---
         name_without_ext_and_date = remove_date_patterns(os.path.splitext(filename)[0])
         name_for_slug_path = name_without_ext_and_date.replace('_', ' ')
 
-        # Inferred ID now includes the full relative path for uniqueness
         id_base_path = os.path.relpath(os.path.join(root, os.path.splitext(filename)[0]), full_root_content_path)
         inferred_id = slugify(id_base_path)
         
@@ -173,11 +167,9 @@ for root, _, files in os.walk(full_root_content_path):
         inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_for_slug_path) + '.html')
         inferred_redirect_html_path = inferred_redirect_html_path.replace(os.sep, '/')
 
-        # --- Try to find an existing entry by its current_target_file_url_in_json (case-insensitively) ---
         entry_data = {}
         current_timestamp_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-        # Get the current SHA of the file
         full_path_to_original_file = os.path.join(repo_root, relative_original_file_path)
         current_file_sha = get_file_git_sha(full_path_to_original_file)
         
@@ -185,26 +177,19 @@ for root, _, files in os.walk(full_root_content_path):
             print(f"ERROR: Failed to get Git SHA for '{relative_original_file_path}'. This file will be skipped from redirects.json.", file=sys.stderr)
             continue
 
-        # NEW: Look up using the lowercase version of the discovered URL
         if current_target_file_url_in_json_actual_casing.lower() in existing_redirects_map_by_normalized_target_url:
-            # Found an existing entry for this original file (case-insensitively)
             existing_entry = existing_redirects_map_by_normalized_target_url[current_target_file_url_in_json_actual_casing.lower()]
             
-            # Preserve manual tweaks for id, title, redirect_html_path from existing entry
             entry_data['id'] = existing_entry.get('id', inferred_id)
             entry_data['title'] = existing_entry.get('title', inferred_title)
             entry_data['redirect_html_path'] = existing_entry.get('redirect_html_path', inferred_redirect_html_path)
             
-            # !!! CRITICAL FIX: Update current_target_file to the ACTUAL casing found on disk !!!
             entry_data['current_target_file'] = current_target_file_url_in_json_actual_casing
 
-            # --- Compare relevant fields AND file SHA to determine if last_updated_at needs update ---
             changed = False
             if entry_data['id'] != existing_entry.get('id'): changed = True
             if entry_data['title'] != existing_entry.get('title'): changed = True
             if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): changed = True
-            # Compare current_target_file with the one from existing_entry (which might have different casing)
-            # We compare the normalized versions to avoid false positives due to casing changes
             if entry_data['current_target_file'].lower() != existing_entry.get('current_target_file', '').lower(): changed = True
             if current_file_sha != existing_entry.get('file_sha'): changed = True
             
@@ -219,12 +204,11 @@ for root, _, files in os.walk(full_root_content_path):
 
             print(f"DEBUG: Matched existing entry for original file '{current_target_file_url_in_json_actual_casing}'. Preserving manual overrides.")
         else:
-            # New entry, create with inferred values and set timestamp/SHA
             entry_data = {
                 "id": inferred_id,
                 "title": inferred_title,
                 "redirect_html_path": inferred_redirect_html_path,
-                "current_target_file": current_target_file_url_in_json_actual_casing, # Use actual casing
+                "current_target_file": current_target_file_url_in_json_actual_casing,
                 "last_updated_at": current_timestamp_str,
                 "file_sha": current_file_sha
             }
@@ -233,8 +217,6 @@ for root, _, files in os.walk(full_root_content_path):
         final_redirects_config_for_writing.append(entry_data)
 
 # --- Cleanup: Remove entries from redirects.json whose original files are no longer discovered ---
-# Iterate over the original existing_redirects_map_by_normalized_target_url to find removed files
-# We need to re-check against the actual discovered URLs.
 final_discovered_urls_normalized = {url.lower() for url in discovered_target_urls}
 for existing_normalized_target_url, existing_entry in existing_redirects_map_by_normalized_target_url.items():
     if existing_normalized_target_url not in final_discovered_urls_normalized:
@@ -243,14 +225,10 @@ for existing_normalized_target_url, existing_entry in existing_redirects_map_by_
 
 
 # --- Generate HTML for all entries and update public_url ---
-# This loop now processes the `final_redirects_config_for_writing` list, which contains
-# all the entries that should be in the new redirects.json.
-final_list_after_html_gen = [] # This will be the actual list for the new redirects.json
-generated_html_files = set() # Track generated HTML files for cleanup
+final_list_after_html_gen = []
+generated_html_files = set()
 
-# Filter out entries that might have been removed during the cleanup logic
-# (Though the current logic builds final_redirects_config_for_writing only with discovered files)
-# This loop also ensures that redirects.json is written back with 'public_url'
+# This loop ensures that redirects.json is written back with 'public_url'
 for entry in final_redirects_config_for_writing:
     title = entry['title']
     raw_current_target_file = entry['current_target_file']
