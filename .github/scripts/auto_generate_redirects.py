@@ -6,6 +6,7 @@ import sys
 import urllib.parse
 import re
 from datetime import datetime
+import subprocess # Ensure this is imported for git commands
 
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
@@ -15,6 +16,37 @@ ROOT_CONTENT_DIRECTORY = "public"
 PUBLIC_FILE_LIST_FILENAME = "public_file_list.md"
 
 # --- Helper Functions ---
+def get_file_git_sha(file_path_full_on_runner):
+    """
+    Gets the Git SHA-1 hash of a file's content using 'git hash-object'.
+    This calculates the hash of the current working tree content.
+    Returns None if the file is new/untracked or an error occurs.
+    """
+    try:
+        if not os.path.exists(file_path_full_on_runner):
+            print(f"DEBUG SHA: File not found on runner for SHA calculation: {file_path_full_on_runner}", file=sys.stderr)
+            return None
+        
+        # Read file content in binary mode
+        with open(file_path_full_on_runner, 'rb') as f:
+            file_content = f.read()
+            
+            # Use git hash-object --stdin
+            cmd = ['git', 'hash-object', '--stdin']
+            
+            # Pass content to stdin
+            result = subprocess.run(cmd, cwd=os.getenv('GITHUB_WORKSPACE'), input=file_content, capture_output=True, check=True)
+            
+            sha = result.stdout.decode('utf-8').strip()
+            print(f"DEBUG SHA: Successfully got SHA '{sha}' for {file_path_full_on_runner}", file=sys.stderr)
+            return sha
+    except subprocess.CalledProcessError as e:
+        print(f"ERROR SHA: 'git hash-object' failed for '{file_path_full_on_runner}': {e.stderr.decode('utf-8').strip()}", file=sys.stderr)
+        return None
+    except Exception as e:
+        print(f"ERROR SHA: Unexpected error getting SHA for '{file_path_full_on_runner}': {e}", file=sys.stderr)
+        return None
+
 def remove_date_patterns(text):
     """
     Removes common date patterns from a string, especially at the end.
@@ -114,15 +146,19 @@ if not os.path.isdir(full_root_content_path):
 print(f"Starting recursive file discovery in '{full_root_content_path}'")
 
 for root, _, files in os.walk(full_root_content_path):
+    print(f"DEBUG: Walking directory: {root}") # DEBUG
     for filename in files:
+        print(f"DEBUG: Found file: {filename} in {root}") # DEBUG
         if filename.startswith('.') or filename in ['.gitkeep', 'Thumbs.db', 'desktop.ini']:
+            print(f"DEBUG: Skipping hidden/system file: {filename}") # DEBUG
             continue
         if filename.lower().endswith('.html'):
-            print(f"Skipping generated HTML file: {os.path.join(root, filename)}")
+            print(f"DEBUG: Skipping generated HTML file: {filename}") # DEBUG
             continue
 
         relative_original_file_path = os.path.relpath(os.path.join(root, filename), repo_root)
         relative_original_file_path = relative_original_file_path.replace(os.sep, '/')
+        print(f"DEBUG: Processing file (relative path): {relative_original_file_path}") # DEBUG
 
         current_target_file_url_in_json = GITHUB_PAGES_BASE_URL + relative_original_file_path
         
@@ -139,7 +175,15 @@ for root, _, files in os.walk(full_root_content_path):
 
         # --- Try to find an existing entry by ID ---
         entry_data = {}
-        current_timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        current_timestamp_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        # Get the current SHA of the file
+        full_path_to_original_file = os.path.join(repo_root, relative_original_file_path)
+        current_file_sha = get_file_git_sha(full_path_to_original_file)
+        
+        if current_file_sha is None:
+            print(f"ERROR: Failed to get Git SHA for '{relative_original_file_path}'. This file will be skipped.", file=sys.stderr)
+            continue # Skip this file if we can't get its SHA
 
         if inferred_id in existing_redirects_map_by_id:
             existing_entry = existing_redirects_map_by_id[inferred_id]
@@ -150,28 +194,38 @@ for root, _, files in os.walk(full_root_content_path):
             
             entry_data['current_target_file'] = current_target_file_url_in_json
 
+            # --- Compare relevant fields AND file SHA to determine if last_updated_at needs update ---
             changed = False
             if entry_data['title'] != existing_entry.get('title'): changed = True
             if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): changed = True
             if entry_data['current_target_file'] != existing_entry.get('current_target_file'): changed = True
             
+            # Check if content SHA changed
+            if current_file_sha != existing_entry.get('file_sha'):
+                changed = True
+                print(f"DEBUG: '{entry_data['id']}' file content SHA changed. Old: '{existing_entry.get('file_sha')}', New: '{current_file_sha}'")
+            
             if changed:
-                entry_data['last_updated_at'] = current_timestamp
-                print(f"Entry '{entry_data['id']}' changed. Updating timestamp to {current_timestamp}.")
+                entry_data['last_updated_at'] = current_timestamp_str
+                entry_data['file_sha'] = current_file_sha # Update SHA if content or other fields changed
+                print(f"Entry '{entry_data['id']}' changed (content or metadata). Updating timestamp to {current_timestamp_str}.")
             else:
-                entry_data['last_updated_at'] = existing_entry.get('last_updated_at', current_timestamp)
-                print(f"Entry '{entry_data['id']}' unchanged. Preserving timestamp.")
+                entry_data['last_updated_at'] = existing_entry.get('last_updated_at', current_timestamp_str)
+                entry_data['file_sha'] = existing_entry.get('file_sha', current_file_sha) # Preserve SHA
+                print(f"Entry '{entry_data['id']}' unchanged. Preserving timestamp and SHA.")
 
             print(f"Matched existing entry for ID '{entry_data['id']}'. Updating target from '{existing_entry.get('current_target_file', 'N/A')}' to '{current_target_file_url_in_json}'.")
         else:
+            # New entry, set timestamp and SHA
             entry_data = {
                 "id": inferred_id,
                 "title": inferred_title,
                 "redirect_html_path": inferred_redirect_html_path,
                 "current_target_file": current_target_file_url_in_json,
-                "last_updated_at": current_timestamp
+                "last_updated_at": current_timestamp_str,
+                "file_sha": current_file_sha
             }
-            print(f"Creating new entry for '{inferred_id}' -> '{current_target_file_url_in_json}' with timestamp {current_timestamp}.")
+            print(f"Creating new entry for '{inferred_id}' -> '{current_target_file_url_in_json}' with timestamp {current_timestamp_str}.")
 
         final_redirects_config_for_writing.append(entry_data)
         processed_ids_in_this_run.add(entry_data['id'])
@@ -285,15 +339,13 @@ else:
 
     for top_folder in sorted_top_folders:
         public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n"
+        public_file_list_content += "---\n\n" # Horizontal rule
         
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
         for sub_folder in sorted_sub_folders:
-            # --- FIX: Ensure a blank line after <summary> for Markdown table rendering ---
-            # And no indentation for the table itself.
-            public_file_list_content += f"&nbsp;&nbsp;<details>\n&nbsp;&nbsp;<summary><strong>{sub_folder}</strong></summary>\n\n" # Added \n here
+            public_file_list_content += f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<details>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<summary><strong>{sub_folder}</strong></summary>\n\n"
             
-            # These lines MUST NOT have any leading spaces for the Markdown table to render
             public_file_list_content += "| Title | Public URL | Last Updated |\n"
             public_file_list_content += "|---|---|---|\n"
             
@@ -316,10 +368,9 @@ else:
                 
                 escaped_title = title.replace('|', '\\|')
                 
-                # These lines MUST NOT have any leading spaces
                 public_file_list_content += f"| {escaped_title} | [Link]({public_url}) | {last_updated_display} |\n"
             
-            public_file_list_content += "\n&nbsp;&nbsp;</details>\n"
+            public_file_list_content += "\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</details>\n"
         
         public_file_list_content += "</details>\n"
 
