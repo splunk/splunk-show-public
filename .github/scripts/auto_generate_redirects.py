@@ -6,7 +6,7 @@ import sys
 import urllib.parse
 import re
 from datetime import datetime
-import subprocess # Ensure this is imported for git commands
+import subprocess
 
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
@@ -24,22 +24,14 @@ def get_file_git_sha(file_path_full_on_runner):
     """
     try:
         if not os.path.exists(file_path_full_on_runner):
-            print(f"DEBUG SHA: File not found on runner for SHA calculation: {file_path_full_on_runner}", file=sys.stderr)
             return None
         
-        # Read file content in binary mode
         with open(file_path_full_on_runner, 'rb') as f:
-            file_content = f.read()
-            
-            # Use git hash-object --stdin
             cmd = ['git', 'hash-object', '--stdin']
-            
-            # Pass content to stdin
-            result = subprocess.run(cmd, cwd=os.getenv('GITHUB_WORKSPACE'), input=file_content, capture_output=True, check=True)
-            
-            sha = result.stdout.decode('utf-8').strip()
-            print(f"DEBUG SHA: Successfully got SHA '{sha}' for {file_path_full_on_runner}", file=sys.stderr)
-            return sha
+            result = subprocess.run(cmd, cwd=os.getenv('GITHUB_WORKSPACE'), input=f.read(), capture_output=True, check=True)
+            return result.stdout.decode('utf-8').strip()
+    except FileNotFoundError:
+        return None
     except subprocess.CalledProcessError as e:
         print(f"ERROR SHA: 'git hash-object' failed for '{file_path_full_on_runner}': {e.stderr.decode('utf-8').strip()}", file=sys.stderr)
         return None
@@ -107,23 +99,29 @@ config_file_path = os.path.join(repo_root, 'redirects.json')
 template_file_path = os.path.join(repo_root, '_redirect_templates', 'redirect_template.html')
 public_file_list_path = os.path.join(repo_root, PUBLIC_FILE_LIST_FILENAME)
 
-# Read existing redirects.json and map by 'id' for stable lookup
-existing_redirects_map_by_id = {}
+# Read existing redirects.json and map by 'current_target_file' for stable lookup
+# This allows preserving manual tweaks even if ID inference changes or files are renamed.
+existing_redirects_map_by_target_url = {} # Key: current_target_file (full URL to original file), Value: full entry
 try:
     with open(config_file_path, 'r') as f:
         existing_data = json.load(f)
         for entry in existing_data:
-            if 'id' in entry:
-                if entry['id'] in existing_redirects_map_by_id:
-                    print(f"Warning: Duplicate 'id' found in redirects.json for '{entry['id']}'. Only the last one will be used for merging.", file=sys.stderr)
-                existing_redirects_map_by_id[entry['id']] = entry
+            if 'current_target_file' in entry:
+                # Ensure the key is consistent (URL-encoded version of the path)
+                # This is crucial because the script will generate current_target_file_url_in_json with URL encoding
+                parsed_url = urllib.parse.urlparse(entry['current_target_file'])
+                encoded_path = urllib.parse.quote(parsed_url.path, safe='/')
+                encoded_query = urllib.parse.quote(parsed_url.query, safe='=&')
+                encoded_target_url_key = urllib.parse.urlunparse(parsed_url._replace(path=encoded_path, query=encoded_query))
+                
+                existing_redirects_map_by_target_url[encoded_target_url_key] = entry
             else:
-                print(f"Warning: Entry missing 'id' in redirects.json: {entry}. Cannot track for renames.", file=sys.stderr)
+                print(f"Warning: Entry missing 'current_target_file' in redirects.json: {entry}. This entry will be ignored for merging.", file=sys.stderr)
 except FileNotFoundError:
     print("No existing redirects.json found. Starting fresh.", file=sys.stderr)
 except json.JSONDecodeError:
     print("Invalid JSON format in existing redirects.json. It might be overwritten. Error:", file=sys.stderr)
-    existing_redirects_map_by_id = {}
+    existing_redirects_map_by_target_url = {}
 
 
 # Read HTML template
@@ -136,7 +134,7 @@ except FileNotFoundError:
     sys.exit(1)
 
 final_redirects_config_for_writing = []
-processed_ids_in_this_run = set()
+discovered_target_urls = set() # To track which target URLs (original files) we've processed
 
 full_root_content_path = os.path.join(repo_root, ROOT_CONTENT_DIRECTORY)
 if not os.path.isdir(full_root_content_path):
@@ -146,34 +144,32 @@ if not os.path.isdir(full_root_content_path):
 print(f"Starting recursive file discovery in '{full_root_content_path}'")
 
 for root, _, files in os.walk(full_root_content_path):
-    print(f"DEBUG: Walking directory: {root}") # DEBUG
     for filename in files:
-        print(f"DEBUG: Found file: {filename} in {root}") # DEBUG
         if filename.startswith('.') or filename in ['.gitkeep', 'Thumbs.db', 'desktop.ini']:
-            print(f"DEBUG: Skipping hidden/system file: {filename}") # DEBUG
             continue
         if filename.lower().endswith('.html'):
-            print(f"DEBUG: Skipping generated HTML file: {filename}") # DEBUG
+            print(f"Skipping generated HTML file: {os.path.join(root, filename)}")
             continue
 
         relative_original_file_path = os.path.relpath(os.path.join(root, filename), repo_root)
         relative_original_file_path = relative_original_file_path.replace(os.sep, '/')
-        print(f"DEBUG: Processing file (relative path): {relative_original_file_path}") # DEBUG
 
         current_target_file_url_in_json = GITHUB_PAGES_BASE_URL + relative_original_file_path
-        
+        discovered_target_urls.add(current_target_file_url_in_json) # Track this original file's URL
+
         # --- Infer values for a potential new entry ---
         name_without_ext_and_date = remove_date_patterns(os.path.splitext(filename)[0])
         name_for_slug_path = name_without_ext_and_date.replace('_', ' ')
 
-        inferred_id = slugify(name_for_slug_path)
+        # NEW: Inferred ID now includes the full relative path for uniqueness
+        inferred_id = slugify(relative_original_file_path.replace(os.path.splitext(filename)[1], '')) # Slugify full path without extension
         inferred_title = clean_filename_for_title(filename)
         
         pdf_dir_relative = os.path.dirname(relative_original_file_path)
         inferred_redirect_html_path = os.path.join(pdf_dir_relative, slugify(name_for_slug_path) + '.html')
         inferred_redirect_html_path = inferred_redirect_html_path.replace(os.sep, '/')
 
-        # --- Try to find an existing entry by ID ---
+        # --- Try to find an existing entry by its current_target_file_url_in_json ---
         entry_data = {}
         current_timestamp_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
@@ -183,40 +179,41 @@ for root, _, files in os.walk(full_root_content_path):
         
         if current_file_sha is None:
             print(f"ERROR: Failed to get Git SHA for '{relative_original_file_path}'. This file will be skipped.", file=sys.stderr)
-            continue # Skip this file if we can't get its SHA
+            continue
 
-        if inferred_id in existing_redirects_map_by_id:
-            existing_entry = existing_redirects_map_by_id[inferred_id]
+        if current_target_file_url_in_json in existing_redirects_map_by_target_url:
+            # Found an existing entry for this original file
+            existing_entry = existing_redirects_map_by_target_url[current_target_file_url_in_json]
             
-            entry_data['id'] = existing_entry.get('id', inferred_id)
-            entry_data['title'] = existing_entry.get('title', inferred_title)
-            entry_data['redirect_html_path'] = existing_entry.get('redirect_html_path', inferred_redirect_html_path)
+            # Preserve manual tweaks for id, title, redirect_html_path from existing entry
+            entry_data['id'] = existing_entry.get('id', inferred_id) # Use existing ID if present
+            entry_data['title'] = existing_entry.get('title', inferred_title) # Use existing title if present
+            entry_data['redirect_html_path'] = existing_entry.get('redirect_html_path', inferred_redirect_html_path) # Use existing path if present
             
+            # Always update current_target_file (it's the key, so it's already correct)
             entry_data['current_target_file'] = current_target_file_url_in_json
 
             # --- Compare relevant fields AND file SHA to determine if last_updated_at needs update ---
             changed = False
+            if entry_data['id'] != existing_entry.get('id'): changed = True # Check if ID was manually changed
             if entry_data['title'] != existing_entry.get('title'): changed = True
             if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): changed = True
-            if entry_data['current_target_file'] != existing_entry.get('current_target_file'): changed = True
-            
-            # Check if content SHA changed
-            if current_file_sha != existing_entry.get('file_sha'):
-                changed = True
-                print(f"DEBUG: '{entry_data['id']}' file content SHA changed. Old: '{existing_entry.get('file_sha')}', New: '{current_file_sha}'")
+            # current_target_file is the key, so it implicitly matches.
+            # Only check file_sha if it's not None (for new files)
+            if current_file_sha != existing_entry.get('file_sha'): changed = True
             
             if changed:
                 entry_data['last_updated_at'] = current_timestamp_str
-                entry_data['file_sha'] = current_file_sha # Update SHA if content or other fields changed
+                entry_data['file_sha'] = current_file_sha
                 print(f"Entry '{entry_data['id']}' changed (content or metadata). Updating timestamp to {current_timestamp_str}.")
             else:
                 entry_data['last_updated_at'] = existing_entry.get('last_updated_at', current_timestamp_str)
-                entry_data['file_sha'] = existing_entry.get('file_sha', current_file_sha) # Preserve SHA
+                entry_data['file_sha'] = existing_entry.get('file_sha', current_file_sha)
                 print(f"Entry '{entry_data['id']}' unchanged. Preserving timestamp and SHA.")
 
-            print(f"Matched existing entry for ID '{entry_data['id']}'. Updating target from '{existing_entry.get('current_target_file', 'N/A')}' to '{current_target_file_url_in_json}'.")
+            print(f"Matched existing entry for original file '{current_target_file_url_in_json}'. Preserving manual overrides.")
         else:
-            # New entry, set timestamp and SHA
+            # New entry, create with inferred values and set timestamp/SHA
             entry_data = {
                 "id": inferred_id,
                 "title": inferred_title,
@@ -228,23 +225,13 @@ for root, _, files in os.walk(full_root_content_path):
             print(f"Creating new entry for '{inferred_id}' -> '{current_target_file_url_in_json}' with timestamp {current_timestamp_str}.")
 
         final_redirects_config_for_writing.append(entry_data)
-        processed_ids_in_this_run.add(entry_data['id'])
 
-# --- Handle entries that were in redirects.json but are no longer discovered ---
-for existing_id, existing_entry in existing_redirects_map_by_id.items():
-    if existing_id not in processed_ids_in_this_run:
-        if 'current_target_file' in existing_entry:
-            parsed_url = urllib.parse.urlparse(existing_entry['current_target_file'])
-            path_after_base = parsed_url.path.replace(f'/{GITHUB_REPO_NAME}/', '', 1)
-            
-            full_path_on_runner = os.path.join(repo_root, path_after_base.lstrip('/'))
-            
-            if os.path.exists(full_path_on_runner):
-                print(f"Warning: Existing entry '{existing_id}' points to '{existing_entry['current_target_file']}' which still exists, but its ID was not matched by any discovered file. This entry will be removed unless you manually edit redirects.json to match its new inferred ID or update its 'current_target_file' to match an existing file.", file=sys.stderr)
-            else:
-                print(f"Removing entry for '{existing_id}' as its associated file '{existing_entry.get('current_target_file', 'N/A')}' was not found in scanned directories.", file=sys.stderr)
-        else:
-            print(f"Removing entry for '{existing_id}' as it's not associated with a discovered file and has no 'current_target_file'.", file=sys.stderr)
+# --- Cleanup: Remove entries from redirects.json whose original files are no longer discovered ---
+# Iterate over the original existing_redirects_map_by_target_url to find removed files
+for existing_target_url, existing_entry in existing_redirects_map_by_target_url.items():
+    if existing_target_url not in discovered_target_urls:
+        print(f"Removing entry for ID '{existing_entry.get('id', 'N/A')}' as its associated file '{existing_target_url}' was not found in scanned directories.", file=sys.stderr)
+        # We don't add this entry to final_redirects_config_for_writing, effectively removing it.
 
 # --- Generate HTML for all entries and update public_url ---
 final_list_after_html_gen = []
@@ -257,14 +244,16 @@ for entry in final_redirects_config_for_writing:
 
     parsed_target_url = urllib.parse.urlparse(raw_current_target_file)
     encoded_target_path = urllib.parse.quote(parsed_target_url.path, safe='/')
-    encoded_target_query = urllib.parse.quote(parsed_target_url.query, safe='=&')
-    target_url_for_html = urllib.parse.urlunparse(parsed_target_url._replace(path=encoded_target_path, query=encoded_target_query))
+    encoded_query = urllib.parse.quote(parsed_target_url.query, safe='=&')
+    target_url_for_html = urllib.parse.urlunparse(parsed_target_url._replace(path=encoded_path, query=encoded_query))
 
     path_segments = relative_redirect_html_path.split('/')
     encoded_path_segments = [urllib.parse.quote(segment, safe='') for segment in path_segments]
     public_url_path_encoded = '/'.join(encoded_path_segments)
     calculated_public_url = GITHUB_PAGES_BASE_URL + public_url_path_encoded
 
+    # This check is now redundant if redirect_html_path is already checked above,
+    # but keeping it for completeness if public_url calculation logic changes.
     if entry.get('public_url') != calculated_public_url:
         entry['last_updated_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print(f"Public URL for '{entry['id']}' changed. Updating timestamp.")
@@ -339,7 +328,7 @@ else:
 
     for top_folder in sorted_top_folders:
         public_file_list_content += f"<details>\n  <summary><h2>{top_folder}</h2></summary>\n"
-        public_file_list_content += "---\n\n" # Horizontal rule
+        public_file_list_content += "---\n\n"
         
         sorted_sub_folders = sorted(grouped_entries[top_folder].keys())
 
@@ -349,9 +338,9 @@ else:
             public_file_list_content += "| Title | Public URL | Last Updated |\n"
             public_file_list_content += "|---|---|---|\n"
             
-            sorted_files = sorted(grouped_entries[top_folder][sub_folder], key=lambda x: x.get('title', '').lower())
+            sorted_files_for_table = sorted(grouped_entries[top_folder][sub_folder], key=lambda x: x.get('title', '').lower())
 
-            for entry in sorted_files:
+            for entry in sorted_files_for_table:
                 title = entry.get('title', 'N/A')
                 public_url = entry.get('public_url', '#')
                 
