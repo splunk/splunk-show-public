@@ -1,0 +1,20 @@
+Jul 09 15:59:59 10.11.36.12 %ASA-6-109025: Authorization denied (acl=acmetechinbound) for user 'boring_satoshi' from 10.11.36.9/58700 to 10.11.36.9/53 on interface Outside using UDP
+Jul 09 15:59:58 10.11.36.17 %ASA-6-109025: Authorization denied (acl=acmetechcde) for user 'bold_hypatia' from 10.11.36.42/50812 to 10.11.36.11/53 on interface Outside using UDP
+Jul 09 15:59:57 10.11.36.39 %ASA-6-109025: Authorization denied (acl=acmetechinbound) for user 'wonderful_banach' from 10.11.36.32/137 to 10.11.36.35/137 on interface Outside using UDP
+Jul 09 15:59:56 10.11.36.24 %ASA-6-109025: Authorization denied (acl=acmetechinbound) for user 'strange_maxwell' from 10.11.36.30/49244 to 10.11.36.31/53 on interface Outside using UDP
+Jul 09 15:59:55 10.11.36.47 %ASA-6-109025: Authorization denied (acl=acmetechinbound) for user 'heuristic_maxwell' from 10.11.36.16/60312 to 10.11.36.45/53 on interface Outside using UDP
+Jul 09 15:59:54 10.11.36.39 %ASA-6-109025: Authorization denied (acl=acmetechinbound) for user 'jovial_mayer' from 10.11.36.29/61465 to 10.11.36.9/53 on interface Outside using UDP
+Jul 09 15:59:53 10.11.36.4 %ASA-6-109025: Authorization denied (acl=acmetechinbound) for user 'epic_pare' from 10.11.36.18/64845 to 10.11.36.42/53 on interface Outside using UDP
+Jul 09 15:59:52 10.11.36.34 %ASA-6-109025: Authorization denied (acl=acmetechoutbound) for user 'heuristic_hofstadter' from 10.11.36.14/137 to 10.11.36.49/137 on interface Outside using UDP
+Jul 09 15:59:51 10.11.36.10 %ASA-6-302015: Built inbound UDP connection 517995 for Outside:27.176.0.0/61759 (10.11.36.37/61759) to Inside:10.171.18.43/53 (10.11.36.25/53) (brave_edison)
+Jul 09 15:59:50 10.11.36.44 %ASA-6-302015: Built inbound UDP connection 517971 for Inside:10.89.42.18/30392 (10.11.36.34/30392) to NP Identity Ifc:10.11.36.30/161 (10.11.36.25/161)
+Jul 09 15:59:49 10.11.36.39 %ASA-6-109025: Authorization denied (acl=acmetechinbound) for user 'focused_sanderson' from 10.11.36.18/55818 to 10.11.36.24/53 on interface Outside using UDP
+Jul 09 15:59:48 10.11.36.6 %ASA-6-109025: Authorization denied (acl=acmetechinbound) for user 'suspicious_almeida' from 10.11.36.29/50226 to 10.11.36.35/53 on interface Outside using UDP
+Jul 09 15:59:47 10.11.36.49 %ASA-6-109025: Authorization denied (acl=acmetechcde) for user 'mystifying_almeida' from 10.11.36.9/54104 to 10.11.36.46/53 on interface Outside using UDP
+Jul 09 15:59:46 10.11.36.17 %ASA-6-109025: Authorization denied (acl=acmetechcde) for user 'eloquent_aryabhata' from 10.11.36.25/54188 to 10.11.36.49/53 on interface Outside using UDP
+Jul 09 15:59:45 ops-sys-002 %ASA-6-302013: Built inbound TCP connection 1671358332 for outside:12.130.60.5/51743 (elegant_curran@ACMETECH.COM)
+Jul 09 15:59:44 10.11.36.10 %ASA-5-713131: Group = Acme_techoutbound, Username = sad_vaughan, IP = 10.11.36.43, Received unknown transaction mode attribute: 28684
+Jul 09 15:59:43 10.11.36.31 %ASA-6-109025: Authorization denied (acl=acmetechinbound) for user 'hopeful_carver' from 10.11.36.26/51273 to 10.11.36.2/53 on interface Outside using UDP
+Jul 09 15:59:42 10.11.36.26 %ASA-6-302016: Teardown UDP connection 517919 for Outside:91.214.92.22/62149 to Inside:10.187.55.51/53 duration 0:02:08 bytes 245
+Jul 09 15:59:41 ops-sys-006 Jul 09 2025 15:59:41: %ASA-6-302016: Teardown UDP connection 215721357 for outside:12.130.60.4/62779(LOCAL\suspicious_perlman) to inside1:10.122.27.216/53 duration 0:00:00 bytes 177 (tender_lalande) 
+Jul 09 15:59:40 10.11.36.15 %ASA-6-109025: Authorization denied (acl=acmetechinbound) for user 'epic_keller' from 10.11.36.30/56123 to 10.11.36.12/53 on interface Outside using UDP
