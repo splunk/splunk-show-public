@@ -53,7 +53,7 @@
     "file_sha": "7610cc5bc5a96e861a6164a2f4c2359229c6feee",
     "public_url": "https://splunk.github.io/splunk-show-public/public/other/Splunk%20Show%20User%20Guide%20for%20Partners/splunk-show-user-guide-for-partners.html"
   },
-  {
+  { 
     "id": "publicworkshopsadvanced-apt-huntingadvanced-apt-hunting-workshop-data-sheet",
     "title": "Advanced APT Hunting Workshop Data Sheet",
     "redirect_html_path": "public/workshops/Advanced APT Hunting/advanced-apt-hunting-workshop-data-sheet.html",
