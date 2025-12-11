@@ -4,9 +4,9 @@ from jinja2 import Template
 import os
 import sys
 import urllib.parse
-import re # For regex cleaning
-from datetime import datetime # For timestamps
-import subprocess # Ensure this is imported for git commands
+import re
+from datetime import datetime
+import subprocess
 
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
@@ -27,20 +27,16 @@ def get_file_git_sha(file_path_full_on_runner):
             print(f"DEBUG SHA: File not found on runner for SHA calculation: {file_path_full_on_runner}", file=sys.stderr)
             return None
         
-        # Read file content in binary mode
         with open(file_path_full_on_runner, 'rb') as f:
             file_content = f.read()
             
-            # Use git hash-object --stdin
             cmd = ['git', 'hash-object', '--stdin']
             
-            # Pass content to stdin
             result = subprocess.run(cmd, cwd=os.getenv('GITHUB_WORKSPACE'), input=file_content, capture_output=True, check=True)
             
             sha = result.stdout.decode('utf-8').strip()
-            # print(f"DEBUG SHA: Successfully got SHA '{sha}' for {file_path_full_on_runner}", file=sys.stderr) # Keep this for debugging if needed
             return sha
-    except FileNotFoundError: # File might not exist on disk (e.g., if it was just deleted)
+    except FileNotFoundError:
         return None
     except subprocess.CalledProcessError as e:
         print(f"ERROR SHA: 'git hash-object' failed for '{file_path_full_on_runner}': {e.stderr.decode('utf-8').strip()}", file=sys.stderr)
@@ -135,7 +131,7 @@ except FileNotFoundError:
     print(f"Error: Template file not found at {template_file_path}. Exiting.", file=sys.stderr)
     sys.exit(1)
 
-final_redirects_config_for_writing = []
+new_master_redirects_list = []
 discovered_target_urls = set() # To track which target URLs (original files) we've processed
 
 full_root_content_path = os.path.join(repo_root, ROOT_CONTENT_DIRECTORY)
@@ -192,32 +188,20 @@ for root, _, files in os.walk(full_root_content_path):
             entry_data['current_target_file'] = current_target_file_url_in_json_actual_casing
 
             changed = False
-            if entry_data['id'] != existing_entry.get('id'): 
-                changed = True
-                print(f"DEBUG CHANGE: ID changed for '{entry_data['id']}'. Old: '{existing_entry.get('id')}', New: '{entry_data['id']}'")
-            if entry_data['title'] != existing_entry.get('title'): 
-                changed = True
-                print(f"DEBUG CHANGE: Title changed for '{entry_data['id']}'. Old: '{existing_entry.get('title')}', New: '{entry_data['title']}'")
-            if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): 
-                changed = True
-                print(f"DEBUG CHANGE: Redirect HTML Path changed for '{entry_data['id']}'. Old: '{existing_entry.get('redirect_html_path')}', New: '{entry_data['redirect_html_path']}'")
-            
-            if entry_data['current_target_file'].lower() != existing_entry.get('current_target_file', '').lower(): 
-                changed = True
-                print(f"DEBUG CHANGE: Current Target File URL changed for '{entry_data['id']}'. Old: '{existing_entry.get('current_target_file')}', New: '{entry_data['current_target_file']}'")
-            
-            if current_file_sha != existing_entry.get('file_sha'): 
-                changed = True
-                print(f"DEBUG CHANGE: File content SHA changed for '{entry_data['id']}'. Old: '{existing_entry.get('file_sha')}', New: '{current_file_sha}'")
+            if entry_data['id'] != existing_entry.get('id'): changed = True
+            if entry_data['title'] != existing_entry.get('title'): changed = True
+            if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): changed = True
+            if entry_data['current_target_file'].lower() != existing_entry.get('current_target_file', '').lower(): changed = True
+            if current_file_sha != existing_entry.get('file_sha'): changed = True
             
             if changed:
                 entry_data['last_updated_at'] = current_timestamp_str
                 entry_data['file_sha'] = current_file_sha
-                print(f"Entry '{entry_data['id']}' changed (content or metadata). Updating timestamp to {current_timestamp_str}.")
+                print(f"DEBUG: Entry '{entry_data['id']}' changed (content or metadata). Updating timestamp to {current_timestamp_str}.")
             else:
                 entry_data['last_updated_at'] = existing_entry.get('last_updated_at', current_timestamp_str)
                 entry_data['file_sha'] = existing_entry.get('file_sha', current_file_sha)
-                print(f"Entry '{entry_data['id']}' unchanged. Preserving timestamp and SHA.")
+                print(f"DEBUG: Entry '{entry_data['id']}' unchanged. Preserving timestamp and SHA.")
 
             print(f"DEBUG: Matched existing entry for original file '{current_target_file_url_in_json_actual_casing}'. Preserving manual overrides.")
         else:
@@ -231,7 +215,7 @@ for root, _, files in os.walk(full_root_content_path):
             }
             print(f"DEBUG: Creating new entry for '{inferred_id}' -> '{current_target_file_url_in_json_actual_casing}' with timestamp {current_timestamp_str}.")
 
-        final_redirects_config_for_writing.append(entry_data)
+        new_master_redirects_list.append(entry_data)
 
 # --- Cleanup: Remove entries from redirects.json whose original files are no longer discovered ---
 final_discovered_urls_normalized = {url.lower() for url in discovered_target_urls}
@@ -241,10 +225,9 @@ for existing_normalized_target_url, existing_entry in existing_redirects_map_by_
 
 
 # --- Generate HTML for all entries and update public_url ---
-final_list_after_html_gen = []
-generated_html_files = set()
+generated_html_files = set() # Track generated HTML files for cleanup
 
-for entry in final_redirects_config_for_writing:
+for entry in new_master_redirects_list:
     title = entry['title']
     raw_current_target_file = entry['current_target_file']
     relative_redirect_html_path = entry['redirect_html_path']
@@ -252,7 +235,8 @@ for entry in final_redirects_config_for_writing:
     parsed_target_url = urllib.parse.urlparse(raw_current_target_file)
     encoded_target_path = urllib.parse.quote(parsed_target_url.path, safe='/')
     encoded_query = urllib.parse.quote(parsed_target_url.query, safe='=&')
-    target_url_for_html = urllib.parse.urlunparse(parsed_target_url._replace(path=encoded_path, query=encoded_query))
+    # FIX: Correct variable names in _replace call
+    target_url_for_html = urllib.parse.urlunparse(parsed_target_url._replace(path=encoded_target_path, query=encoded_query))
 
     path_segments = relative_redirect_html_path.split('/')
     encoded_path_segments = [urllib.parse.quote(segment, safe='') for segment in path_segments]
@@ -270,7 +254,6 @@ for entry in final_redirects_config_for_writing:
 
     rendered_html = template.render(title=title, target_url=target_url_for_html, public_url=calculated_public_url)
     
-    # --- NEW: Check if HTML content would change before writing ---
     existing_html_content = None
     if os.path.exists(full_redirect_html_path):
         with open(full_redirect_html_path, 'r') as f:
@@ -282,10 +265,8 @@ for entry in final_redirects_config_for_writing:
         print(f'Generated/Updated HTML: {full_redirect_html_path}')
     else:
         print(f'HTML for {full_redirect_html_path} is unchanged. Skipping write.')
-    # ---------------------------------------------------------------
     
     generated_html_files.add(full_redirect_html_path)
-    final_list_after_html_gen.append(entry)
 
 print("Cleaning up old HTML redirect files...")
 full_root_content_path_for_cleanup = os.path.join(repo_root, ROOT_CONTENT_DIRECTORY)
@@ -301,11 +282,11 @@ else:
     print(f"Warning: ROOT_CONTENT_DIRECTORY '{ROOT_CONTENT_DIRECTORY}' not found for cleanup. Skipping HTML cleanup.", file=sys.stderr)
 
 
-final_list_after_html_gen.sort(key=lambda x: x.get('id', '').lower())
+# Sort the final list by 'id' before writing to JSON
+new_master_redirects_list.sort(key=lambda x: x.get('id', '').lower())
 
 try:
-    # --- NEW: Only write redirects.json if its content has actually changed ---
-    new_redirects_json_content = json.dumps(final_list_after_html_gen, indent=2)
+    new_redirects_json_content = json.dumps(new_master_redirects_list, indent=2)
     
     existing_redirects_json_content = None
     if os.path.exists(config_file_path):
@@ -318,7 +299,6 @@ try:
         print(f'Updated redirects.json with public_url and discovered files: {config_file_path}')
     else:
         print(f'redirects.json content is unchanged. Skipping write.')
-    # -------------------------------------------------------------------------
 except Exception as e:
     print(f"Error writing updated redirects.json: {e}", file=sys.stderr)
     sys.exit(1)
@@ -329,11 +309,11 @@ public_file_list_content = "# Public File List\n\n"
 public_file_list_content += "This file is automatically generated by the GitHub Actions workflow. Do not edit manually.\n\n"
 public_file_list_content += f"Last generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}\n\n"
 
-if not final_list_after_html_gen:
+if not new_master_redirects_list:
     public_file_list_content += "No public files found.\n"
 else:
     grouped_entries = {}
-    for entry in final_list_after_html_gen:
+    for entry in new_master_redirects_list:
         path_relative_to_root_content = os.path.relpath(entry['redirect_html_path'], ROOT_CONTENT_DIRECTORY)
         relative_parts = path_relative_to_root_content.split(os.sep)
 
@@ -393,7 +373,6 @@ else:
         public_file_list_content += "</details>\n"
 
 try:
-    # --- NEW: Only write public_file_list.md if its content has actually changed ---
     new_public_file_list_content = public_file_list_content
     
     existing_public_file_list_content = None
@@ -407,7 +386,6 @@ try:
         print(f'Generated {PUBLIC_FILE_LIST_FILENAME}: {public_file_list_path}')
     else:
         print(f'{PUBLIC_FILE_LIST_FILENAME} content is unchanged. Skipping write.')
-    # -----------------------------------------------------------------------------
 except Exception as e:
     print(f"Error writing {PUBLIC_FILE_LIST_FILENAME}: {e}", file=sys.stderr)
     sys.exit(1)
