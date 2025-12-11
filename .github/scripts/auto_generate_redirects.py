@@ -4,9 +4,9 @@ from jinja2 import Template
 import os
 import sys
 import urllib.parse
-import re
-from datetime import datetime
-import subprocess
+import re # For regex cleaning
+from datetime import datetime # For timestamps
+import subprocess # Ensure this is imported for git commands
 
 # --- Configuration ---
 GITHUB_REPO_OWNER = 'splunk'
@@ -27,16 +27,20 @@ def get_file_git_sha(file_path_full_on_runner):
             print(f"DEBUG SHA: File not found on runner for SHA calculation: {file_path_full_on_runner}", file=sys.stderr)
             return None
         
+        # Read file content in binary mode
         with open(file_path_full_on_runner, 'rb') as f:
             file_content = f.read()
             
+            # Use git hash-object --stdin
             cmd = ['git', 'hash-object', '--stdin']
             
+            # Pass content to stdin
             result = subprocess.run(cmd, cwd=os.getenv('GITHUB_WORKSPACE'), input=file_content, capture_output=True, check=True)
             
             sha = result.stdout.decode('utf-8').strip()
+            # print(f"DEBUG SHA: Successfully got SHA '{sha}' for {file_path_full_on_runner}", file=sys.stderr) # Keep this for debugging if needed
             return sha
-    except FileNotFoundError:
+    except FileNotFoundError: # File might not exist on disk (e.g., if it was just deleted)
         return None
     except subprocess.CalledProcessError as e:
         print(f"ERROR SHA: 'git hash-object' failed for '{file_path_full_on_runner}': {e.stderr.decode('utf-8').strip()}", file=sys.stderr)
@@ -144,9 +148,10 @@ print(f"Starting recursive file discovery in '{full_root_content_path}'")
 for root, _, files in os.walk(full_root_content_path):
     for filename in files:
         if filename.startswith('.') or filename in ['.gitkeep', 'Thumbs.db', 'desktop.ini']:
+            print(f"DEBUG: Skipping hidden/system file: {os.path.join(root, filename)}")
             continue
         if filename.lower().endswith('.html'):
-            print(f"Skipping generated HTML file: {os.path.join(root, filename)}")
+            print(f"DEBUG: Skipping generated HTML file: {os.path.join(root, filename)}")
             continue
 
         relative_original_file_path = os.path.relpath(os.path.join(root, filename), repo_root)
@@ -187,11 +192,23 @@ for root, _, files in os.walk(full_root_content_path):
             entry_data['current_target_file'] = current_target_file_url_in_json_actual_casing
 
             changed = False
-            if entry_data['id'] != existing_entry.get('id'): changed = True
-            if entry_data['title'] != existing_entry.get('title'): changed = True
-            if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): changed = True
-            if entry_data['current_target_file'].lower() != existing_entry.get('current_target_file', '').lower(): changed = True
-            if current_file_sha != existing_entry.get('file_sha'): changed = True
+            if entry_data['id'] != existing_entry.get('id'): 
+                changed = True
+                print(f"DEBUG CHANGE: ID changed for '{entry_data['id']}'. Old: '{existing_entry.get('id')}', New: '{entry_data['id']}'")
+            if entry_data['title'] != existing_entry.get('title'): 
+                changed = True
+                print(f"DEBUG CHANGE: Title changed for '{entry_data['id']}'. Old: '{existing_entry.get('title')}', New: '{entry_data['title']}'")
+            if entry_data['redirect_html_path'] != existing_entry.get('redirect_html_path'): 
+                changed = True
+                print(f"DEBUG CHANGE: Redirect HTML Path changed for '{entry_data['id']}'. Old: '{existing_entry.get('redirect_html_path')}', New: '{entry_data['redirect_html_path']}'")
+            
+            if entry_data['current_target_file'].lower() != existing_entry.get('current_target_file', '').lower(): 
+                changed = True
+                print(f"DEBUG CHANGE: Current Target File URL changed for '{entry_data['id']}'. Old: '{existing_entry.get('current_target_file')}', New: '{entry_data['current_target_file']}'")
+            
+            if current_file_sha != existing_entry.get('file_sha'): 
+                changed = True
+                print(f"DEBUG CHANGE: File content SHA changed for '{entry_data['id']}'. Old: '{existing_entry.get('file_sha')}', New: '{current_file_sha}'")
             
             if changed:
                 entry_data['last_updated_at'] = current_timestamp_str
@@ -221,14 +238,12 @@ final_discovered_urls_normalized = {url.lower() for url in discovered_target_url
 for existing_normalized_target_url, existing_entry in existing_redirects_map_by_normalized_target_url.items():
     if existing_normalized_target_url not in final_discovered_urls_normalized:
         print(f"Removing entry for ID '{existing_entry.get('id', 'N/A')}' as its associated file '{existing_entry.get('current_target_file', 'N/A')}' was not found in scanned directories.", file=sys.stderr)
-        # This entry is not added to final_redirects_config_for_writing, effectively removing it.
 
 
 # --- Generate HTML for all entries and update public_url ---
 final_list_after_html_gen = []
 generated_html_files = set()
 
-# This loop ensures that redirects.json is written back with 'public_url'
 for entry in final_redirects_config_for_writing:
     title = entry['title']
     raw_current_target_file = entry['current_target_file']
@@ -237,7 +252,7 @@ for entry in final_redirects_config_for_writing:
     parsed_target_url = urllib.parse.urlparse(raw_current_target_file)
     encoded_target_path = urllib.parse.quote(parsed_target_url.path, safe='/')
     encoded_query = urllib.parse.quote(parsed_target_url.query, safe='=&')
-    target_url_for_html = urllib.parse.urlunparse(parsed_target_url._replace(path=encoded_target_path, query=encoded_query))
+    target_url_for_html = urllib.parse.urlunparse(parsed_target_url._replace(path=encoded_path, query=encoded_query))
 
     path_segments = relative_redirect_html_path.split('/')
     encoded_path_segments = [urllib.parse.quote(segment, safe='') for segment in path_segments]
@@ -254,9 +269,21 @@ for entry in final_redirects_config_for_writing:
     os.makedirs(os.path.dirname(full_redirect_html_path), exist_ok=True)
 
     rendered_html = template.render(title=title, target_url=target_url_for_html, public_url=calculated_public_url)
-    with open(full_redirect_html_path, 'w') as f:
-        f.write(rendered_html)
-    print(f'Generated HTML: {full_redirect_html_path}')
+    
+    # --- NEW: Check if HTML content would change before writing ---
+    existing_html_content = None
+    if os.path.exists(full_redirect_html_path):
+        with open(full_redirect_html_path, 'r') as f:
+            existing_html_content = f.read()
+
+    if rendered_html != existing_html_content:
+        with open(full_redirect_html_path, 'w') as f:
+            f.write(rendered_html)
+        print(f'Generated/Updated HTML: {full_redirect_html_path}')
+    else:
+        print(f'HTML for {full_redirect_html_path} is unchanged. Skipping write.')
+    # ---------------------------------------------------------------
+    
     generated_html_files.add(full_redirect_html_path)
     final_list_after_html_gen.append(entry)
 
@@ -277,9 +304,21 @@ else:
 final_list_after_html_gen.sort(key=lambda x: x.get('id', '').lower())
 
 try:
-    with open(config_file_path, 'w') as f:
-        json.dump(final_list_after_html_gen, f, indent=2)
-    print(f'Updated redirects.json with public_url and discovered files: {config_file_path}')
+    # --- NEW: Only write redirects.json if its content has actually changed ---
+    new_redirects_json_content = json.dumps(final_list_after_html_gen, indent=2)
+    
+    existing_redirects_json_content = None
+    if os.path.exists(config_file_path):
+        with open(config_file_path, 'r') as f:
+            existing_redirects_json_content = f.read()
+
+    if new_redirects_json_content != existing_redirects_json_content:
+        with open(config_file_path, 'w') as f:
+            f.write(new_redirects_json_content)
+        print(f'Updated redirects.json with public_url and discovered files: {config_file_path}')
+    else:
+        print(f'redirects.json content is unchanged. Skipping write.')
+    # -------------------------------------------------------------------------
 except Exception as e:
     print(f"Error writing updated redirects.json: {e}", file=sys.stderr)
     sys.exit(1)
@@ -354,9 +393,21 @@ else:
         public_file_list_content += "</details>\n"
 
 try:
-    with open(public_file_list_path, 'w') as f:
-        f.write(public_file_list_content)
-    print(f'Generated {PUBLIC_FILE_LIST_FILENAME}: {public_file_list_path}')
+    # --- NEW: Only write public_file_list.md if its content has actually changed ---
+    new_public_file_list_content = public_file_list_content
+    
+    existing_public_file_list_content = None
+    if os.path.exists(public_file_list_path):
+        with open(public_file_list_path, 'r') as f:
+            existing_public_file_list_content = f.read()
+
+    if new_public_file_list_content != existing_public_file_list_content:
+        with open(public_file_list_path, 'w') as f:
+            f.write(new_public_file_list_content)
+        print(f'Generated {PUBLIC_FILE_LIST_FILENAME}: {public_file_list_path}')
+    else:
+        print(f'{PUBLIC_FILE_LIST_FILENAME} content is unchanged. Skipping write.')
+    # -----------------------------------------------------------------------------
 except Exception as e:
     print(f"Error writing {PUBLIC_FILE_LIST_FILENAME}: {e}", file=sys.stderr)
     sys.exit(1)
