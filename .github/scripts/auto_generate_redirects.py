@@ -243,9 +243,6 @@ for entry in new_master_redirects_list:
     public_url_path_encoded = '/'.join(encoded_path_segments)
     calculated_public_url = GITHUB_PAGES_BASE_URL + public_url_path_encoded
 
-    if entry.get('public_url') != calculated_public_url:
-        entry['last_updated_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        print(f"Public URL for '{entry['id']}' changed. Updating timestamp.")
     entry['public_url'] = calculated_public_url
 
     full_redirect_html_path = os.path.join(repo_root, relative_redirect_html_path)
