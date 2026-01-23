@@ -918,24 +918,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning/splunk4ninjas-ml-lab-guide.html"
   },
   {
-    "id": "publicworkshopssplunk4ninjas-spl-best-practicessplunk4ninjas-spl-best-practices-attendee-apr-2025",
-    "title": "Splunk4Ninjas SPL Best Practices Attendee",
-    "redirect_html_path": "public/workshops/Splunk4Ninjas - SPL Best Practices/splunk4ninjas-spl-best-practices-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - SPL Best Practices/Splunk4Ninjas - SPL Best Practices - Attendee - Apr 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "68734997e7a0488435705790f9417933ecf3b506",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20SPL%20Best%20Practices/splunk4ninjas-spl-best-practices-attendee.html"
-  },
-  {
-    "id": "publicworkshopssplunk4ninjas-spl-best-practicessplunk4ninjas-spl-best-practices-flyer-jan-2024",
-    "title": "Splunk4Ninjas SPL Best Practices Flyer",
-    "redirect_html_path": "public/workshops/Splunk4Ninjas - SPL Best Practices/splunk4ninjas-spl-best-practices-flyer.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - SPL Best Practices/Splunk4Ninjas - SPL Best Practices - Flyer - Jan 2024.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "3ac3b76b557019f8ce136a7890b851703388aba9",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20SPL%20Best%20Practices/splunk4ninjas-spl-best-practices-flyer.html"
-  },
-  {
     "id": "publicworkshopssplunk4ninjas-splunk-connect-for-snmpsplunk4ninjas-splunk-connect-for-snmp-attendee-jan-2024",
     "title": "Splunk4Ninjas Splunk Connect for SNMP Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Splunk Connect for SNMP/splunk4ninjas-splunk-connect-for-snmp-attendee.html",
@@ -1186,6 +1168,24 @@
     "last_updated_at": "2026-01-16 11:26:02",
     "file_sha": "96f963c3637b9a0c8f93c7494992523c2b367955",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Agent%20Management/splunk4admins-agent-management-lab-guide.html"
+  },
+  {
+    "id": "workshopssplunk4ninjas-spl-best-practicessplunk4ninjas-spl-best-practices-attendee-jan-2026",
+    "title": "Splunk4Ninjas SPL Best Practices Attendee",
+    "redirect_html_path": "public/workshops/Splunk4Ninjas - SPL Best Practices/splunk4ninjas-spl-best-practices-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - SPL Best Practices/Splunk4Ninjas - SPL Best Practices - Attendee - Jan 2026.pdf",
+    "last_updated_at": "2026-01-23 15:36:38",
+    "file_sha": "16572ad8e86fccddc36391d40f28ecf8fb638180",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20SPL%20Best%20Practices/splunk4ninjas-spl-best-practices-attendee.html"
+  },
+  {
+    "id": "workshopssplunk4ninjas-spl-best-practicessplunk4ninjas-spl-best-practices-flyer-jan-2026",
+    "title": "Splunk4Ninjas SPL Best Practices Flyer",
+    "redirect_html_path": "public/workshops/Splunk4Ninjas - SPL Best Practices/splunk4ninjas-spl-best-practices-flyer.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - SPL Best Practices/Splunk4Ninjas - SPL Best Practices - Flyer - Jan 2026.pdf",
+    "last_updated_at": "2026-01-23 15:36:38",
+    "file_sha": "4ced6a9bb83b629e2669311e761541e7e4e34a49",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20SPL%20Best%20Practices/splunk4ninjas-spl-best-practices-flyer.html"
   },
   {
     "id": "workshopssplunk4rookies-dashboard-studio-ds4rsplunk4rookies-dashboard-studio-attendee-dec-2025",
