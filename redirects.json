@@ -1152,6 +1152,15 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/User%20Behavior%20Analytics%20%28UBA%29%20Hands-On/ubaho-workshop-data-sheet.html"
   },
   {
+    "id": "workshopssplunk-data-compliance-pipelines-for-fsi-workshopdata-fsi-samples",
+    "title": "data fsi samples",
+    "redirect_html_path": "public/workshops/Splunk Data Compliance Pipelines for FSI Workshop/data-fsi-samples.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Data Compliance Pipelines for FSI Workshop/data-fsi-samples.zip",
+    "last_updated_at": "2026-02-26 17:09:54",
+    "file_sha": "7f5efea257a3a6b089c57fe5c82e21d441997c22",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Compliance%20Pipelines%20for%20FSI%20Workshop/data-fsi-samples.html"
+  },
+  {
     "id": "workshopssplunk-data-compliance-pipelines-for-fsi-workshopsplunk-data-compliance-pipelines-for-fsi-workshop-attendee-feb-2026",
     "title": "Splunk Data Compliance Pipelines for FSI Workshop Attendee",
     "redirect_html_path": "public/workshops/Splunk Data Compliance Pipelines for FSI Workshop/splunk-data-compliance-pipelines-for-fsi-workshop-attendee.html",
