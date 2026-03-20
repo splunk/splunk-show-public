@@ -783,15 +783,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk-buttercup-hoof-gradient.html"
   },
   {
-    "id": "publicworkshopssplunk4ninjas-dashboard-studiosplunk4ninjas-dashboard-studio-attendee-apr-2025",
-    "title": "Splunk4Ninjas Dashboard Studio Attendee",
-    "redirect_html_path": "public/workshops/Splunk4Ninjas - Dashboard Studio/splunk4ninjas-dashboard-studio-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Dashboard Studio/Splunk4Ninjas - Dashboard Studio - Attendee - Apr 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "d8f45823b3d6ee0ad82c2db2b6ff421e0648a3b4",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-attendee.html"
-  },
-  {
     "id": "publicworkshopssplunk4ninjas-dashboard-studiosplunk4ninjas-dashboard-studio-flyer-july-2025",
     "title": "Splunk4Ninjas Dashboard Studio Flyer",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Dashboard Studio/splunk4ninjas-dashboard-studio-flyer.html",
@@ -799,15 +790,6 @@
     "last_updated_at": "2026-01-16 11:26:02",
     "file_sha": "7aa8cf7fbc543153f71e2581548b4aead3a948c5",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-flyer.html"
-  },
-  {
-    "id": "publicworkshopssplunk4ninjas-dashboard-studiosplunk4ninjas-dashboard-studio-lab-guide-apr-2025",
-    "title": "Splunk4Ninjas Dashboard Studio Lab Guide",
-    "redirect_html_path": "public/workshops/Splunk4Ninjas - Dashboard Studio/splunk4ninjas-dashboard-studio-lab-guide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Dashboard Studio/Splunk4Ninjas - Dashboard Studio - Lab Guide - Apr 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "c5891f2a7fbeb20d0141616a786b576e18805d19",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-lab-guide.html"
   },
   {
     "id": "publicworkshopssplunk4ninjas-data-onboardingsplunk4ninjas-data-onboarding-attendee-nov-2024",
@@ -1195,6 +1177,24 @@
     "last_updated_at": "2026-01-16 11:26:02",
     "file_sha": "96f963c3637b9a0c8f93c7494992523c2b367955",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Admins%20-%20Agent%20Management/splunk4admins-agent-management-lab-guide.html"
+  },
+  {
+    "id": "workshopssplunk4ninjas-dashboard-studiosplunk4ninjas-dashboard-studio-attendee-mar-2026",
+    "title": "Splunk4Ninjas Dashboard Studio Attendee",
+    "redirect_html_path": "public/workshops/Splunk4Ninjas - Dashboard Studio/splunk4ninjas-dashboard-studio-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Dashboard Studio/Splunk4Ninjas - Dashboard Studio - Attendee - Mar 2026.pdf",
+    "last_updated_at": "2026-03-20 15:38:44",
+    "file_sha": "b410ae01b2c002463500e4b70d93f375fe880ce6",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-attendee.html"
+  },
+  {
+    "id": "workshopssplunk4ninjas-dashboard-studiosplunk4ninjas-dashboard-studio-lab-guide-mar-2026",
+    "title": "Splunk4Ninjas Dashboard Studio Lab Guide",
+    "redirect_html_path": "public/workshops/Splunk4Ninjas - Dashboard Studio/splunk4ninjas-dashboard-studio-lab-guide.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Dashboard Studio/Splunk4Ninjas - Dashboard Studio - Lab Guide - Mar 2026.pdf",
+    "last_updated_at": "2026-03-20 15:38:44",
+    "file_sha": "3af0aa18eb67d37292a1caaff66d99abb9152452",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-lab-guide.html"
   },
   {
     "id": "workshopssplunk4ninjas-spl-best-practicessplunk4ninjas-spl-best-practices-attendee-jan-2026",
