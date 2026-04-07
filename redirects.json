@@ -1053,33 +1053,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/Espa%C3%B1ol/splunk4rookies-gu%C3%ADa-de-laboratorio.html"
   },
   {
-    "id": "publicworkshopssplunk4rookies-s4rsplunk4rookies-attendee-apr-2025",
-    "title": "Splunk4Rookies Attendee",
-    "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/splunk4rookies-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Splunk4Rookies - Attendee - Apr 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "77e9f9143eca5ccb28d87f0414623f111e107d9a",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/splunk4rookies-attendee.html"
-  },
-  {
-    "id": "publicworkshopssplunk4rookies-s4rsplunk4rookies-flyer-apr-2025",
-    "title": "Splunk4Rookies Flyer",
-    "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/splunk4rookies-flyer.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Splunk4Rookies - Flyer - Apr 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "d1659dd53f8d8cd7ecc699560726b153482848e5",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/splunk4rookies-flyer.html"
-  },
-  {
-    "id": "publicworkshopssplunk4rookies-s4rsplunk4rookies-lab-guide-apr-2025",
-    "title": "Splunk4Rookies Lab Guide",
-    "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/splunk4rookies-lab-guide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Splunk4Rookies - Lab Guide - Apr 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "7a32404af8bd9f95ebdc0eb9b4725cd14f4d4f1f",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/splunk4rookies-lab-guide.html"
-  },
-  {
     "id": "publicworkshopssplunk4rookies-securitysplunk4rookies-security-attendee-july-2023",
     "title": "Splunk4Rookies Security Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Security/splunk4rookies-security-attendee.html",
@@ -1258,6 +1231,33 @@
     "last_updated_at": "2026-01-16 11:26:02",
     "file_sha": "c5db6c3e13b5cc20148c79b6fda1f7e164a09447",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Machine%20Learning%20Primer/splunk4rookies-machine-learning-primer-lab-guide.html"
+  },
+  {
+    "id": "workshopssplunk4rookies-s4rsplunk4rookies-attendee-apr-2026",
+    "title": "Splunk4Rookies Attendee",
+    "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/splunk4rookies-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Splunk4Rookies - Attendee - Apr 2026.pdf",
+    "last_updated_at": "2026-04-07 10:33:51",
+    "file_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/splunk4rookies-attendee.html"
+  },
+  {
+    "id": "workshopssplunk4rookies-s4rsplunk4rookies-flyer-apr-2026",
+    "title": "Splunk4Rookies Flyer",
+    "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/splunk4rookies-flyer.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Splunk4Rookies - Flyer - Apr 2026.pdf",
+    "last_updated_at": "2026-04-07 10:33:51",
+    "file_sha": "4316f76d14e3131c22c5fef37c7505f0a8c298bf",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/splunk4rookies-flyer.html"
+  },
+  {
+    "id": "workshopssplunk4rookies-s4rsplunk4rookies-lab-guide-apr-2026",
+    "title": "Splunk4Rookies Lab Guide",
+    "redirect_html_path": "public/workshops/Splunk4Rookies (S4R)/splunk4rookies-lab-guide.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies (S4R)/Splunk4Rookies - Lab Guide - Apr 2026.pdf",
+    "last_updated_at": "2026-04-07 10:33:51",
+    "file_sha": "9b9ed5602ef8af725a932af0bcb38b94d97d4efc",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/splunk4rookies-lab-guide.html"
   },
   {
     "id": "workshopssplunk4rookies-s4rworkshop-credentials-date-of-workshop-make-a-copy-to-edit-and-share",
