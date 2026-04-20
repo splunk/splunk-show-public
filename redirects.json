@@ -873,15 +873,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning/splunk4ninjas-ml-lab-guide.html"
   },
   {
-    "id": "publicworkshopssplunk4ninjas-splunk-connect-for-snmpsplunk4ninjas-splunk-connect-for-snmp-attendee-jan-2024",
-    "title": "Splunk4Ninjas Splunk Connect for SNMP Attendee",
-    "redirect_html_path": "public/workshops/Splunk4Ninjas - Splunk Connect for SNMP/splunk4ninjas-splunk-connect-for-snmp-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Splunk Connect for SNMP/Splunk4Ninjas - Splunk Connect for SNMP - Attendee - Jan 2024.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "f91b0b36e177ebe8e5c79ceb11c162a9dc2032e4",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Splunk%20Connect%20for%20SNMP/splunk4ninjas-splunk-connect-for-snmp-attendee.html"
-  },
-  {
     "id": "publicworkshopssplunk4rookies-business-insightssplunk4rookies-business-insights-attendee-nov-2024",
     "title": "Splunk4Rookies Business Insights Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Business Insights/splunk4rookies-business-insights-attendee.html",
@@ -907,15 +898,6 @@
     "last_updated_at": "2026-01-16 11:26:02",
     "file_sha": "02798508fafe5d34ea2c4b382dd52c15d49aa000",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20CSX/splunk4rookies-csx-attendee.html"
-  },
-  {
-    "id": "publicworkshopssplunk4rookies-csxsplunk4rookies-csx-lab-guide-nov-2024",
-    "title": "Splunk4Rookies CSX Lab Guide",
-    "redirect_html_path": "public/workshops/Splunk4Rookies - CSX/splunk4rookies-csx-lab-guide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - CSX/Splunk4Rookies - CSX - Lab Guide - Nov 2024.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "7189c879c8430d8e1cabdac1ae8b741ab61860f3",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20CSX/splunk4rookies-csx-lab-guide.html"
   },
   {
     "id": "publicworkshopssplunk4rookies-machine-learning-event-workshopsplunk4rookies-machine-learning-event-workshop-attendee-apr-2025",
@@ -1204,6 +1186,24 @@
     "last_updated_at": "2026-01-23 15:36:38",
     "file_sha": "4ced6a9bb83b629e2669311e761541e7e4e34a49",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20SPL%20Best%20Practices/splunk4ninjas-spl-best-practices-flyer.html"
+  },
+  {
+    "id": "workshopssplunk4ninjas-splunk-connect-for-snmpsplunk4ninjas-splunk-connect-for-snmp-attendee-may-2025",
+    "title": "Splunk4Ninjas Splunk Connect for SNMP Attendee",
+    "redirect_html_path": "public/workshops/Splunk4Ninjas - Splunk Connect for SNMP/splunk4ninjas-splunk-connect-for-snmp-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Splunk Connect for SNMP/Splunk4Ninjas - Splunk Connect for SNMP - Attendee - May 2025.pdf",
+    "last_updated_at": "2026-04-20 13:53:13",
+    "file_sha": "4efc15622ac18ba40e17febaf9dcad7d2808b1f4",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Splunk%20Connect%20for%20SNMP/splunk4ninjas-splunk-connect-for-snmp-attendee.html"
+  },
+  {
+    "id": "workshopssplunk4rookies-csxsplunk4rookies-csx-lab-guide-apr-2026",
+    "title": "Splunk4Rookies CSX Lab Guide",
+    "redirect_html_path": "public/workshops/Splunk4Rookies - CSX/splunk4rookies-csx-lab-guide.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - CSX/Splunk4Rookies - CSX - Lab Guide - Apr 2026.pdf",
+    "last_updated_at": "2026-04-20 13:53:13",
+    "file_sha": "92e990b25020419c3da226bcdee1d1525124b2a3",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20CSX/splunk4rookies-csx-lab-guide.html"
   },
   {
     "id": "workshopssplunk4rookies-dashboard-studio-ds4rsplunk4rookies-dashboard-studio-attendee-dec-2025",
