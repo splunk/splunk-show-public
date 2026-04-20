@@ -441,15 +441,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/splunk-federated-data-management-workshop-attendee.html"
   },
   {
-    "id": "publicworkshopssplunk-data-management-workshopsplunk-federated-data-management-workshop-lab-guide-feb-2025",
-    "title": "Splunk Federated Data Management Workshop Lab Guide",
-    "redirect_html_path": "public/workshops/Splunk Data Management Workshop/splunk-federated-data-management-workshop-lab-guide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Data Management Workshop/Splunk Federated Data Management Workshop - Lab Guide - Feb 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "74d9c9789c1eccab7ae696c3063910a13dd74dc7",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/splunk-federated-data-management-workshop-lab-guide.html"
-  },
-  {
     "id": "publicworkshopssplunk-for-telco-analysts-hands-onsplunk-for-telco-analysts-hands-on-attendee-nov-2024",
     "title": "Splunk for Telco Analysts Hands on Attendee",
     "redirect_html_path": "public/workshops/Splunk for Telco Analysts Hands-On/splunk-for-telco-analysts-hands-on-attendee.html",
@@ -1141,6 +1132,15 @@
     "last_updated_at": "2026-04-20 10:14:09",
     "file_sha": "3f189a6a3a700a461d173c85a16367e22b41f001",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/cc-trans-logssample.html"
+  },
+  {
+    "id": "workshopssplunk-data-management-workshopsplunk-federated-data-management-workshop-lab-guide-apr-2026",
+    "title": "Splunk Federated Data Management Workshop Lab Guide",
+    "redirect_html_path": "public/workshops/Splunk Data Management Workshop/splunk-federated-data-management-workshop-lab-guide.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Data Management Workshop/Splunk Federated Data Management Workshop - Lab Guide - Apr 2026.pdf",
+    "last_updated_at": "2026-04-20 12:47:17",
+    "file_sha": "76d021dbfc4ca0dfb97c18f4ea3725512f4a00a6",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/splunk-federated-data-management-workshop-lab-guide.html"
   },
   {
     "id": "workshopssplunk-mcp-server-getting-startedsplunk-mcp-server-getting-started-attendee-mar-2026",
