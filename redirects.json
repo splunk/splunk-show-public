@@ -171,24 +171,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Enterprise%20Security%207%20Hands-On%20%28ESHO%29/esho-workshop-data-sheet.html"
   },
   {
-    "id": "publicworkshopsinfosec-app-hands-oninfosec-app-hands-on-attendee-sep-2025",
-    "title": "InfoSec App Hands On Attendee",
-    "redirect_html_path": "public/workshops/InfoSec App Hands-On/infosec-app-hands-on-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec App Hands-On/InfoSec App Hands-On - Attendee - Sep 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "67faca3c7343fe83a3a1730feef34b9c6e2126ee",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec%20App%20Hands-On/infosec-app-hands-on-attendee.html"
-  },
-  {
-    "id": "publicworkshopsinfosec-app-hands-oninfosec-app-hands-on-lab-guide-sep-2025",
-    "title": "InfoSec App Hands On Lab Guide",
-    "redirect_html_path": "public/workshops/InfoSec App Hands-On/infosec-app-hands-on-lab-guide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec App Hands-On/InfoSec App Hands-On - Lab Guide - Sep 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "bcdd621980aacf2dd40fec99fa8988cc857e0059",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec%20App%20Hands-On/infosec-app-hands-on-lab-guide.html"
-  },
-  {
     "id": "publicworkshopsinsider-threat-hands-onsplunk-insider-threat-data-sheet",
     "title": "Splunk Insider Threat Data Sheet",
     "redirect_html_path": "public/workshops/Insider Threat Hands-On/splunk-insider-threat-data-sheet.html",
@@ -1105,6 +1087,24 @@
     "last_updated_at": "2026-01-16 11:26:02",
     "file_sha": "04251c29a54d4790080443aaf8dcf21ddc61bf84",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/User%20Behavior%20Analytics%20%28UBA%29%20Hands-On/ubaho-workshop-data-sheet.html"
+  },
+  {
+    "id": "workshopsinfosec-app-hands-oninfosec-app-hands-on-attendee-apr-2026",
+    "title": "InfoSec App Hands On Attendee",
+    "redirect_html_path": "public/workshops/InfoSec App Hands-On/infosec-app-hands-on-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec App Hands-On/InfoSec App Hands-On - Attendee - Apr 2026.pdf",
+    "last_updated_at": "2026-04-20 12:34:31",
+    "file_sha": "6af2964e72505c7c64f625b3115343e451dc88f8",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec%20App%20Hands-On/infosec-app-hands-on-attendee.html"
+  },
+  {
+    "id": "workshopsinfosec-app-hands-oninfosec-app-hands-on-lab-guide-apr-2026",
+    "title": "InfoSec App Hands On Lab Guide",
+    "redirect_html_path": "public/workshops/InfoSec App Hands-On/infosec-app-hands-on-lab-guide.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec App Hands-On/InfoSec App Hands-On - Lab Guide - Apr 2026.pdf",
+    "last_updated_at": "2026-04-20 12:34:31",
+    "file_sha": "58b2d493cdd63b7a58ede524f88652bec3b3023a",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec%20App%20Hands-On/infosec-app-hands-on-lab-guide.html"
   },
   {
     "id": "workshopssplunk-data-compliance-pipelines-for-fsi-workshopdata-fsi-samples",
