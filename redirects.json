@@ -1,5 +1,32 @@
 [
   {
+    "id": "confconf25-template-workshop-name-lab-guide-date",
+    "title": "conf25 TEMPLATE [Workshop Name] Lab Guide [Date]",
+    "redirect_html_path": "public/conf/conf25-template-workshop-name-lab-guide-date.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/conf/conf25 TEMPLATE - [Workshop Name] - Lab Guide - [Date].docx",
+    "last_updated_at": "2026-05-20 11:14:35",
+    "file_sha": "0889082b3bdbe8ebe4c0d45c051f32927ef87364",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/conf/conf25-template-workshop-name-lab-guide-date.html"
+  },
+  {
+    "id": "confconf26-template-workshop-name-lab-guide-date",
+    "title": "conf26 TEMPLATE [Workshop Name] Lab Guide [Date]",
+    "redirect_html_path": "public/conf/conf26-template-workshop-name-lab-guide-date.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/conf/conf26 TEMPLATE - [Workshop Name] - Lab Guide - [Date].docx",
+    "last_updated_at": "2026-05-20 11:14:35",
+    "file_sha": "4101370d652c9dc437f36f5a548452ee051c4e94",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/conf/conf26-template-workshop-name-lab-guide-date.html"
+  },
+  {
+    "id": "confnf26-template-workshop-name-lab-guide-date",
+    "title": "~$nf26 TEMPLATE [Workshop Name] Lab Guide [Date]",
+    "redirect_html_path": "public/conf/nf26-template-workshop-name-lab-guide-date.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/conf/~$nf26 TEMPLATE - [Workshop Name] - Lab Guide - [Date].docx",
+    "last_updated_at": "2026-05-20 11:14:35",
+    "file_sha": "1e8b11fb6b21520b551ea34a484efe723f0b2023",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/conf/nf26-template-workshop-name-lab-guide-date.html"
+  },
+  {
     "id": "demosedge-processor-for-splunk-enterprise-10access-combined-data",
     "title": "access combined data",
     "redirect_html_path": "public/demos/Edge Processor for Splunk Enterprise 10/access-combined-data.html",
@@ -16,15 +43,6 @@
     "last_updated_at": "2026-01-16 11:26:02",
     "file_sha": "22ed0ec6d91fc50e6f66f832f51f3b9441fd3baa",
     "public_url": "https://splunk.github.io/splunk-show-public/public/demos/Splunk%20Laser%20Range%20for%20Edge%20Hub/laser-edgehub.html"
-  },
-  {
-    "id": "publicconfconf25-template-lab-guide-workshop-name-lab-guide-date",
-    "title": "conf25 TEMPLATE LAB GUIDE [Workshop Name] Lab Guide [Date]",
-    "redirect_html_path": "public/conf/conf25-template-lab-guide-workshop-name-lab-guide-date.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/conf/conf25 TEMPLATE - LAB GUIDE [Workshop Name] - Lab Guide - [Date].docx",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "0889082b3bdbe8ebe4c0d45c051f32927ef87364",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/conf/conf25-template-lab-guide-workshop-name-lab-guide-date.html"
   },
   {
     "id": "publicdemosedge-processor-for-splunk-enterprise-10admin-root-events-ep-demo-data",
