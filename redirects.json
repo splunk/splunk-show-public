@@ -1035,33 +1035,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Security/splunk4rookies-security-flyer.html"
   },
   {
-    "id": "publicworkshopssplunk4rookies-splunk-connect-for-syslog-sc4ssplunk4rookies-splunk-connect-for-syslog-attendee-nov-2023",
-    "title": "Splunk4Rookies Splunk Connect for Syslog Attendee",
-    "redirect_html_path": "public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/splunk4rookies-splunk-connect-for-syslog-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/Splunk4Rookies - Splunk Connect for Syslog - Attendee - Nov 2023.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "8e2f778570d1730c6fc906198447f2de6b843af3",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Splunk%20Connect%20for%20Syslog%20%28SC4S%29/splunk4rookies-splunk-connect-for-syslog-attendee.html"
-  },
-  {
-    "id": "publicworkshopssplunk4rookies-splunk-connect-for-syslog-sc4ssplunk4rookies-splunk-connect-for-syslog-flyer-nov-2023",
-    "title": "Splunk4Rookies Splunk Connect for Syslog Flyer",
-    "redirect_html_path": "public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/splunk4rookies-splunk-connect-for-syslog-flyer.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/Splunk4Rookies - Splunk Connect for Syslog - Flyer - Nov 2023.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "9c70c9a97c13049e15c6f4f29e065b59b4050fc6",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Splunk%20Connect%20for%20Syslog%20%28SC4S%29/splunk4rookies-splunk-connect-for-syslog-flyer.html"
-  },
-  {
-    "id": "publicworkshopssplunk4rookies-splunk-connect-for-syslog-sc4ssplunk4rookies-splunk-connect-for-syslog-lab-guide-nov-2023",
-    "title": "Splunk4Rookies Splunk Connect for Syslog Lab Guide",
-    "redirect_html_path": "public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/splunk4rookies-splunk-connect-for-syslog-lab-guide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/Splunk4Rookies - Splunk Connect for Syslog - Lab Guide - Nov 2023.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "aa83ba18837aecf9e83abfc5b88067db957ebe9f",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Splunk%20Connect%20for%20Syslog%20%28SC4S%29/splunk4rookies-splunk-connect-for-syslog-lab-guide.html"
-  },
-  {
     "id": "publicworkshopsuser-behavior-analytics-uba-hands-onubaho-workshop-data-sheet",
     "title": "UBAHO Workshop Data Sheet",
     "redirect_html_path": "public/workshops/User Behavior Analytics (UBA) Hands-On/ubaho-workshop-data-sheet.html",
@@ -1303,5 +1276,32 @@
     "last_updated_at": "2026-01-16 11:26:02",
     "file_sha": "9f228981ff2a6223101083a9620fe0a340e8f651",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/workshop-credentials-date-of-workshop-make-a-copy-to-edit-and-share.html"
+  },
+  {
+    "id": "workshopssplunk4rookies-splunk-connect-for-syslog-sc4ssplunk4rookies-splunk-connect-for-syslog-attendee-jun-2026",
+    "title": "Splunk4Rookies Splunk Connect for Syslog Attendee",
+    "redirect_html_path": "public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/splunk4rookies-splunk-connect-for-syslog-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/Splunk4Rookies - Splunk Connect for Syslog - Attendee - Jun 2026.pdf",
+    "last_updated_at": "2026-06-12 13:28:00",
+    "file_sha": "c8f8e16b72ffe5705f54c61c2380fd0522091200",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Splunk%20Connect%20for%20Syslog%20%28SC4S%29/splunk4rookies-splunk-connect-for-syslog-attendee.html"
+  },
+  {
+    "id": "workshopssplunk4rookies-splunk-connect-for-syslog-sc4ssplunk4rookies-splunk-connect-for-syslog-flyer-apr-2026",
+    "title": "Splunk4Rookies Splunk Connect for Syslog Flyer",
+    "redirect_html_path": "public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/splunk4rookies-splunk-connect-for-syslog-flyer.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/Splunk4Rookies - Splunk Connect for Syslog - Flyer - Apr 2026.pdf",
+    "last_updated_at": "2026-06-12 13:28:00",
+    "file_sha": "9c70c9a97c13049e15c6f4f29e065b59b4050fc6",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Splunk%20Connect%20for%20Syslog%20%28SC4S%29/splunk4rookies-splunk-connect-for-syslog-flyer.html"
+  },
+  {
+    "id": "workshopssplunk4rookies-splunk-connect-for-syslog-sc4ssplunk4rookies-splunk-connect-for-syslog-lab-guide-apr-2026",
+    "title": "Splunk4Rookies Splunk Connect for Syslog Lab Guide",
+    "redirect_html_path": "public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/splunk4rookies-splunk-connect-for-syslog-lab-guide.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Splunk Connect for Syslog (SC4S)/Splunk4Rookies - Splunk Connect for Syslog - Lab Guide - Apr 2026.pdf",
+    "last_updated_at": "2026-06-12 13:28:00",
+    "file_sha": "6422cc3d4884bf5af3b2ca497050ff20d86a35d6",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Splunk%20Connect%20for%20Syslog%20%28SC4S%29/splunk4rookies-splunk-connect-for-syslog-lab-guide.html"
   }
 ]
