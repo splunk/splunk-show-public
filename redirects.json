@@ -1017,15 +1017,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/Espa%C3%B1ol/splunk4rookies-gu%C3%ADa-de-laboratorio.html"
   },
   {
-    "id": "publicworkshopssplunk4rookies-securitysplunk4rookies-security-attendee-july-2023",
-    "title": "Splunk4Rookies Security Attendee",
-    "redirect_html_path": "public/workshops/Splunk4Rookies - Security/splunk4rookies-security-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Security/Splunk4Rookies - Security - Attendee - July 2023.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "5b907f34bf5544814b7ee266c18b66b45026232c",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Security/splunk4rookies-security-attendee.html"
-  },
-  {
     "id": "publicworkshopssplunk4rookies-securitysplunk4rookies-security-flyer-july-2023",
     "title": "Splunk4Rookies Security Flyer",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Security/splunk4rookies-security-flyer.html",
@@ -1285,6 +1276,15 @@
     "last_updated_at": "2026-01-16 11:26:02",
     "file_sha": "9f228981ff2a6223101083a9620fe0a340e8f651",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/workshop-credentials-date-of-workshop-make-a-copy-to-edit-and-share.html"
+  },
+  {
+    "id": "workshopssplunk4rookies-securitysplunk4rookies-security-attendee-jan-2024",
+    "title": "Splunk4Rookies Security Attendee",
+    "redirect_html_path": "public/workshops/Splunk4Rookies - Security/splunk4rookies-security-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Security/Splunk4Rookies - Security - Attendee - Jan 2024.pdf",
+    "last_updated_at": "2026-06-22 11:16:20",
+    "file_sha": "2a6c32a3683147e6659fca73f28e06c8f0570124",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Security/splunk4rookies-security-attendee.html"
   },
   {
     "id": "workshopssplunk4rookies-splunk-connect-for-syslog-sc4ssplunk4rookies-splunk-connect-for-syslog-attendee-jun-2026",
