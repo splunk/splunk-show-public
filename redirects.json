@@ -18,6 +18,24 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/conf/conf26-template-workshop-name-lab-guide-date.html"
   },
   {
+    "id": "confpla1429ponytravel-dashboard-bookings",
+    "title": "ponytravel dashboard bookings",
+    "redirect_html_path": "public/conf/PLA1429/ponytravel-dashboard-bookings.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/conf/PLA1429/ponytravel_dashboard_bookings.png",
+    "last_updated_at": "2026-07-14 12:55:20",
+    "file_sha": "25ce1ade7984743042d3dea849709db7061b4891",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/conf/PLA1429/ponytravel-dashboard-bookings.html"
+  },
+  {
+    "id": "confpla1429ponytravel-dashboard-light-v3",
+    "title": "ponytravel dashboard light v3",
+    "redirect_html_path": "public/conf/PLA1429/ponytravel-dashboard-light-v3.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/conf/PLA1429/ponytravel_dashboard_light_v3.png",
+    "last_updated_at": "2026-07-14 12:55:20",
+    "file_sha": "b7c2d13199d5081c8f0dbcaa487f8099a0a967c2",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/conf/PLA1429/ponytravel-dashboard-light-v3.html"
+  },
+  {
     "id": "demosedge-processor-for-splunk-enterprise-10access-combined-data",
     "title": "access combined data",
     "redirect_html_path": "public/demos/Edge Processor for Splunk Enterprise 10/access-combined-data.html",
