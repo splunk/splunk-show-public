@@ -18,6 +18,33 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/conf/conf26-template-workshop-name-lab-guide-date.html"
   },
   {
+    "id": "confpla1397app-pla1397",
+    "title": "app pla",
+    "redirect_html_path": "public/conf/PLA1397/app-pla.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/conf/PLA1397/app-pla1397.zip",
+    "last_updated_at": "2026-08-10 16:04:29",
+    "file_sha": "3dc28302cd9a8afd425aa8de7c8c1fb3f67c07bc",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/conf/PLA1397/app-pla.html"
+  },
+  {
+    "id": "confpla1397bruno",
+    "title": "bruno",
+    "redirect_html_path": "public/conf/PLA1397/bruno.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/conf/PLA1397/bruno.zip",
+    "last_updated_at": "2026-08-10 16:04:29",
+    "file_sha": "9773e0264d2157194ba7f1fc045940f3ad4042bb",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/conf/PLA1397/bruno.html"
+  },
+  {
+    "id": "confpla1397ta-pla1397",
+    "title": "ta pla",
+    "redirect_html_path": "public/conf/PLA1397/ta-pla.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/conf/PLA1397/ta-pla1397.zip",
+    "last_updated_at": "2026-08-10 16:04:29",
+    "file_sha": "7f565036ccd0f3a8d0acc20ac41acae6dc99fe9e",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/conf/PLA1397/ta-pla.html"
+  },
+  {
     "id": "confpla1429ponytravel-dashboard-bookings",
     "title": "ponytravel dashboard bookings",
     "redirect_html_path": "public/conf/PLA1429/ponytravel-dashboard-bookings.html",
