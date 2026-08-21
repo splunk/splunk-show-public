@@ -873,33 +873,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20and%20AIOps/splunk4ninjas-machine-learning-and-aiops-lab-guide.html"
   },
   {
-    "id": "publicworkshopssplunk4ninjas-machine-learning-for-securitysplunk4ninjas-machine-learning-for-security-attendee-oct-2025",
-    "title": "Splunk4Ninjas Machine Learning for Security Attendee",
-    "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning for Security/splunk4ninjas-machine-learning-for-security-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning for Security/Splunk4Ninjas - Machine Learning for Security - Attendee - Oct 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "9e4dbc9aec33920a202298166327628b07ff896b",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20for%20Security/splunk4ninjas-machine-learning-for-security-attendee.html"
-  },
-  {
-    "id": "publicworkshopssplunk4ninjas-machine-learning-for-securitysplunk4ninjas-machine-learning-for-security-flyer-sep-2025",
-    "title": "Splunk4Ninjas Machine Learning for Security Flyer",
-    "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning for Security/splunk4ninjas-machine-learning-for-security-flyer.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning for Security/Splunk4Ninjas - Machine Learning for Security - Flyer - Sep 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "1de5cf11e963353773bd893095455509bd204b3b",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20for%20Security/splunk4ninjas-machine-learning-for-security-flyer.html"
-  },
-  {
-    "id": "publicworkshopssplunk4ninjas-machine-learning-for-securitysplunk4ninjas-machine-learning-for-security-lab-guide-oct-2025",
-    "title": "Splunk4Ninjas Machine Learning for Security Lab Guide",
-    "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning for Security/splunk4ninjas-machine-learning-for-security-lab-guide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning for Security/Splunk4Ninjas - Machine Learning for Security - Lab Guide - Oct 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "8b15a31b73eed6f6b330b5c8a4cdcd6a8017ba16",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20for%20Security/splunk4ninjas-machine-learning-for-security-lab-guide.html"
-  },
-  {
     "id": "publicworkshopssplunk4ninjas-machine-learningsplunk4ninjas-machine-learning-attendee-nov-2024",
     "title": "Splunk4Ninjas Machine Learning Attendee",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning/splunk4ninjas-machine-learning-attendee.html",
@@ -1062,15 +1035,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/Espa%C3%B1ol/splunk4rookies-gu%C3%ADa-de-laboratorio.html"
   },
   {
-    "id": "publicworkshopssplunk4rookies-securitysplunk4rookies-security-flyer-july-2023",
-    "title": "Splunk4Rookies Security Flyer",
-    "redirect_html_path": "public/workshops/Splunk4Rookies - Security/splunk4rookies-security-flyer.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Security/Splunk4Rookies - Security - Flyer - July 2023.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "e74d47ef3fb5ff6c89cb3f80d20e238265939119",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Security/splunk4rookies-security-flyer.html"
-  },
-  {
     "id": "publicworkshopsuser-behavior-analytics-uba-hands-onubaho-workshop-data-sheet",
     "title": "UBAHO Workshop Data Sheet",
     "redirect_html_path": "public/workshops/User Behavior Analytics (UBA) Hands-On/ubaho-workshop-data-sheet.html",
@@ -1204,6 +1168,33 @@
     "last_updated_at": "2026-04-09 08:42:55",
     "file_sha": "f744d09651ba4faca097e45c4c862b874c531c99",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-lab-guide.html"
+  },
+  {
+    "id": "workshopssplunk4ninjas-machine-learning-for-securitysplunk4ninjas-machine-learning-for-security-attendee-aug-2026",
+    "title": "Splunk4Ninjas Machine Learning for Security Attendee",
+    "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning for Security/splunk4ninjas-machine-learning-for-security-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning for Security/Splunk4Ninjas - Machine Learning for Security - Attendee - Aug 2026.pdf",
+    "last_updated_at": "2026-08-21 13:58:15",
+    "file_sha": "05448a9447957a8d6ba1e6087692bafff63c83a8",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20for%20Security/splunk4ninjas-machine-learning-for-security-attendee.html"
+  },
+  {
+    "id": "workshopssplunk4ninjas-machine-learning-for-securitysplunk4ninjas-machine-learning-for-security-flyer-aug-2026",
+    "title": "Splunk4Ninjas Machine Learning for Security Flyer",
+    "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning for Security/splunk4ninjas-machine-learning-for-security-flyer.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning for Security/Splunk4Ninjas - Machine Learning for Security - Flyer - Aug 2026.pdf",
+    "last_updated_at": "2026-08-21 13:58:15",
+    "file_sha": "653f9d55515953faa49d12b920692b9f49cfbd21",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20for%20Security/splunk4ninjas-machine-learning-for-security-flyer.html"
+  },
+  {
+    "id": "workshopssplunk4ninjas-machine-learning-for-securitysplunk4ninjas-machine-learning-for-security-lab-guide-aug-2026",
+    "title": "Splunk4Ninjas Machine Learning for Security Lab Guide",
+    "redirect_html_path": "public/workshops/Splunk4Ninjas - Machine Learning for Security/splunk4ninjas-machine-learning-for-security-lab-guide.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Machine Learning for Security/Splunk4Ninjas - Machine Learning for Security - Lab Guide - Aug 2026.pdf",
+    "last_updated_at": "2026-08-21 13:58:15",
+    "file_sha": "152730d944a963a64940b11b76ed23bf856b4064",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Machine%20Learning%20for%20Security/splunk4ninjas-machine-learning-for-security-lab-guide.html"
   },
   {
     "id": "workshopssplunk4ninjas-spl-best-practicessplunk4ninjas-spl-best-practices-attendee-jan-2026",
@@ -1350,13 +1341,22 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20%28S4R%29/workshop-credentials-date-of-workshop-make-a-copy-to-edit-and-share.html"
   },
   {
-    "id": "workshopssplunk4rookies-securitysplunk4rookies-security-attendee-jan-2024",
+    "id": "workshopssplunk4rookies-securitysplunk4rookies-security-attendee-aug-2026",
     "title": "Splunk4Rookies Security Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Security/splunk4rookies-security-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Security/Splunk4Rookies - Security - Attendee - Jan 2024.pdf",
-    "last_updated_at": "2026-06-22 11:16:20",
-    "file_sha": "2a6c32a3683147e6659fca73f28e06c8f0570124",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Security/Splunk4Rookies - Security - Attendee - Aug 2026.pdf",
+    "last_updated_at": "2026-08-21 13:58:15",
+    "file_sha": "c4da13a2bd172deca9e02114749588f776684b31",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Security/splunk4rookies-security-attendee.html"
+  },
+  {
+    "id": "workshopssplunk4rookies-securitysplunk4rookies-security-flyer-aug-2026",
+    "title": "Splunk4Rookies Security Flyer",
+    "redirect_html_path": "public/workshops/Splunk4Rookies - Security/splunk4rookies-security-flyer.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Security/Splunk4Rookies - Security - Flyer - Aug 2026.pdf",
+    "last_updated_at": "2026-08-21 13:58:15",
+    "file_sha": "2892402ca7c0ed30b28650a2710c949eb9ace3cc",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Security/splunk4rookies-security-flyer.html"
   },
   {
     "id": "workshopssplunk4rookies-splunk-connect-for-syslog-sc4ssplunk4rookies-splunk-connect-for-syslog-attendee-june-2026",
