@@ -405,51 +405,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/SOAR%20Playbook%20Workshop/soar-playbook-workshop-lab-guide.html"
   },
   {
-    "id": "publicworkshopssplunk-101-201-301-hands-ongss-materialssplunk-101-hands-on-attendee-june-2024",
-    "title": "Splunk 101 Hands On Attendee",
-    "redirect_html_path": "public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/splunk-101-hands-on-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/Splunk 101 Hands-On - Attendee - June 2024.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "25eec12aede548812574dca14a463862e3011eb8",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101%20201%20301%20Hands-On/GSS%20Materials/splunk-101-hands-on-attendee.html"
-  },
-  {
-    "id": "publicworkshopssplunk-101-201-301-hands-ongss-materialssplunk-101-hands-on-lab-guide-june-2024",
-    "title": "Splunk 101 Hands On Lab Guide",
-    "redirect_html_path": "public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/splunk-101-hands-on-lab-guide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/Splunk 101 Hands-On - Lab Guide - June 2024.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "0700ab0a1fa80eb39f7baab53ac5adcb7d4ca9c8",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101%20201%20301%20Hands-On/GSS%20Materials/splunk-101-hands-on-lab-guide.html"
-  },
-  {
-    "id": "publicworkshopssplunk-101-201-301-hands-ongss-materialssplunk-201-hands-on-attendee-july-2024",
-    "title": "Splunk 201 Hands On Attendee",
-    "redirect_html_path": "public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/splunk-201-hands-on-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/Splunk 201 Hands-On - Attendee - July 2024.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "d01c906bd82915153f13ef9f858460c0e7456c43",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101%20201%20301%20Hands-On/GSS%20Materials/splunk-201-hands-on-attendee.html"
-  },
-  {
-    "id": "publicworkshopssplunk-101-201-301-hands-ongss-materialssplunk-201-hands-on-lab-guide-july-2024",
-    "title": "Splunk 201 Hands On Lab Guide",
-    "redirect_html_path": "public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/splunk-201-hands-on-lab-guide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101 201 301 Hands-On/GSS Materials/Splunk 201 Hands-On - Lab Guide - July 2024.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "c51fce69c23bcf66f5c87fe2110b29a396216651",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101%20201%20301%20Hands-On/GSS%20Materials/splunk-201-hands-on-lab-guide.html"
-  },
-  {
-    "id": "publicworkshopssplunk-101-201-301-hands-onsplunk-101-201-hands-on-attendee-jan-2024",
-    "title": "Splunk 101 201 Hands On Attendee",
-    "redirect_html_path": "public/workshops/Splunk 101 201 301 Hands-On/splunk-101-201-hands-on-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101 201 301 Hands-On/Splunk 101-201 Hands-On - Attendee - Jan 2024.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "8869b17d797586284cee669db39467f9ff6ef4d0",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101%20201%20301%20Hands-On/splunk-101-201-hands-on-attendee.html"
-  },
-  {
     "id": "publicworkshopssplunk-attack-analyzer-and-splunk-soar-hands-on-workshopsaa-workshop-data-sheet",
     "title": "SAA Workshop Data Sheet",
     "redirect_html_path": "public/workshops/Splunk Attack Analyzer and Splunk SOAR Hands-On Workshop/saa-workshop-data-sheet.html",
@@ -1069,6 +1024,51 @@
     "last_updated_at": "2026-05-21 09:41:45",
     "file_sha": "06a4200d2b5eb166955c7d3578b690a1435cdc6d",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Machine%20Learning%20and%20Data%20Science%20Hands-On/lets-build-ai-together-attendee.html"
+  },
+  {
+    "id": "workshopssplunk-101-201-hands-ongss-materialssplunk-101-hands-on-attendee-june-2024",
+    "title": "Splunk 101 Hands On Attendee",
+    "redirect_html_path": "public/workshops/Splunk 101-201 Hands-On/GSS Materials/splunk-101-hands-on-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101-201 Hands-On/GSS Materials/Splunk 101 Hands-On - Attendee - June 2024.pdf",
+    "last_updated_at": "2026-09-10 12:33:42",
+    "file_sha": "25eec12aede548812574dca14a463862e3011eb8",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101-201%20Hands-On/GSS%20Materials/splunk-101-hands-on-attendee.html"
+  },
+  {
+    "id": "workshopssplunk-101-201-hands-ongss-materialssplunk-101-hands-on-lab-guide-june-2024",
+    "title": "Splunk 101 Hands On Lab Guide",
+    "redirect_html_path": "public/workshops/Splunk 101-201 Hands-On/GSS Materials/splunk-101-hands-on-lab-guide.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101-201 Hands-On/GSS Materials/Splunk 101 Hands-On - Lab Guide - June 2024.pdf",
+    "last_updated_at": "2026-09-10 12:33:42",
+    "file_sha": "0700ab0a1fa80eb39f7baab53ac5adcb7d4ca9c8",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101-201%20Hands-On/GSS%20Materials/splunk-101-hands-on-lab-guide.html"
+  },
+  {
+    "id": "workshopssplunk-101-201-hands-ongss-materialssplunk-201-hands-on-attendee-july-2024",
+    "title": "Splunk 201 Hands On Attendee",
+    "redirect_html_path": "public/workshops/Splunk 101-201 Hands-On/GSS Materials/splunk-201-hands-on-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101-201 Hands-On/GSS Materials/Splunk 201 Hands-On - Attendee - July 2024.pdf",
+    "last_updated_at": "2026-09-10 12:33:42",
+    "file_sha": "d01c906bd82915153f13ef9f858460c0e7456c43",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101-201%20Hands-On/GSS%20Materials/splunk-201-hands-on-attendee.html"
+  },
+  {
+    "id": "workshopssplunk-101-201-hands-ongss-materialssplunk-201-hands-on-lab-guide-july-2024",
+    "title": "Splunk 201 Hands On Lab Guide",
+    "redirect_html_path": "public/workshops/Splunk 101-201 Hands-On/GSS Materials/splunk-201-hands-on-lab-guide.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101-201 Hands-On/GSS Materials/Splunk 201 Hands-On - Lab Guide - July 2024.pdf",
+    "last_updated_at": "2026-09-10 12:33:42",
+    "file_sha": "c51fce69c23bcf66f5c87fe2110b29a396216651",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101-201%20Hands-On/GSS%20Materials/splunk-201-hands-on-lab-guide.html"
+  },
+  {
+    "id": "workshopssplunk-101-201-hands-onsplunk-101-201-hands-on-attendee-sep-2026",
+    "title": "Splunk 101 201 Hands On Attendee",
+    "redirect_html_path": "public/workshops/Splunk 101-201 Hands-On/splunk-101-201-hands-on-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk 101-201 Hands-On/Splunk 101-201 Hands-On - Attendee - Sep 2026.pdf",
+    "last_updated_at": "2026-09-10 12:33:42",
+    "file_sha": "0637e0226f4899f236e45c8c5bceac7337e55cf6",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20101-201%20Hands-On/splunk-101-201-hands-on-attendee.html"
   },
   {
     "id": "workshopssplunk-data-compliance-pipelines-for-fsi-workshopdata-fsi-samples",
