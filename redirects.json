@@ -945,21 +945,21 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/User%20Behavior%20Analytics%20%28UBA%29%20Hands-On/ubaho-workshop-data-sheet.html"
   },
   {
-    "id": "workshopsinfosec-app-hands-oninfosec-app-hands-on-attendee-apr-2026",
+    "id": "workshopsinfosec-app-hands-oninfosec-app-hands-on-attendee-oct-2026",
     "title": "InfoSec App Hands On Attendee",
     "redirect_html_path": "public/workshops/InfoSec App Hands-On/infosec-app-hands-on-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec App Hands-On/InfoSec App Hands-On - Attendee - Apr 2026.pdf",
-    "last_updated_at": "2026-04-20 12:34:31",
-    "file_sha": "6af2964e72505c7c64f625b3115343e451dc88f8",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec App Hands-On/InfoSec App Hands-On - Attendee - Oct 2026.pdf",
+    "last_updated_at": "2026-10-26 09:07:39",
+    "file_sha": "995e4217fb41c53eb84a2427a26f0867cc1e93c6",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec%20App%20Hands-On/infosec-app-hands-on-attendee.html"
   },
   {
-    "id": "workshopsinfosec-app-hands-oninfosec-app-hands-on-lab-guide-apr-2026",
+    "id": "workshopsinfosec-app-hands-oninfosec-app-hands-on-lab-guide-oct-2026",
     "title": "InfoSec App Hands On Lab Guide",
     "redirect_html_path": "public/workshops/InfoSec App Hands-On/infosec-app-hands-on-lab-guide.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec App Hands-On/InfoSec App Hands-On - Lab Guide - Apr 2026.pdf",
-    "last_updated_at": "2026-04-20 12:34:31",
-    "file_sha": "58b2d493cdd63b7a58ede524f88652bec3b3023a",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec App Hands-On/InfoSec App Hands-On - Lab Guide - Oct 2026.pdf",
+    "last_updated_at": "2026-10-26 09:07:39",
+    "file_sha": "5c344b775663c681065e84b815b7291079053413",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/InfoSec%20App%20Hands-On/infosec-app-hands-on-lab-guide.html"
   },
   {
