@@ -387,15 +387,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/cisco-logs-small.html"
   },
   {
-    "id": "publicworkshopssplunk-data-management-workshopsplunk-federated-data-management-workshop-attendee-feb-2025",
-    "title": "Splunk Federated Data Management Workshop Attendee",
-    "redirect_html_path": "public/workshops/Splunk Data Management Workshop/splunk-federated-data-management-workshop-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Data Management Workshop/Splunk Federated Data Management Workshop - Attendee - Feb 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "2b85f1dab74ecca90321b31d7617c20e9c567d45",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/splunk-federated-data-management-workshop-attendee.html"
-  },
-  {
     "id": "publicworkshopssplunk-for-telco-analysts-hands-onsplunk-for-telco-analysts-hands-on-attendee-nov-2024",
     "title": "Splunk for Telco Analysts Hands on Attendee",
     "redirect_html_path": "public/workshops/Splunk for Telco Analysts Hands-On/splunk-for-telco-analysts-hands-on-attendee.html",
@@ -1053,6 +1044,15 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/cc-trans-logssample.html"
   },
   {
+    "id": "workshopssplunk-data-management-workshopsplunk-federated-data-management-workshop-attendee-oct-2026",
+    "title": "Splunk Federated Data Management Workshop Attendee",
+    "redirect_html_path": "public/workshops/Splunk Data Management Workshop/splunk-federated-data-management-workshop-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk Data Management Workshop/Splunk Federated Data Management Workshop - Attendee - Oct 2026.pdf",
+    "last_updated_at": "2026-10-27 11:12:17",
+    "file_sha": "400da2cb17f955403d6258728d2fff9fd2fe441b",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk%20Data%20Management%20Workshop/splunk-federated-data-management-workshop-attendee.html"
+  },
+  {
     "id": "workshopssplunk-data-management-workshopsplunk-federated-data-management-workshop-lab-guide-apr-2026",
     "title": "Splunk Federated Data Management Workshop Lab Guide",
     "redirect_html_path": "public/workshops/Splunk Data Management Workshop/splunk-federated-data-management-workshop-lab-guide.html",
@@ -1179,12 +1179,12 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20CSX/splunk4rookies-csx-lab-guide.html"
   },
   {
-    "id": "workshopssplunk4rookies-dashboard-studio-ds4rsplunk4rookies-dashboard-studio-attendee-dec-2025",
+    "id": "workshopssplunk4rookies-dashboard-studio-ds4rsplunk4rookies-dashboard-studio-attendee-oct-2026",
     "title": "Splunk4Rookies Dashboard Studio Attendee",
     "redirect_html_path": "public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/splunk4rookies-dashboard-studio-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/Splunk4Rookies - Dashboard Studio - Attendee - Dec 2025.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "971430bac73421324c19e3bd58799599311100f8",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies - Dashboard Studio (DS4R)/Splunk4Rookies - Dashboard Studio - Attendee - Oct 2026.pdf",
+    "last_updated_at": "2026-10-27 11:12:18",
+    "file_sha": "67628179b62cb04805291992df0b2ce7f98a4580",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Rookies%20-%20Dashboard%20Studio%20%28DS4R%29/splunk4rookies-dashboard-studio-attendee.html"
   },
   {
