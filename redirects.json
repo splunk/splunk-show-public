@@ -711,15 +711,6 @@
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-flyer.html"
   },
   {
-    "id": "publicworkshopssplunk4ninjas-data-onboardingsplunk4ninjas-data-onboarding-attendee-nov-2024",
-    "title": "Splunk4Ninjas Data Onboarding Attendee",
-    "redirect_html_path": "public/workshops/Splunk4Ninjas - Data Onboarding/splunk4ninjas-data-onboarding-attendee.html",
-    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Data Onboarding/Splunk4Ninjas - Data Onboarding - Attendee - Nov 2024.pdf",
-    "last_updated_at": "2026-01-16 11:26:02",
-    "file_sha": "cc383f09291a0f2ac5698894fddbae33ee4252b6",
-    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Data%20Onboarding/splunk4ninjas-data-onboarding-attendee.html"
-  },
-  {
     "id": "publicworkshopssplunk4ninjas-data-onboardingsplunk4ninjas-data-onboarding-flyer-jan-2024",
     "title": "Splunk4Ninjas Data Onboarding Flyer",
     "redirect_html_path": "public/workshops/Splunk4Ninjas - Data Onboarding/splunk4ninjas-data-onboarding-flyer.html",
@@ -1114,6 +1105,15 @@
     "last_updated_at": "2026-04-09 08:42:55",
     "file_sha": "f744d09651ba4faca097e45c4c862b874c531c99",
     "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Dashboard%20Studio/splunk4ninjas-dashboard-studio-lab-guide.html"
+  },
+  {
+    "id": "workshopssplunk4ninjas-data-onboardingsplunk4ninjas-data-onboarding-attendee-oct-2026",
+    "title": "Splunk4Ninjas Data Onboarding Attendee",
+    "redirect_html_path": "public/workshops/Splunk4Ninjas - Data Onboarding/splunk4ninjas-data-onboarding-attendee.html",
+    "current_target_file": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas - Data Onboarding/Splunk4Ninjas - Data Onboarding - Attendee - Oct 2026.pdf",
+    "last_updated_at": "2026-10-27 17:08:56",
+    "file_sha": "2f97f162563a34e3bab48f1225801daa20d8e89f",
+    "public_url": "https://splunk.github.io/splunk-show-public/public/workshops/Splunk4Ninjas%20-%20Data%20Onboarding/splunk4ninjas-data-onboarding-attendee.html"
   },
   {
     "id": "workshopssplunk4ninjas-machine-learning-for-securitysplunk4ninjas-machine-learning-for-security-attendee-aug-2026",
